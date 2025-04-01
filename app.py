@@ -25,6 +25,15 @@ def run_script_once(script_path, args, session_id):
 def index():
     return render_template('index.html')
 
+@app.route('/baza_danych')
+def baza_danych_page():
+    return render_template('bazadanych.html')
+
+@app.route('/wizualizacja')
+def wizualizacja_page():
+    return render_template('wizualizacja.html')
+
+
 @socketio.on('connect')
 def handle_connect():
     print('Client connected')

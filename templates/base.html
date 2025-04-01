@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Moja Aplikacja{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Skrypt</a></li>
+            <li><a href="{{ url_for('baza_danych_page') }}">Baza Danych</a></li>
+            <li><a href="{{ url_for('wizualizacja_page') }}">Wizualizacja</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        {# Tutaj będzie domyślna zawartość, która może być nadpisana #}
+        {% endblock %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Moja Aplikacja</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Skrypt{% endblock %}
+
+{% block content %}
+
     <div class="content">
         <div>
             <h2>Uruchom Zbieraj Dane</h2>
@@ -24,7 +22,4 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+    {% endblock %}
