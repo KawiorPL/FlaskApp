@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja Aplikacja</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content">
+        <div>
+            <h2>Uruchom Zbieraj Dane</h2>
+            <label for="urlInput">URL:</label>
+            <input type="text" id="urlInput" name="url" required>
+            <button onclick="zbierajDane()">Uruchom</button>
+        </div>
+
+        <div>
+            <h2>Uruchom Check Data</h2>
+            <button onclick="uruchomCheck_Data()">Uruchom</button>
+        </div>
+
+        <div id="output">
+            <h2>Wyjście Skryptu:</h2>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

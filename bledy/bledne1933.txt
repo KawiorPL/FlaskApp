@@ -1,0 +1,110 @@
+https://oscar.warpechow.ski/pages/1d857ce9-9935-456f-b301-9ef02e908c5c.html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Błąd 429 - Zbyt wiele żądań</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .error-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .error-code {
+            font-size: 72px;
+            font-weight: bold;
+            margin: 0;
+            color: #e74c3c;
+        }
+        .error-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .error-message {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .funny-quote {
+            font-size: 16px;
+            font-style: italic;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fef9e7;
+            border-left: 4px solid #f1c40f;
+            color: #7d6608;
+        }
+        .client-info {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Ukryty link dla crawlerów (pułapka) */
+        .hidden-link {
+            position: absolute;
+            left: -9999px;
+            color: transparent;
+            background: transparent;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-code">429</h1>
+        <h2 class="error-title">Zbyt wiele żądań</h2>
+        <p class="error-message">Przekroczyłeś limit żądań do serwera. Prosimy spróbować ponownie za minutę.</p>
+        
+        <div class="funny-quote">
+            Spokojnie, tygrysie! Zwolnij tempo, nie jesteś na wyścigach F1.
+        </div>
+        
+        <a href="/" class="back-button">Wróć do strony głównej</a>
+        
+        <div class="client-info">
+            Twój adres IP: 185.245.192.38
+        </div>
+    </div>
+    
+    <!-- Pułapka dla crawlerów -->
+    <a href="/secret/trap1" class="hidden-link">Ukryta zawartość</a>
+    <a href="/admin/login" class="hidden-link">Panel administracyjny</a>
+    <a href="/private/users" class="hidden-link">Lista użytkowników</a>
+</body>
+</html>
