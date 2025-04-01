@@ -4,6 +4,7 @@ import numpy as np
 import requests
 from difflib import SequenceMatcher
 import pandas as pd
+import sys
 
 
 main = "https://oscar.warpechow.ski/"
@@ -362,6 +363,7 @@ def znajdz_prawie_podobne(lista, prog_podobienstwa=0.9):
                 para = tuple(sorted((slowo1, slowo2)))
                 if para not in znalezione_pary:
                     print(f"Znaleziono podobne : '{slowo1}', '{slowo2}', podobieństwo: {podobienstwo:.2f}")
+                    sys.stdout.flush()
                     znalezione_pary.add(para)
 
     return znalezione_pary
@@ -464,12 +466,27 @@ def suguesia_zamiany(dane,data):
         except IndexError:
             print(f'error {i[0]}')
 
+        #tworzenie DataFrame plik csv.
+        Datazamiana=pd.DataFrame(columns=['old','new'])
+        temp=pd.DataFrame(columns=['old','new'])
 
-    return final
+        for i in final:
+            temp=pd.DataFrame({'old':[i[0][0]],'new':[i[1][0]]})
+            Datazamiana = pd.concat([Datazamiana,temp], ignore_index=True)
+
+    dozamiany_lista = Datazamiana.to_dict(orient='records')
+    return Datazamiana, dozamiany_lista
 
 
 
+def zamiana(data,lista):
+    for index, y in lista.iterrows():
+        print(f"zamiana {y['old']} na {y['new']}")
 
+        data['aktor']=data['aktor'].replace(y['old'], y['new'])
+
+
+    return data
 
 
 

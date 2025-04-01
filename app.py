@@ -62,5 +62,16 @@ def handle_zbieraj_Dane(data):
     else:
         emit('script_error', {'error': "Nie podano URL-a."}, room=session_id)
 
+
+@socketio.on('uruchom_czyszczenie_Data')
+def handle_uruchom_Check_Data():
+    session_id = request.sid
+    if session_id not in active_threads:  # Uruchom skrypt tylko raz dla sesji
+        thread = threading.Thread(target=run_script_once, args=('CzyszczenieDanych.py', [], session_id))
+        thread.start()
+        active_threads[session_id] = thread
+
+
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)

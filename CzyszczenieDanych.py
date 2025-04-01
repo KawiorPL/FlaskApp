@@ -75,23 +75,28 @@ mylist=list(set(newdata3['aktor'].to_list()))
 print("Szukanie Podobnych ")
 sys.stdout.flush()
 dane=fu.znajdz_prawie_podobne(mylist)
-
+sys.stdout.flush()
 
 
 print("Sugestie do zmiany ")
 sys.stdout.flush()
-dozamiany = fu.suguesia_zamiany(dane,Finaldf)
-
-
-print("Potwierdz czy akcetpujesz zmiany.")
-print(dozamiany)
+Datazamiana, dozamiany_lista = fu.suguesia_zamiany(dane,newdata3)
 sys.stdout.flush()
 
 
 
 
+print("Potwierdz czy akcetpujesz zmiany.")
+print(Datazamiana)
+sys.stdout.flush()
 
-newdata3.to_csv("CleanData.csv", index=False)
+
+pozamianie=fu.zamiana(newdata3,Datazamiana)
+
+
+
+
+pozamianie.to_csv("CleanData.csv", index=False)
 
 print('Czyste dane zapisane do CleanData.csv')
 sys.stdout.flush()

@@ -4,6 +4,11 @@ function uruchomCheck_Data() {
     socket.emit('uruchom_Check_Data');
 }
 
+function uruchomCheck_Data() {
+    socket.emit('uruchom_czyszczenie_Data');
+}
+
+
 function zbierajDane() {
     const urlInput = document.getElementById('urlInput');
     if (urlInput && urlInput.value) {
