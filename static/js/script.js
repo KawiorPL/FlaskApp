@@ -1,5 +1,12 @@
 var socket = io();
 
+
+function uruchomTworzenie_Db() {
+    socket.emit('uruchom_Tworzenie_DB');
+}
+
+
+
 function uruchomCheck_Data() {
     socket.emit('uruchom_Check_Data');
 }

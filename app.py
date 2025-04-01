@@ -73,5 +73,13 @@ def handle_uruchom_Check_Data():
 
 
 
+@socketio.on('uruchom_Tworzenie_DB')
+def handle_uruchom_Tworzenie_DB():
+    session_id = request.sid
+    if session_id not in active_threads:  # Uruchom skrypt tylko raz dla sesji
+        thread = threading.Thread(target=run_script_once, args=('TworzenieDB.py', [], session_id))
+        thread.start()
+        active_threads[session_id] = thread
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)

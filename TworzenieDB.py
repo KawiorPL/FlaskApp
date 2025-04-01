@@ -1,91 +1,113 @@
-import sqlite3
 import csv
+import sqlite3
+import os
 
-# Nazwy plików i tabel
-csv_file = 'dane_startowe.csv'
-db_file = 'dwie_tabele.db'
-produkty_table = 'produkty'
-kategorie_table = 'kategorie'
+csv_file = 'CleanData.csv'
+db_file = 'DbOksary.db'
 
-# Połączenie z bazą danych
-conn = sqlite3.connect(db_file)
-cursor = conn.cursor()
+def create_database(db_file):
+    """Tworzy bazę danych SQLite i tabele, usuwając istniejącą bazę."""
+    if os.path.exists(db_file):
+        os.remove(db_file)
+        print(f"Usunięto istniejącą bazę danych: {db_file}")
 
-try:
-    # Utworzenie tabeli 'kategorie'
-    cursor.execute(f'''
-        CREATE TABLE IF NOT EXISTS {kategorie_table} (
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
+
+
+    # Tabela kategorie
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS kategorie (
             id_kategorii INTEGER PRIMARY KEY AUTOINCREMENT,
             nazwa_kategorii TEXT UNIQUE NOT NULL
         )
-    ''')
-    conn.commit()
+    """)
 
-    # Utworzenie tabeli 'produkty' z kluczem obcym do 'kategorie'
-    cursor.execute(f'''
-        CREATE TABLE IF NOT EXISTS {produkty_table} (
-            id_produktu INTEGER PRIMARY KEY,
-            nazwa_produktu TEXT NOT NULL,
-            id_kategorii INTEGER,
-            wartosc REAL NOT NULL,
-            FOREIGN KEY (id_kategorii) REFERENCES {kategorie_table}(id_kategorii)
+    # Tabela aktorzy
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS aktorzy (
+            id_aktora INTEGER PRIMARY KEY AUTOINCREMENT,
+            imie_nazwisko TEXT UNIQUE NOT NULL
         )
-    ''')
+    """)
+
+    # Tabela typy_nagrod
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS typy_nagrod (
+            id_typu INTEGER PRIMARY KEY AUTOINCREMENT,
+            nazwa_typu TEXT UNIQUE NOT NULL
+        )
+    """)
+
+    # Tabela nagrody
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS nagrody (
+            id_nagrody INTEGER PRIMARY KEY AUTOINCREMENT,
+            rok INTEGER NOT NULL,
+            id_kategorii INTEGER NOT NULL,
+            id_aktora INTEGER NOT NULL,
+            film TEXT NOT NULL,
+            id_typu INTEGER NOT NULL,
+            FOREIGN KEY (id_kategorii) REFERENCES kategorie(id_kategorii),
+            FOREIGN KEY (id_aktora) REFERENCES aktorzy(id_aktora),
+            FOREIGN KEY (id_typu) REFERENCES typy_nagrod(id_typu)
+        )
+    """)
+
     conn.commit()
+    conn.close()
 
-    # Wczytanie kategorii z CSV i wstawienie do tabeli 'kategorie'
-    kategorie = set()
-    with open(csv_file, 'r', encoding='utf-8') as file:
-        csv_reader = csv.reader(file)
-        header = next(csv_reader)
-        nazwa_kategorii_index = header.index('nazwa_kategorii')
+def populate_database(db_file, csv_file):
+    """Wczytuje dane z pliku CSV i wypełnia bazę danych."""
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
+
+    with open(csv_file, 'r', newline='', encoding='utf-8') as file:
+        csv_reader = csv.DictReader(file)
         for row in csv_reader:
-            kategorie.add(row[nazwa_kategorii_index])
+            rok = int(row['YEAR'])
+            kategoria = row['category']
+            aktor = row['aktor']
+            film = row['film'].strip('"') # Usuwamy cudzysłowy z nazwy filmu
+            typ = row['type']
 
-    kategorie_map = {}
-    for kategoria in kategorie:
-        cursor.execute(f'''
-            INSERT OR IGNORE INTO {kategorie_table} (nazwa_kategorii)
-            VALUES (?)
-        ''', (kategoria,))
-    conn.commit()
+            # Pobierz lub dodaj kategorię
+            cursor.execute("SELECT id_kategorii FROM kategorie WHERE nazwa_kategorii=?", (kategoria,))
+            kategoria_result = cursor.fetchone()
+            if kategoria_result:
+                id_kategorii = kategoria_result[0]
+            else:
+                cursor.execute("INSERT INTO kategorie (nazwa_kategorii) VALUES (?)", (kategoria,))
+                id_kategorii = cursor.lastrowid
 
-    # Pobranie mapowania nazw kategorii na ich ID
-    cursor.execute(f'''
-        SELECT nazwa_kategorii, id_kategorii FROM {kategorie_table}
-    ''')
-    kategorie_map = {row[0]: row[1] for row in cursor.fetchall()}
+            # Pobierz lub dodaj aktora
+            cursor.execute("SELECT id_aktora FROM aktorzy WHERE imie_nazwisko=?", (aktor,))
+            aktor_result = cursor.fetchone()
+            if aktor_result:
+                id_aktora = aktor_result[0]
+            else:
+                cursor.execute("INSERT INTO aktorzy (imie_nazwisko) VALUES (?)", (aktor,))
+                id_aktora = cursor.lastrowid
 
-    # Wstawienie produktów do tabeli 'produkty' z odpowiednimi ID kategorii
-    with open(csv_file, 'r', encoding='utf-8') as file:
-        csv_reader = csv.reader(file)
-        header = next(csv_reader)
-        id_produktu_index = header.index('id_produktu')
-        nazwa_produktu_index = header.index('nazwa_produktu')
-        nazwa_kategorii_index = header.index('nazwa_kategorii')
-        wartosc_index = header.index('wartosc')
+            # Pobierz lub dodaj typ nagrody
+            cursor.execute("SELECT id_typu FROM typy_nagrod WHERE nazwa_typu=?", (typ,))
+            typ_result = cursor.fetchone()
+            if typ_result:
+                id_typu = typ_result[0]
+            else:
+                cursor.execute("INSERT INTO typy_nagrod (nazwa_typu) VALUES (?)", (typ,))
+                id_typu = cursor.lastrowid
 
-        for row in csv_reader:
-            id_produktu = row[id_produktu_index]
-            nazwa_produktu = row[nazwa_produktu_index]
-            nazwa_kategorii = row[nazwa_kategorii_index]
-            wartosc = row[wartosc_index]
-            id_kategorii = kategorie_map.get(nazwa_kategorii)
-            if id_kategorii is not None:
-                cursor.execute(f'''
-                    INSERT INTO {produkty_table} (id_produktu, nazwa_produktu, id_kategorii, wartosc)
-                    VALUES (?, ?, ?, ?)
-                ''', (id_produktu, nazwa_produktu, id_kategorii, wartosc))
+            # Dodaj rekord do tabeli nagrody
+            cursor.execute("""
+                INSERT INTO nagrody (rok, id_kategorii, id_aktora, film, id_typu)
+                VALUES (?, ?, ?, ?, ?)
+            """, (rok, id_kategorii, id_aktora, film, id_typu))
+
         conn.commit()
+    conn.close()
 
-    print(f"Baza danych '{db_file}' została utworzona z tabelami '{produkty_table}' i '{kategorie_table}' połączonymi kluczem obcym.")
-
-except sqlite3.Error as e:
-    print(f"Błąd SQLite: {e}")
-except FileNotFoundError:
-    print(f"Nie znaleziono pliku CSV: '{csv_file}'")
-except ValueError as e:
-    print(f"Błąd wartości CSV: {e}")
-finally:
-    if conn:
-        conn.close()
+if __name__ == "__main__":
+    create_database(db_file)
+    populate_database(db_file, csv_file)
+    print(f"Baza danych '{db_file}' została utworzona i wypełniona danymi z '{csv_file}'.")
