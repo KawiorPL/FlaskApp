@@ -15,7 +15,12 @@
     <div id="output">
         <h2>Wyjście Skryptu:</h2>
     </div>
-
+    <hr><br>
+    {% if dash_url %}
+            <iframe src="{{ dash_url }}" style="width:100%; height:600px; border:0;"></iframe>
+        {% else %}
+            <p>Aplikacja wizualizacji danych jest niedostępna.</p>
+        {% endif %}
 
 
     {% endblock %}

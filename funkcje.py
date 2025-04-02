@@ -5,6 +5,9 @@ import requests
 from difflib import SequenceMatcher
 import pandas as pd
 import sys
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
 
 
 main = "https://oscar.warpechow.ski/"
@@ -487,6 +490,97 @@ def zamiana(data,lista):
 
 
     return data
+
+
+
+
+def analizaaktorow(df):
+    """
+    Analizuje nominacje i zwycięstwa aktorów, tworzy wykresy i zapisuje dane do plików CSV.
+
+    Args:
+        df (pd.DataFrame): DataFrame zawierający dane o Oscarach.
+    """
+
+    # 1. Filtrowanie danych: Wybierz tylko wiersze z kategoriami aktorskimi.
+    df = pd.read_csv('CleanData.csv')
+    # 1. Filtrowanie danych: Wybierz tylko wiersze z kategoriami aktorskimi.
+    filtered_df = df.loc[df['category'].isin(['ACTOR IN A LEADING ROLE', 'ACTOR', 'ACTRESS IN A LEADING ROLE', 'ACTRESS'])]
+
+    # 2. Grupowanie i zliczanie: Zlicz liczbę wystąpień dla każdego aktora i typu nominacji.
+    grouped_df = filtered_df.groupby(['aktor', 'type']).size().reset_index(name='count')
+
+    # 3. Sortowanie danych: Posortuj dane według aktora, typu nominacji i liczby wystąpień.
+    sorted_df = grouped_df.sort_values(by=['aktor', 'type', 'count'], ascending=[True, False, False])
+
+    # 4. Tworzenie DataFrame z samymi zwycięzcami: Wybierz tylko wiersze ze zwycięzcami i posortuj według liczby zwycięstw.
+    winners_df = sorted_df[sorted_df['type'] == 'Winner'].sort_values(by='count', ascending=False)
+
+    # 5. Tworzenie pustego DataFrame na wynik: Inicjalizuj pusty DataFrame, który będzie przechowywać wyniki.
+    result_df = pd.DataFrame()
+
+    # 6. Iterowanie po zwycięzcach i dodawanie ich nominacji (poprawione): Dla każdego zwycięzcy dodaj jego zwycięstwa i nominacje do DataFrame.
+    for actor in winners_df['aktor']:
+        actor_winners = sorted_df[(sorted_df['aktor'] == actor) & (sorted_df['type'] == 'Winner')]
+        actor_nominees = sorted_df[(sorted_df['aktor'] == actor) & (sorted_df['type'] == 'nominees')]
+
+        # Dodaj najpierw zwycięstwa, a potem nominacje
+        result_df = pd.concat([result_df, actor_winners, actor_nominees], ignore_index=True)
+
+    # 7. Tworzenie tabeli przestawnej: Utwórz tabelę przestawną z danymi o aktorach, nominacjach i zwycięstwach.
+
+
+
+
+
+    # 9. Przygotowanie danych dla wykresu słupkowego i punktowego: Wybierz 50 najlepszych aktorów i utwórz tabelę przestawną.
+
+    pivot_df = result_df.pivot_table(index='aktor', columns='type', values='count', fill_value=0).reset_index()
+    pivot_df['total'] = pivot_df['Winner'] + pivot_df['nominees']
+    pivot_df['%win'] = round((pivot_df['Winner'] / pivot_df['total']) * 100, 2)
+    pairplot = pivot_df.loc[pivot_df['Winner'] > 1].sort_values(['Winner', '%win'], ascending=[False, False])
+    pairplot['nominees'] = pairplot['nominees'].astype(int)
+    pairplot['winner'] = pairplot['Winner'].astype(int)
+    pairplot['total'] = pairplot['total'].astype(int)
+
+
+    # 10. Tworzenie wykresu słupkowego i punktowego: Wykres słupkowy przedstawiający nominacje i zwycięstwa, wykres punktowy przedstawiający lata.
+    fig, ax1 = plt.subplots(figsize=(12, 8))
+    df_award = pd.read_csv("CleanData.csv") #Zmieniłem nazwę zmiennej aby nie nadpisywała df z argumentu funkcji
+    chart = pairplot.set_index('aktor')
+    chart[['Winner', 'nominees']].plot(kind='bar', stacked=True, ax=ax1) #Zmieniono kolejność kolumn na wykresie słupkowym
+    ax1.set_title('Nominacje i Wygrane Oscarów')
+    ax1.set_xlabel('Aktorzy')
+    ax1.set_ylabel('Liczba')
+    ax1.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=2)
+    ax2 = ax1.twinx()
+    winners = []
+    nominees = []
+    for actor, row in chart.iterrows():
+        actor_data = df_award[df_award['aktor'] == actor] #Zmieniłem nazwę zmiennej aby nie nadpisywała df z argumentu funkcji
+        years = actor_data['YEAR'].tolist()
+        types = actor_data['type'].tolist()
+        for year, t in zip(years, types):
+            if t == 'Winner':
+                winners.append((actor, year))
+            else:
+                nominees.append((actor, year))
+
+
+    ax2.scatter([actor for actor, year in winners], [year for actor, year in winners], color='lime', marker='o', s=50, label='Zwycięstwo')
+    ax2.scatter([actor for actor, year in nominees], [year for actor, year in nominees], color='black', marker='o', s=50, label='Nominacja')
+    ax2.scatter([actor for actor, year in winners], [year for actor, year in winners], color='lime', marker='o', s=50, label='Zwycięstwo')
+
+    ax2.set_ylabel('Lata', color='blue')
+    ax2.tick_params(axis='y', labelcolor='blue')
+    handles, labels = ax2.get_legend_handles_labels()
+    unique = [(h, l) for i, (h, l) in enumerate(zip(handles, labels)) if l not in labels[:i]]
+    ax2.legend(*zip(*unique), loc='upper center', bbox_to_anchor=(0.5, 1.25), ncol=2)
+    CHART_PATH = os.path.join('static', 'charts', 'analizaAktorow.png')
+
+    plt.tight_layout()
+    plt.savefig(CHART_PATH)
+
 
 
 

@@ -1,17 +1,52 @@
 var socket = io();
 
 
+socket.on('connect', () => {
+    console.log('Połączono z serwerem WebSocket');
+});
+
+socket.on('generowanie_rozpoczęte', () => {
+    alert('Rozpoczęto generowanie wykresu. Proszę czekać.');
+});
+
+socket.on('generowanie_w_toku', () => {
+    alert('Generowanie wykresu jest już w toku.');
+});
+
+socket.on('wykres_istnieje', () => {
+    wyswietlWykres();
+});
+
+socket.on('chart_gotowy', () => {
+    console.log('Otrzymano powiadomienie o gotowym wykresie');
+    wyswietlWykres();
+});
+
+function uruchomChart() {
+    socket.emit('uruchom_Chart');
+}
+
+function wyswietlWykres() {
+    const chartContainer = document.getElementById('chart-container');
+    chartContainer.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = '\static\charts\analizaAktorow.png?t=' + new Date().getTime();
+    img.alt = 'Wygenerowany Wykres';
+    chartContainer.appendChild(img);
+}
+
+
+
 function uruchomTworzenie_Db() {
     socket.emit('uruchom_Tworzenie_DB');
 }
-
 
 
 function uruchomCheck_Data() {
     socket.emit('uruchom_Check_Data');
 }
 
-function uruchomCheck_Data() {
+function uruchomClear_Data() {
     socket.emit('uruchom_czyszczenie_Data');
 }
 

@@ -6,13 +6,43 @@
 
 <br>
 <hr>
-    <h1>Wizualizacja Danych</h1>
+    <h1>Wizualizacja Danych Wykresów dynamicznych</h1>
     <div>
         {% if dash_url %}
-            <iframe src="{{ dash_url }}" style="width:100%; height:600px; border:0;"></iframe>
-        {% else %}
-            <p>Aplikacja wizualizacji danych jest niedostępna.</p>
-        {% endif %}
+        <iframe src="{{ dash_url }}" style="width:100%; height:600px; border:0;"></iframe>
+    {% else %}
+        <p>Aplikacja wizualizacji danych jest niedostępna.</p>
+    {% endif %}
+
+    </div>
+
+    <br>
+
+    <div>
+        <h2>Uruchom Check Data</h2>
+        <button onclick="uruchomChart()">Uruchom</button>
+    </div>
+
+
+    <p>Drugi wykres, który został opracowany, prezentuje liczbę nominacji oraz zdobytych Oscarów przez aktorów w kategoriach pierwszoplanowych.
+        W celu zwiększenia czytelności danych, na wykresie nałożono punkty: zielone reprezentują zdobyte Oscary, a czarne – nominacje.
+         Ta wizualizacja umożliwia odbiorcy łatwe zidentyfikowanie lat aktywności zawodowej danego aktora oraz momentów otrzymywania nominacji i nagród. Dodatkowo,
+         wykres pozwala na wizualne porównanie relacji między liczbą nominacji a faktycznymi zwycięstwami.
+
+        Analiza ta prowadzi do kilku istotnych wniosków. Po pierwsze, wyraźnie widać, że zdobycie Oscara jest znaczącym osiągnięciem, a wielokrotne nagradzanie w tej
+        kategorii jest rzadkością. Po drugie, obserwujemy, że niektórzy aktorzy byli regularnie nominowani, lecz nie zawsze zdobywali statuetkę. To ilustruje wysoki poziom
+        konkurencji w środowisku aktorskim oraz trudność w zdobyciu uznania Akademii Filmowej. Analiza ta dostarcza cennych informacji na temat karier wybitnych aktorów w historii
+        kina, ukazując ich drogę do sukcesu i uznania.
+
+
+    </p>
+
+    <div id="output">
+        <h2>Wyjście Skryptu:</h2>
+    </div>
+
+        <div id="chart-container">
+        <img src="\static\charts\analizaAktorow.png" alt="Wykres">
     </div>
 
 {% endblock %}
