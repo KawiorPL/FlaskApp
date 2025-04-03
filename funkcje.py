@@ -52,6 +52,86 @@ def DatFrameYearLink(html_file_path):
         print(f"Wystąpil bład: {e}")
         return None
 
+def znajdz_roznice(lista1, lista2):
+    """
+    Znajduje elementy z listy1, które nie występują w liście2.
+
+    Args:
+        lista1 (list): Pierwsza lista.
+        lista2 (list): Druga lista.
+
+    Returns:
+        list: Lista elementów z listy1, które nie występują w liście2.
+    """
+    lista3 = []
+    for element in lista1:
+        if element not in lista2:
+            lista3.append(element)
+    return lista3
+
+
+
+def extract_winner(html_file_path, year):
+
+    with open(html_file_path, 'r', encoding='utf-8') as f:
+            html_content = f.read()
+
+
+    soup = BeautifulSoup(html_content, 'html.parser')
+
+
+    winner = []
+    for category_section in soup.find_all('div', class_='category-section'):
+        category = category_section.find('h2').text.strip()
+
+
+        # Przetwarzanie zwycięzcy (zakładam, że jest tylko jeden element z klasą 'winner' w sekcji)
+        winner_element = category_section.find('div', class_='winner')
+
+        if winner_element:
+            winner_paragraph = winner_element.find('p')
+            #print(winner_paragraph)
+            if winner_paragraph:
+                winner = winner_paragraph.text.strip()
+
+
+                try:
+                    aktor, film = winner.split(' - ')
+                except ValueError:
+                    aktor = winner
+                    film = np.nan
+                winner.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'Winner'})
+
+
+
+def extract_nominee(html_file_path, year):
+    with open(html_file_path, 'r', encoding='utf-8') as f:
+        html_content = f.read()
+
+
+    soup = BeautifulSoup(html_content, 'html.parser')
+
+    ACTOR=[]
+    other=[]
+    cat=[]
+    for category_section in soup.find_all('div', class_='category-section'):
+        category = category_section.find('h2').text.strip()
+
+        for nominee_element in category_section.find_all('div', class_='nominee'):
+            nominee_paragraph = nominee_element.find('p')
+
+
+            if nominee_paragraph:
+                nominee = nominee_paragraph.text.strip()
+                if category =='ACTOR':
+                    ACTOR.append(nominee)
+                else:
+                    other.append(nominee)
+                    cat.append(category)
+
+
+    lista3 = znajdz_roznice(ACTOR, other)
+    lista3
 
 
 
@@ -186,7 +266,13 @@ def weryfikuj_i_rozdziel_osoby(data):
         except TypeError:
             print(f'Error {i["aktor"]}')
 
-    return new
+    remove = ['Metro-Goldwyn-Mayer', 'Warner Bros.','Producer', 'Producers', 'Sound Director', 'Music', 'Jr.']
+
+
+    maska = new['aktor'].isin(remove)
+    df_oczyszczony = new[~maska]
+
+    return df_oczyszczony
 
 
 def czyszczenie_przecinek(data):
@@ -503,7 +589,7 @@ def analizaaktorow(df):
     """
 
     # 1. Filtrowanie danych: Wybierz tylko wiersze z kategoriami aktorskimi.
-    df = pd.read_csv('CleanData.csv')
+
     # 1. Filtrowanie danych: Wybierz tylko wiersze z kategoriami aktorskimi.
     filtered_df = df.loc[df['category'].isin(['ACTOR IN A LEADING ROLE', 'ACTOR', 'ACTRESS IN A LEADING ROLE', 'ACTRESS'])]
 
@@ -546,7 +632,7 @@ def analizaaktorow(df):
 
     # 10. Tworzenie wykresu słupkowego i punktowego: Wykres słupkowy przedstawiający nominacje i zwycięstwa, wykres punktowy przedstawiający lata.
     fig, ax1 = plt.subplots(figsize=(12, 8))
-    df_award = pd.read_csv("CleanData.csv") #Zmieniłem nazwę zmiennej aby nie nadpisywała df z argumentu funkcji
+    df_award = df.loc[df['category'].isin(['ACTOR IN A LEADING ROLE', 'ACTOR', 'ACTRESS IN A LEADING ROLE', 'ACTRESS'])]
     chart = pairplot.set_index('aktor')
     chart[['Winner', 'nominees']].plot(kind='bar', stacked=True, ax=ax1) #Zmieniono kolejność kolumn na wykresie słupkowym
     ax1.set_title('Nominacje i Wygrane Oscarów')
