@@ -113,7 +113,7 @@ def extract_nominee(html_file_path, year):
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
-    nominee=[]
+    listnominee=[]
     ACTOR=[]
     other=[]
     cat=[]
@@ -146,7 +146,7 @@ def extract_nominee(html_file_path, year):
     for y,category in zip(other,cat):
         aktor, film = y.split(' - ')
 
-        nominee.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'nominee'})
+        listnominee.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'nominee'})
 
     df = pd.DataFrame(nominee)
     return df
