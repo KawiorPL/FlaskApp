@@ -117,7 +117,21 @@ def baza_danych_page():
 @app.route('/wizualizacja')
 def wizualizacja_page():
     dash_url = '/wizualizacja/'
-    return render_template('wizualizacja.html', dash_url=dash_url)
+    image_path = os.path.join(app.static_folder, 'charts', 'analizaAktorow.png')
+    image_exists = os.path.exists(image_path)
+    return render_template('wizualizacja.html', dash_url=dash_url,image_exists=image_exists)
+
+
+
+
+
+
+
+
+
+
+
+
 
 # DASH APP EMBEDDING FOR /baza_danych
 DATABASE_PATH = r"DbOksary.db"

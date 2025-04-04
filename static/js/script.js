@@ -24,8 +24,11 @@ socket.on('chart_gotowy', () => {
 
 function uruchomChart() {
     socket.emit('uruchom_Chart');
+    // Ustaw odświeżenie strony po 10 sekundach (10000 milisekund)
+    setTimeout(function() {
+        location.reload();
+    }, 10000);
 }
-
 function wyswietlWykres() {
     const chartContainer = document.getElementById('chart-container');
     chartContainer.innerHTML = '';

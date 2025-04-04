@@ -38,10 +38,18 @@
     </p>
 
 
-
+    {% if image_exists %}
         <div id="chart-container">
         <img src="\static\charts\analizaAktorow.png" alt="Wykres">
     </div>
+
+
+            {% else %}
+
+            <p>Kliknij Uruchom i poczkeaj 10 sekund</p>
+
+            {% endif %}
+
 
 
     <div>
@@ -63,8 +71,20 @@
 
 
 
-        <div id="chart-container">
+    {% if image_exists %}
+    <div id="chart-container">
         <img src="\static\charts\filmy_zwyciescy.png" alt="Wykres">
     </div>
+
+
+        {% else %}
+
+        <p>Kliknij Uruchom i poczkeaj 10 sekund</p>
+
+        {% endif %}
+
+
+
+
 
 {% endblock %}
