@@ -80,7 +80,7 @@ def extract_winner(html_file_path, year):
     soup = BeautifulSoup(html_content, 'html.parser')
 
 
-    winner = []
+    winners = []
     for category_section in soup.find_all('div', class_='category-section'):
         category = category_section.find('h2').text.strip()
 
@@ -100,9 +100,9 @@ def extract_winner(html_file_path, year):
                 except ValueError:
                     aktor = winner
                     film = np.nan
-                winner.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'Winner'})
+                winners.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'Winner'})
 
-    df = pd.DataFrame(winner)
+    df = pd.DataFrame(winners)
     return df
 
 
@@ -144,12 +144,19 @@ def extract_nominee(html_file_path, year):
 
 
     for y,category in zip(other,cat):
-        aktor, film = y.split(' - ')
+
+        try:
+            aktor, film = y.split(' - ')
+
+        except ValueError:
+                    aktor = y
+                    film = np.nan
 
         listnominee.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'nominee'})
 
-    df = pd.DataFrame(nominee)
+    df = pd.DataFrame(listnominee)
     return df
+
 
 
 
@@ -524,7 +531,7 @@ def analizaaktorow(df):
     # 6. Iterowanie po zwycięzcach i dodawanie ich nominacji (poprawione): Dla każdego zwycięzcy dodaj jego zwycięstwa i nominacje do DataFrame.
     for actor in winners_df['aktor']:
         actor_winners = sorted_df[(sorted_df['aktor'] == actor) & (sorted_df['type'] == 'Winner')]
-        actor_nominees = sorted_df[(sorted_df['aktor'] == actor) & (sorted_df['type'] == 'nominees')]
+        actor_nominees = sorted_df[(sorted_df['aktor'] == actor) & (sorted_df['type'] == 'nominee')]
 
         # Dodaj najpierw zwycięstwa, a potem nominacje
         result_df = pd.concat([result_df, actor_winners, actor_nominees], ignore_index=True)
@@ -538,10 +545,10 @@ def analizaaktorow(df):
     # 9. Przygotowanie danych dla wykresu słupkowego i punktowego: Wybierz 50 najlepszych aktorów i utwórz tabelę przestawną.
 
     pivot_df = result_df.pivot_table(index='aktor', columns='type', values='count', fill_value=0).reset_index()
-    pivot_df['total'] = pivot_df['Winner'] + pivot_df['nominees']
+    pivot_df['total'] = pivot_df['Winner'] + pivot_df['nominee']
     pivot_df['%win'] = round((pivot_df['Winner'] / pivot_df['total']) * 100, 2)
     pairplot = pivot_df.loc[pivot_df['Winner'] > 1].sort_values(['Winner', '%win'], ascending=[False, False])
-    pairplot['nominees'] = pairplot['nominees'].astype(int)
+    pairplot['nominee'] = pairplot['nominee'].astype(int)
     pairplot['winner'] = pairplot['Winner'].astype(int)
     pairplot['total'] = pairplot['total'].astype(int)
 
@@ -550,7 +557,7 @@ def analizaaktorow(df):
     fig, ax1 = plt.subplots(figsize=(12, 8))
     df_award = df.loc[df['category'].isin(['ACTOR IN A LEADING ROLE', 'ACTOR', 'ACTRESS IN A LEADING ROLE', 'ACTRESS'])]
     chart = pairplot.set_index('aktor')
-    chart[['Winner', 'nominees']].plot(kind='bar', stacked=True, ax=ax1) #Zmieniono kolejność kolumn na wykresie słupkowym
+    chart[['Winner', 'nominee']].plot(kind='bar', stacked=True, ax=ax1) #Zmieniono kolejność kolumn na wykresie słupkowym
     ax1.set_title('Nominacje i Wygrane Oscarów')
     ax1.set_xlabel('Aktorzy')
     ax1.set_ylabel('Liczba')
@@ -588,6 +595,48 @@ def analizaaktorow(df):
 
 
 
+def winnersfilm(df):
+    """
+    Generuje wykres punktowy przedstawiający filmy z największą liczbą Oscarów w różnych latach.
+
+    Args:
+        df (pd.DataFrame): DataFrame zawierający dane o Oscarach.
+    """
+
+    # 1. Wybór filmów, które zdobyły Oscara, grupowanie według lat i filmów, sortowanie malejąco według liczby Oscarów.
+    three = df.loc[df['type'] == 'Winner'][['YEAR','category','film']].drop_duplicates().groupby(['YEAR', 'film']).size().reset_index(name='category').sort_values('category', ascending=False)
+    two=three[three['category']>7]
+
+    # 2. Wybór 10 filmów z największą liczbą Oscarów.
+    films = two['film'].to_list()
+
+    # 3. Filtrowanie danych, aby uwzględnić tylko 10 wybranych filmów.
+    final = three.loc[three['film'].isin(films)]
+
+    # 4. Tworzenie wykresu punktowego.
+    plt.figure(figsize=(10, 6))
+
+    # 5. Rysowanie punktów dla każdego filmu i roku.
+    for i, row in final.iterrows():
+        # Rysowanie punktu, rozmiar punktu zależy od liczby Oscarów (category).
+        plt.scatter(row['film'], row['YEAR'], s=row['category'] * 60, alpha=0.6)
+        # Dodawanie liczby Oscarów obok punktu.
+        plt.text(row['film'], row['YEAR'], str(row['category']), ha='center', va='center', fontsize=18)
+
+    # 6. Dodawanie tytułu i etykiet osi.
+    plt.title('Rok i ilość otrzymanych Oskarow dla Filmów')
+    plt.xlabel('Filmy')
+    plt.ylabel('Lata')
+
+    # 7. Obracanie etykiet osi X o 30 stopni.
+    plt.xticks(rotation=30, ha='right')
+
+    # 8. Wyświetlanie siatki i wykresu.
+    plt.grid(True)
+    plt.tight_layout()
+    CHART_PATH = os.path.join('static', 'charts', 'filmy_zwyciescy.png')
 
 
+    plt.tight_layout()
+    plt.savefig(CHART_PATH)
 

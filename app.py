@@ -103,6 +103,8 @@ def handle_uruchom_Chart():
 
 
 
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
