@@ -123,7 +123,15 @@ def wizualizacja_page():
 
 
 
+@app.route('/info')
+def info_page():
+    return render_template('info.html')
 
+
+
+@app.route('/dok')
+def dokumentacja_page():
+    return render_template('dokumentacja.html')
 
 
 
