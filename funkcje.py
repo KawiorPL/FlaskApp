@@ -102,6 +102,8 @@ def extract_winner(html_file_path, year):
                     film = np.nan
                 winner.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'Winner'})
 
+    df = pd.DataFrame(winner)
+    return df
 
 
 def extract_nominee(html_file_path, year):
@@ -111,6 +113,7 @@ def extract_nominee(html_file_path, year):
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
+    nominee=[]
     ACTOR=[]
     other=[]
     cat=[]
@@ -131,109 +134,22 @@ def extract_nominee(html_file_path, year):
 
 
     lista3 = znajdz_roznice(ACTOR, other)
-    lista3
 
 
+    for i in lista3:
+        other.append(i)
 
-def extract_award_data(html_file_path, year):
-    """
-    Ekstrahuje dane dotyczące nagród z pliku HTML, identyfikując sekcje kategorii,
-    zwycięzców i nominowanych, a następnie organizuje te informacje w postaci
-    ramki danych (DataFrame) biblioteki Pandas.
-
-    Funkcja ta została zaprojektowana do przetwarzania plików HTML o specyficznej
-    strukturze, gdzie główne kategorie nagród są oznaczone klasą CSS 'category-section',
-    a w ich obrębie znajdują się podkategorie dla zwycięzców (klasa 'winner')
-    i nominowanych (klasa 'nominee'). Wewnątrz tych podkategorii oczekuje się
-    znacznika `<p>` zawierającego nazwę zwycięzcy lub nominowanego.
-
-    Args:
-        html_file_path (str): Ścieżka do pliku HTML zawierającego dane nagród.
-        year (int): Rok, którego dotyczą nagrody (ta informacja zostanie dodana
-                      do tworzonej ramki danych).
-
-    Returns:
-        pandas.DataFrame: Ramka danych zawierająca informacje o nagrodach.
-                          Każdy wiersz reprezentuje jedną kategorię nagród i zawiera
-                          kolumny 'YEAR' (rok), 'category' (nazwa kategorii),
-                          'winner' (lista zwycięzców w danej kategorii) oraz
-                          'nominees' (lista nominowanych w danej kategorii).
-                          Zwraca None w przypadku wystąpienia błędów (np. brak pliku).
-
-    Możliwość adaptacji do innych stron:
-    Funkcja ta może być dostosowana do pracy z innymi stronami internetowymi
-    zawierającymi podobną strukturę danych. Kluczowym elementem jest istnienie
-    nadrzędnej sekcji (odpowiednik 'category-section') grupującej podkategorie
-    zawierające poszczególne elementy (odpowiedniki 'winner' i 'nominee').
-    Aby zaadaptować funkcję do innej strony, konieczne będzie zidentyfikowanie
-    odpowiednich klas CSS lub innych selektorów HTML używanych do oznaczania
-    tych sekcji i zmodyfikowanie argumentów przekazywanych do metod `find_all`
-    biblioteki BeautifulSoup.
-
-    Użytkownik ma możliwość dostosowania formatu wyjściowej ramki danych
-    poprzez modyfikację sposobu tworzenia listy `data` oraz struktury
-    słownika dodawanego do tej listy wewnątrz pętli. Można na przykład
-    rozdzielić zwycięzców i nominowanych do osobnych wierszy, dodać dodatkowe
-    informacje wyekstrahowane z HTML lub zmienić nazwy kolumn w ramce danych.
-    """
-    try:
-        with open(html_file_path, 'r', encoding='utf-8') as f:
-            html_content = f.read()
-
-        soup = BeautifulSoup(html_content, 'html.parser')
-
-        data = []
-        for category_section in soup.find_all('div', class_='category-section'):
-            category = category_section.find('h2').text.strip()
-
-            winners = []
-            for winner_element in category_section.find_all('div', class_='winner'):
-                winner_paragraph = winner_element.find('p')
-                if winner_paragraph:
-                    winner = winner_paragraph.text.strip()
-                    winners.append(winner)
+    for i in range(len(lista3)):
+        cat.append('ACTOR')
 
 
-                    try:
-                        aktor, film =winner.split(' - ')
+    for y,category in zip(other,cat):
+        aktor, film = y.split(' - ')
 
-                    except ValueError:
+        nominee.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'nominee'})
 
-                        aktor = winner
-                        film = np.nan
-
-
-                data.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film':film, 'type': 'Winner'})
-
-
-            nominees = []
-            for nominee_element in category_section.find_all('div', class_='nominee'):
-                nominee_paragraph = nominee_element.find('p')
-                if nominee_paragraph:
-                    nominee = nominee_paragraph.text.strip()
-                    nominees.append(nominee)
-
-                    try:
-                        aktor, film =nominee.split(' - ')
-
-                    except ValueError:
-
-                        aktor = nominee
-                        film = np.nan
-
-
-                data.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film':film, 'type': 'nominees'})
-
-
-        df = pd.DataFrame(data)
-        return df
-
-    except FileNotFoundError:
-        print(f"Nie znaleziono pliku: {html_file_path}")
-        return None
-    except Exception as e:
-        print(f"Wystąpil bład: {e}")
-        return None
+    df = pd.DataFrame(nominee)
+    return df
 
 
 

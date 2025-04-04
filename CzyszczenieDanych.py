@@ -38,10 +38,15 @@ for i in year:
     file_path = os.path.join(base_dir, f"dane{i}.txt")
 
     #tworzenie dataframe z danymi z danego roku. Rok okreslia i
-    df = fu.extract_award_data(file_path,i)
+    df = fu.extract_winner(file_path,i)
 
     #dodawanie danych do glownego dataframe z danego roku.
     Finaldf = pd.concat([Finaldf,df])
+
+    df2 = fu.extract_nominee(file_path,i)
+
+    #dodawanie danych do glownego dataframe z danego roku.
+    Finaldf = pd.concat([Finaldf,df2])
 
 
 #HONORARY AWARD, SPECIAL AWARD, SPECIAL FOREIGN LANGUAGE FILM AWARD
