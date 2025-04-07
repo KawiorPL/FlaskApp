@@ -7,18 +7,19 @@
     <div class="content">
         <div>
             <h2>Uruchom Zbieraj Dane</h2>
-            <label for="urlInput">URL:</label>
-            <input type="text" id="urlInput" name="url" required>
+            <label class="col-sm-4 col-form-label" for="urlInput">URL:</label>
+            <input  class="form-control form-control-sm" type="text" placeholder="https://oscar.warpechow.ski/-sm" aria-label="https://oscar.warpechow.ski/-sm example" name="url" required>
             <button onclick="zbierajDane()">Uruchom</button>
         </div>
-        <br><hr>
+        <br>
 
         <div>
+
             <h2>Uruchom Check Data</h2>
             <button onclick="uruchomCheck_Data()">Uruchom</button>
         </div>
 
-        <br><hr>
+        <br>
         <div>
             <h2>Uruchom Czyszczenie Danych</h2>
             <button onclick="uruchomClear_Data()">Uruchom</button>
@@ -28,5 +29,7 @@
             <h2>Wyjście Skryptu:</h2>
         </div>
     </div>
+
+
 
     {% endblock %}

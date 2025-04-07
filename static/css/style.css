@@ -23,26 +23,50 @@ hr {
     margin: 2em 0;
 }
 
-/* Menu nawigacyjne */
-nav {
-    background-color: #34495e;
-    color: white;
-    padding: 1em 0;
+/* Kontener głównej treści i wrapper */
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr; /* Jedna kolumna */
+    justify-items: center; /* Centruje elementy w poziomie */
+    padding: 0 20px; /* Dodaj padding po bokach dla kontenera wrapper */
 }
 
-nav ul {
+.content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Navbar będzie miał tę samą szerokość co content w wrapperze */
+    box-sizing: border-box; /* Uwzględnij padding i border w szerokości */
+}
+
+/* Menu nawigacyjne */
+nav.navbar { /* Dodaj selektor klasy, aby odróżnić od ogólnych stylów nav */
+    background-color: #34495e;
+    color: white;
+    width: 100%; /* Ustaw szerokość na 100% kontenera wrapper */
+    border-radius: 8px; /* Zaokrąglenie rogów navbar */
+    box-sizing: border-box; /* Uwzględnij padding i border w szerokości */
+}
+
+nav.navbar ul {
     list-style: none;
     padding: 0;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1200px; /* Ogranicz maksymalną szerokość menu w navbarze */
     overflow: hidden;
+    display: flex; /* Użyj flexbox do rozmieszczenia elementów menu */
+    justify-content: center; /* Wyśrodkuj elementy menu */
+    border-radius: 8px; /* Zaokrąglenie rogów menu */
 }
 
-nav ul li {
-    float: left;
+nav.navbar ul li {
+    float: none; /* Usuń float, gdy używamy flexbox */
 }
 
-nav ul li a {
+nav.navbar ul li a {
     display: block;
     color: white;
     text-align: center;
@@ -51,18 +75,8 @@ nav ul li a {
     transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover {
+nav.navbar ul li a:hover {
     background-color: #2c3e50;
-}
-
-/* Kontener głównej treści */
-.content {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Style dla kontenera wyjścia skryptu */

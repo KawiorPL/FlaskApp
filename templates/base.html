@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <title>{% block title %}Moja Aplikacja{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('index') }}">Skrypt</a></li>
-            <li><a href="{{ url_for('baza_danych_page') }}">Baza Danych</a></li>
-            <li><a href="{{ url_for('wizualizacja_page') }}">Wizualizacja</a></li>
-            <li><a href="{{ url_for('info_page') }}">Informacje o Projekcie</a></li>
-            <li><a href="{{ url_for('dokumentacja_page') }}">Dokumnetacja</a></li>
-        </ul>
-    </nav>
+
+    <div class="wrapper">
+
+        <nav class="navbar bg-dark border-bottom border-body rounded-lg" data-bs-theme="dark">
+
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Skrypt</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('baza_danych_page') }}">Baza Danych</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('wizualizacja_page') }}">Wizualizacja</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('info_page') }}">Informacje o Projekcie</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('dokumentacja_page') }}">Dokumnetacja</a></li>
+            </ul>
+        </nav>
 
 
 
@@ -25,7 +32,38 @@
         {% endblock %}
     </div>
 
+</div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const buttons = document.querySelectorAll('button');
+          buttons.forEach(button => {
+            button.type = 'submit';
+            button.classList.add('btn', 'btn-primary');
+          });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const h2Elements = document.querySelectorAll('h2');
+            h2Elements.forEach(h2 => {
+                h2.classList.add('fs-2', 'text-body-emphasis');
+                // Dodatkowa niestandardowa stylizacja:
+                h2.style.borderBottom = '2px solid #007bff'; // Dodaj niebieską linię pod spodem
+                h2.style.paddingBottom = '0.5em';          // Dodaj trochę odstępu pod linią
+                h2.style.marginBottom = '1em';            // Dodaj odstęp od dołu elementu
+            });
+            });
+
+
+
+
+
+    </script>
+
+
 </body>
 </html>

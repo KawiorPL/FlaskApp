@@ -269,7 +269,7 @@ def usuwanie_dodatkowych_slow(data, kolumna='aktor'):
              'Screenplay by ', 'Art Direction: ', 'Lyrics by ', 'Screen story by ',
              'Story by ', 'Art Direction: ', 'Orchestral Score by ', 'Sound Effects by ',
              'Adaptation Score by', 'Song Score by ', 'lyrics by ', 'adaptation score by ',
-             ' for superlative artistry', 'Adapted for the screen by ',
+             ' for superlative artistry', 'Adapted for the screen by ', '  for the creation of'
              ' for superlative artistry', 'for the design', 'Adaptation Score by ',
              'Lyrics by ', ' for the wise', 'Adaptation by ', 'Song Score by ',
              'Adaptation score by ']
