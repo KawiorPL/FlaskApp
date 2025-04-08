@@ -9,3 +9,6 @@ sys.stdout.flush()
 fu.analizaaktorow(data)
 print("Tworznie wykresu2")
 fu.winnersfilm(data)
+
+print("Tworznie wykresu3")
+fu.mapaswaita(data)

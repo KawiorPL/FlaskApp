@@ -5,7 +5,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #c2c5c8; /* Białe tło dla każdego bloku */
     color: #333;
     line-height: 1.6;
 }
@@ -26,40 +26,42 @@ hr {
 /* Kontener głównej treści i wrapper */
 .wrapper {
     display: grid;
+    background-color: #c2c5c8; /* Białe tło dla każdego bloku */
     grid-template-columns: 1fr; /* Jedna kolumna */
-    justify-items: center; /* Centruje elementy w poziomie */
-    padding: 0 20px; /* Dodaj padding po bokach dla kontenera wrapper */
+    /* justify-items: center; Usuń centrowanie, jeśli navbar ma być na całą szerokość */
+    padding: 0; /* Usuń padding, aby navbar dotykał krawędzi wrapper'a */
 }
 
 .content {
     padding: 20px;
     max-width: 1200px;
-    margin: 20px auto;
-    background-color: white;
+    margin: 20px auto; /* Content nadal wyśrodkowany */
+    background-color: #c2c5c8; /* Białe tło dla każdego bloku */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Navbar będzie miał tę samą szerokość co content w wrapperze */
-    box-sizing: border-box; /* Uwzględnij padding i border w szerokości */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Menu nawigacyjne */
 nav.navbar { /* Dodaj selektor klasy, aby odróżnić od ogólnych stylów nav */
-    background-color: #34495e;
-    color: white;
+
+
     width: 100%; /* Ustaw szerokość na 100% kontenera wrapper */
     border-radius: 8px; /* Zaokrąglenie rogów navbar */
     box-sizing: border-box; /* Uwzględnij padding i border w szerokości */
+    margin: 0; /* Usuń marginesy, które mogłyby wpływać na szerokość */
 }
 
 nav.navbar ul {
     list-style: none;
     padding: 0;
-    margin: 0 auto;
-    max-width: 1200px; /* Ogranicz maksymalną szerokość menu w navbarze */
+    margin: 0 auto; /* Wyśrodkuj menu wewnątrz navbar */
+    max-width: 1200px; /* Ogranicz maksymalną szerokość menu */
     overflow: hidden;
     display: flex; /* Użyj flexbox do rozmieszczenia elementów menu */
     justify-content: center; /* Wyśrodkuj elementy menu */
-    border-radius: 8px; /* Zaokrąglenie rogów menu */
+    border-radius: 0; /* Usuń zaokrąglenie z ul, jeśli chcesz tylko na navbar */
 }
 
 nav.navbar ul li {
@@ -83,8 +85,8 @@ nav.navbar ul li a:hover {
 #output {
     margin-top: 20px;
     padding: 15px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
+    border: 1px solid #070000;
+
     border-radius: 4px;
 }
 
@@ -100,12 +102,14 @@ nav.navbar ul li a:hover {
 #output > div {
     margin-bottom: 12px; /* Zwiększony margines dolny */
     padding: 10px;
-    border: 1px solid #ccc; /* Subtelne obramowanie */
-    background-color: #fff; /* Białe tło dla każdego bloku */
+    border: 1px solid #999; /* Ciemniejszy szary */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Mocniejszy cień */
+    background-color: #adb5bd; /* Białe tło dla każdego bloku */
     white-space: pre-wrap;
     word-break: break-word;
     max-width: 100%;
     overflow-x: auto;
+    color: #0d23a2;
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Delikatny cień dla każdego bloku */
 }

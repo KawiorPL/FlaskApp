@@ -49,8 +49,7 @@ for i in year:
     Finaldf = pd.concat([Finaldf,df2])
 
 
-#HONORARY AWARD, SPECIAL AWARD, SPECIAL FOREIGN LANGUAGE FILM AWARD
-#AWARD OF COMMENDATION
+
 
 
 #zapis danych do pliku csv.
@@ -62,7 +61,22 @@ sys.stdout.flush()
 print('Czyszczenie danych')
 sys.stdout.flush()
 
-newdata = fu.weryfikuj_i_rozdziel_osoby(Finaldf)
+
+#oddzielenie ['HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD']
+listaHo=['HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD']
+maska_z_listaHo = Finaldf['category'].isin(listaHo)
+
+maska_bez_listaHo = ~Finaldf['category'].isin(listaHo)
+
+df_z_listaHo = Finaldf[maska_z_listaHo].copy()
+
+df_bez_listaHo = Finaldf[maska_bez_listaHo].copy()
+
+
+
+
+
+newdata = fu.weryfikuj_i_rozdziel_osoby(df_bez_listaHo)
 
 newdata1 = fu.czyszczenie_and(newdata)
 
@@ -100,8 +114,18 @@ pozamianie=fu.zamiana(newdata3,Datazamiana)
 
 
 
+Honor= fu.special_award(df_z_listaHo)
 
-pozamianie.to_csv("CleanData.csv", index=False)
+
+
+prawiefinal = pd.concat([Honor,pozamianie], ignore_index=True)
+
+final = fu.usuwanie_dodatkowych_slow2(prawiefinal)
+
+
+
+
+final.to_csv("CleanData.csv", index=False)
 
 print('Czyste dane zapisane do CleanData.csv')
 sys.stdout.flush()

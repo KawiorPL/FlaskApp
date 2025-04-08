@@ -119,7 +119,11 @@ def wizualizacja_page():
     dash_url = '/wizualizacja/'
     image_path = os.path.join(app.static_folder, 'charts', 'analizaAktorow.png')
     image_exists = os.path.exists(image_path)
-    return render_template('wizualizacja.html', dash_url=dash_url,image_exists=image_exists)
+
+    image_path2 = os.path.join('static', 'charts', 'country.html')
+    image_exists2 = os.path.exists(image_path2)
+
+    return render_template('wizualizacja.html', dash_url=dash_url,image_exists=image_exists,image_exists2=image_exists2, htmlPath=image_path2)
 
 
 

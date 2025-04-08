@@ -107,11 +107,11 @@ YEAR,category,aktor,film,type
 2024,SHORT FILM (Live Action),Nazrin Choudhury and Sara McFarlane,"""Red, White and Blue""",nominee
 2024,SOUND,"Ian Voigt, Erik Aadahl, Ethan Van der Ryn, Tom Ozanich and Dean Zupancic","""The Creator""",nominee
 2024,SOUND,"Steven A. Morrow, Richard King, Jason Ruder, Tom Ozanich and Dean Zupancic","""Maestro""",nominee
-2024,SOUND,"Chris Munro, James H. Mather, Chris Burdon and Mark Taylor - ""Mission: Impossible - Dead Reckoning Part One""",,nominee
+2024,SOUND,"Chris Munro, James H. Mather, Chris Burdon and Mark Taylor","""Mission: Impossible - Dead Reckoning Part One""",nominee
 2024,SOUND,"Willie Burton, Richard King, Gary A. Rizzo and Kevin O'Connell","""Oppenheimer""",nominee
 2024,VISUAL EFFECTS,"Jay Cooper, Ian Comley, Andrew Roberts and Neil Corbould","""The Creator""",nominee
 2024,VISUAL EFFECTS,"Stephane Ceretti, Alexis Wajsbrot, Guy Williams and Theo Bialek","""Guardians of the Galaxy Vol. 3""",nominee
-2024,VISUAL EFFECTS,"Alex Wuttke, Simone Coco, Jeff Sutherland and Neil Corbould - ""Mission: Impossible - Dead Reckoning Part One""",,nominee
+2024,VISUAL EFFECTS,"Alex Wuttke, Simone Coco, Jeff Sutherland and Neil Corbould","""Mission: Impossible - Dead Reckoning Part One""",nominee
 2024,VISUAL EFFECTS,"Charley Henley, Luc-Ewen Martin-Fenouillet, Simone Coco and Neil Corbould","""Napoleon""",nominee
 2024,WRITING (Adapted Screenplay),Written by Greta Gerwig & Noah Baumbach,"""Barbie""",nominee
 2024,WRITING (Adapted Screenplay),Written for the screen by Christopher Nolan,"""Oppenheimer""",nominee
@@ -147,7 +147,7 @@ YEAR,category,aktor,film,type
 2023,JEAN HERSHOLT HUMANITARIAN AWARD,nan,,Winner
 2023,HONORARY AWARD,"To Euzhan Palcy, a masterful filmmaker who broke ground for Black women directors and inspired storytellers of all kinds across the globe.",,Winner
 2023,GORDON E. SAWYER AWARD,Iain Neil,,Winner
-2023,AWARD OF COMMENDATION,To Ryan Laney for his innovative adaptation and deployment of AI-driven facial veiling technology used to protect the identities while preserving the visual relatability of subjects in documentary filmmaking as exemplified in Welcome to Chechnya (2020).,"""Welcome to Chechnya""",Winner
+2023,AWARD OF COMMENDATION,"To Ryan Laney for his innovative adaptation and deployment of AI-driven facial veiling technology used to protect the identities while preserving the visual relatability of subjects in documentary filmmaking as exemplified in Welcome to Chechnya (2020). - ""Welcome to Chechnya""",,Winner
 2023,ACTOR IN A LEADING ROLE,Austin Butler,"""Elvis""",nominee
 2023,ACTOR IN A LEADING ROLE,Colin Farrell,"""The Banshees of Inisherin""",nominee
 2023,ACTOR IN A LEADING ROLE,Paul Mescal,"""Aftersun""",nominee
@@ -237,7 +237,7 @@ YEAR,category,aktor,film,type
 2023,VISUAL EFFECTS,"Dan Lemmon, Russell Earl, Anders Langlands and Dominic Tuohy","""The Batman""",nominee
 2023,VISUAL EFFECTS,"Geoffrey Baumann, Craig Hammack, R. Christopher White and Dan Sudick","""Black Panther: Wakanda Forever""",nominee
 2023,VISUAL EFFECTS,"Ryan Tudhope, Seth Hill, Bryan Litson and Scott R. Fisher","""Top Gun: Maverick""",nominee
-2023,WRITING (Adapted Screenplay),"Screenplay - Edward Berger, Lesley Paterson & Ian Stokell - ""All Quiet on the Western Front""",,nominee
+2023,WRITING (Adapted Screenplay),Screenplay,"Edward Berger, Lesley Paterson & Ian Stokell - ""All Quiet on the Western Front""",nominee
 2023,WRITING (Adapted Screenplay),Written by Rian Johnson,"""Glass Onion: A Knives Out Mystery""",nominee
 2023,WRITING (Adapted Screenplay),Written by Kazuo Ishiguro,"""Living""",nominee
 2023,WRITING (Adapted Screenplay),Screenplay by Ehren Kruger and Eric Warren Singer and Christopher McQuarrie; Story by Peter Craig and Justin Marks,"""Top Gun: Maverick""",nominee
@@ -347,7 +347,7 @@ YEAR,category,aktor,film,type
 2022,SHORT FILM (Animated),Hugo Covarrubias and Tevo Díaz,"""Bestia""",nominee
 2022,SHORT FILM (Animated),Anton Dyakov,"""Boxballet""",nominee
 2022,SHORT FILM (Animated),Dan Ojari and Mikey Please,"""Robin Robin""",nominee
-2022,SHORT FILM (Live Action),"Maria Brendle and Nadine Lüchinger - ""Ala Kachuu - Take and Run""",,nominee
+2022,SHORT FILM (Live Action),Maria Brendle and Nadine Lüchinger,"""Ala Kachuu - Take and Run""",nominee
 2022,SHORT FILM (Live Action),Tadeusz Lysiak and Maciej Slesicki,"""The Dress""",nominee
 2022,SHORT FILM (Live Action),Martin Strange-Hansen and Kim Magnusson,"""On My Mind""",nominee
 2022,SHORT FILM (Live Action),K.D. Dávila and Levin Menekse,"""Please Hold""",nominee
@@ -1906,7 +1906,7 @@ YEAR,category,aktor,film,type
 2009,DOCUMENTARY (Feature),Tia Lessin and Carl Deal,"""Trouble the Water""",nominee
 2009,DOCUMENTARY (Short Subject),Steven Okazaki,"""The Conscience of Nhem En""",nominee
 2009,DOCUMENTARY (Short Subject),Irene Taylor Brodsky and Tom Grant,"""The Final Inch""",nominee
-2009,DOCUMENTARY (Short Subject),"Adam Pertofsky and Margaret Hyde - ""The Witness - From the Balcony of Room 306""",,nominee
+2009,DOCUMENTARY (Short Subject),Adam Pertofsky and Margaret Hyde,"""The Witness - From the Balcony of Room 306""",nominee
 2009,FILM EDITING,Kirk Baxter and Angus Wall,"""The Curious Case of Benjamin Button""",nominee
 2009,FILM EDITING,Lee Smith,"""The Dark Knight""",nominee
 2009,FILM EDITING,Mike Hill and Dan Hanley,"""Frost/Nixon""",nominee
@@ -1927,7 +1927,7 @@ YEAR,category,aktor,film,type
 2009,BEST PICTURE,"Brian Grazer, Ron Howard and Eric Fellner, Producers","""Frost/Nixon""",nominee
 2009,BEST PICTURE,"Dan Jinks and Bruce Cohen, Producers","""Milk""",nominee
 2009,BEST PICTURE,"Anthony Minghella, Sydney Pollack, Donna Gigliotti and Redmond Morris, Producers","""The Reader""",nominee
-2009,SHORT FILM (Animated),"Konstantin Bronzit - ""Lavatory - Lovestory""",,nominee
+2009,SHORT FILM (Animated),Konstantin Bronzit,"""Lavatory - Lovestory""",nominee
 2009,SHORT FILM (Animated),Emud Mokhberi and Thierry Marchand,"""Oktapodi""",nominee
 2009,SHORT FILM (Animated),Doug Sweetland,"""Presto""",nominee
 2009,SHORT FILM (Animated),Alan Smith and Adam Foulkes,"""This Way Up""",nominee
@@ -2255,7 +2255,7 @@ YEAR,category,aktor,film,type
 2006,FOREIGN LANGUAGE FILM,Italy,"""Don't Tell""",nominee
 2006,FOREIGN LANGUAGE FILM,France,"""Joyeux Noël""",nominee
 2006,FOREIGN LANGUAGE FILM,The Palestinian Territories,"""Paradise Now""",nominee
-2006,FOREIGN LANGUAGE FILM,"Germany - ""Sophie Scholl - The Final Days""",,nominee
+2006,FOREIGN LANGUAGE FILM,Germany,"""Sophie Scholl - The Final Days""",nominee
 2006,MAKEUP,David Leroy Anderson and Lance Anderson,"""Cinderella Man""",nominee
 2006,MAKEUP,Dave Elsey and Nikki Gooley,"""Star Wars: Episode III Revenge of the Sith""",nominee
 2006,MUSIC (Original Score),Alberto Iglesias,"""The Constant Gardener""",nominee
@@ -4125,7 +4125,7 @@ YEAR,category,aktor,film,type
 1989,DIRECTING,Martin Scorsese,"""The Last Temptation of Christ""",nominee
 1989,DIRECTING,Alan Parker,"""Mississippi Burning""",nominee
 1989,DIRECTING,Mike Nichols,"""Working Girl""",nominee
-1989,DOCUMENTARY (Feature),"Robert Bilheimer and Ronald Mix, Producers - ""The Cry of Reason - Beyers Naudé: An Afrikaner Speaks Out""",,nominee
+1989,DOCUMENTARY (Feature),"Robert Bilheimer and Ronald Mix, Producers","""The Cry of Reason - Beyers Naudé: An Afrikaner Speaks Out""",nominee
 1989,DOCUMENTARY (Feature),"Bruce Weber and Nan Bush, Producers","""Let's Get Lost""",nominee
 1989,DOCUMENTARY (Feature),"Ginny Durrin, Producer","""Promises to Keep""",nominee
 1989,DOCUMENTARY (Feature),"Renee Tajima and Christine Choy, Producers","""Who Killed Vincent Chin?""",nominee
@@ -4209,7 +4209,7 @@ YEAR,category,aktor,film,type
 1988,ACTRESS IN A LEADING ROLE,Holly Hunter,"""Broadcast News""",nominee
 1988,ACTRESS IN A LEADING ROLE,Sally Kirkland,"""Anna""",nominee
 1988,ACTRESS IN A LEADING ROLE,Meryl Streep,"""Ironweed""",nominee
-1988,ACTRESS IN A SUPPORTING ROLE,"Norma Aleandro - ""Gaby - A True Story""",,nominee
+1988,ACTRESS IN A SUPPORTING ROLE,Norma Aleandro,"""Gaby - A True Story""",nominee
 1988,ACTRESS IN A SUPPORTING ROLE,Anne Archer,"""Fatal Attraction""",nominee
 1988,ACTRESS IN A SUPPORTING ROLE,Anne Ramsey,"""Throw Momma from the Train""",nominee
 1988,ACTRESS IN A SUPPORTING ROLE,Ann Sothern,"""The Whales of August""",nominee
@@ -4684,7 +4684,7 @@ YEAR,category,aktor,film,type
 1984,BEST PICTURE,"Irwin Winkler and Robert Chartoff, Producers","""The Right Stuff""",nominee
 1984,BEST PICTURE,"Philip S. Hobel, Producer","""Tender Mercies""",nominee
 1984,SHORT FILM (Animated),"Burny Mattinson, Producer","""Mickey's Christmas Carol""",nominee
-1984,SHORT FILM (Animated),"Eda Godel Hallinan, Producer - ""Sound of Sunshine - Sound of Rain""",,nominee
+1984,SHORT FILM (Animated),"Eda Godel Hallinan, Producer","""Sound of Sunshine - Sound of Rain""",nominee
 1984,SHORT FILM (Live Action),"Ian Emes, Producer","""Goodie-Two-Shoes""",nominee
 1984,SHORT FILM (Live Action),"Jon N. Bloom, Producer","""Overnight Sensation""",nominee
 1984,SOUND,"Alan R. Splet, Todd Boekelheide, Randy Thom, David Parker","""Never Cry Wolf""",nominee
@@ -4972,7 +4972,7 @@ YEAR,category,aktor,film,type
 1981,DOCUMENTARY (Feature),"Ross Spears, Producer","""Agee""",nominee
 1981,DOCUMENTARY (Feature),"Jon Else, Producer","""The Day after Trinity""",nominee
 1981,DOCUMENTARY (Feature),"David Bradbury, Producer","""Front Line""",nominee
-1981,DOCUMENTARY (Feature),"Bengt von zur Muehlen and Arthur Cohn, Producers - ""The Yellow Star - The Persecution of the Jews in Europe 1933-45""",,nominee
+1981,DOCUMENTARY (Feature),"Bengt von zur Muehlen and Arthur Cohn, Producers","""The Yellow Star - The Persecution of the Jews in Europe 1933-45""",nominee
 1981,DOCUMENTARY (Short Subject),"John Watson and Pen Densham, Producers","""Don't Mess with Bill""",nominee
 1981,DOCUMENTARY (Short Subject),"George Casey, Producer","""The Eruption of Mount St. Helens""",nominee
 1981,DOCUMENTARY (Short Subject),"Dick Young, Producer","""It's the Same World""",nominee
@@ -5058,7 +5058,7 @@ YEAR,category,aktor,film,type
 1980,ART DIRECTION,"Art Direction:  Michael Seymour, Les Dilley, Roger Christian;  Set Decoration:  Ian Whittaker","""Alien""",nominee
 1980,ART DIRECTION,"Art Direction:  Dean Tavoularis, Angelo Graham;  Set Decoration:  George R. Nelson","""Apocalypse Now""",nominee
 1980,ART DIRECTION,Art Direction:  George Jenkins;  Set Decoration:  Arthur Jeph Parker,"""The China Syndrome""",nominee
-1980,ART DIRECTION,"Art Direction:  Harold Michelson, Joe Jennings, Leon Harris, John Vallone;  Set Decoration:  Linda DeScenna - ""Star Trek - The Motion Picture""",,nominee
+1980,ART DIRECTION,"Art Direction:  Harold Michelson, Joe Jennings, Leon Harris, John Vallone;  Set Decoration:  Linda DeScenna","""Star Trek - The Motion Picture""",nominee
 1980,CINEMATOGRAPHY,Giuseppe Rotunno,"""All That Jazz""",nominee
 1980,CINEMATOGRAPHY,Frank Phillips,"""The Black Hole""",nominee
 1980,CINEMATOGRAPHY,Nestor Almendros,"""Kramer vs. Kramer""",nominee
@@ -5089,7 +5089,7 @@ YEAR,category,aktor,film,type
 1980,FOREIGN LANGUAGE FILM,Italy,"""To Forget Venice""",nominee
 1980,MUSIC (Original Score),Lalo Schifrin,"""The Amityville Horror""",nominee
 1980,MUSIC (Original Score),Dave Grusin,"""The Champ""",nominee
-1980,MUSIC (Original Score),"Jerry Goldsmith - ""Star Trek - The Motion Picture""",,nominee
+1980,MUSIC (Original Score),Jerry Goldsmith,"""Star Trek - The Motion Picture""",nominee
 1980,MUSIC (Original Score),Henry Mancini,"""10""",nominee
 1980,MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score),Adaptation Score by Patrick Williams,"""Breaking Away""",nominee
 1980,MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score),Song Score by Paul Williams and Kenny Ascher; Adaptation Score by Paul Williams,"""The Muppet Movie""",nominee
@@ -5114,7 +5114,7 @@ YEAR,category,aktor,film,type
 1980,VISUAL EFFECTS,"Peter Ellenshaw, Art Cruickshank, Eustace Lycett, Danny Lee, Harrison Ellenshaw, Joe Hale","""The Black Hole""",nominee
 1980,VISUAL EFFECTS,"Derek Meddings, Paul Wilson, John Evans","""Moonraker""",nominee
 1980,VISUAL EFFECTS,"William A. Fraker, A. D. Flowers, Gregory Jein","""1941""",nominee
-1980,VISUAL EFFECTS,"Douglas Trumbull, John Dykstra, Richard Yuricich, Robert Swarthe, Dave Stewart, Grant McCune - ""Star Trek - The Motion Picture""",,nominee
+1980,VISUAL EFFECTS,"Douglas Trumbull, John Dykstra, Richard Yuricich, Robert Swarthe, Dave Stewart, Grant McCune","""Star Trek - The Motion Picture""",nominee
 1980,WRITING (Screenplay Based on Material from Another Medium),"John Milius, Francis Coppola","""Apocalypse Now""",nominee
 1980,WRITING (Screenplay Based on Material from Another Medium),"Francis Veber, Edouard Molinaro, Marcello Danon, Jean Poiret","""La Cage aux Folles""",nominee
 1980,WRITING (Screenplay Based on Material from Another Medium),Allan Burns,"""A Little Romance""",nominee
@@ -5303,7 +5303,7 @@ YEAR,category,aktor,film,type
 1978,FOREIGN LANGUAGE FILM,Spain,"""That Obscure Object of Desire""",nominee
 1978,MUSIC (Original Score),John Williams,"""Close Encounters of the Third Kind""",nominee
 1978,MUSIC (Original Score),Georges Delerue,"""Julia""",nominee
-1978,MUSIC (Original Score),"Maurice Jarre - ""Mohammad - Messenger of God""",,nominee
+1978,MUSIC (Original Score),Maurice Jarre,"""Mohammad - Messenger of God""",nominee
 1978,MUSIC (Original Score),Marvin Hamlisch,"""The Spy Who Loved Me""",nominee
 1978,MUSIC (Original Song Score and Its Adaptation or Adaptation Score),Song Score by Al Kasha and Joel Hirschhorn; Adaptation Score by Irwin Kostal,"""Pete's Dragon""",nominee
 1978,MUSIC (Original Song Score and Its Adaptation or Adaptation Score),Song Score by Richard M. Sherman and Robert B. Sherman; Adaptation Score by Angela Morley,"""The Slipper and the Rose--The Story of Cinderella""",nominee
@@ -5568,7 +5568,7 @@ YEAR,category,aktor,film,type
 1975,WRITING (Screenplay Adapted from Other Material),"Francis Ford Coppola, Mario Puzo","""The Godfather Part II""",Winner
 1975,SPECIAL ACHIEVEMENT AWARD (Visual Effects),"Frank Brendel, Glen Robinson, Albert Whitlock","""Earthquake""",Winner
 1975,JEAN HERSHOLT HUMANITARIAN AWARD,Arthur B. Krim,,Winner
-1975,HONORARY AWARD,Howard Hawks,A master American filmmaker whose creative efforts hold a distinguished place in world cinema.,Winner
+1975,HONORARY AWARD,Howard Hawks - A master American filmmaker whose creative efforts hold a distinguished place in world cinema.,,Winner
 1975,ACTOR IN A SUPPORTING ROLE,Fred Astaire,"""The Towering Inferno""",nominee
 1975,ACTOR IN A SUPPORTING ROLE,Jeff Bridges,"""Thunderbolt and Lightfoot""",nominee
 1975,ACTOR IN A SUPPORTING ROLE,Michael V. Gazzo,"""The Godfather Part II""",nominee
@@ -49807,7 +49807,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1957,FILM EDITING,"William Hornbeck, Philip W. Anderson, Fred Bohanan","""Giant""",nominee
 1957,FILM EDITING,Albert Akst,"""Somebody Up There Likes Me""",nominee
 1957,FILM EDITING,Anne Bauchens,"""The Ten Commandments""",nominee
-1957,FOREIGN LANGUAGE FILM,"Federal Republic of Germany - West; Gyula Trebitsch and Walter Koppel, Producers - ""The Captain of Kopenick""",,nominee
+1957,FOREIGN LANGUAGE FILM,Federal Republic of Germany,"West; Gyula Trebitsch and Walter Koppel, Producers - ""The Captain of Kopenick""",nominee
 1957,FOREIGN LANGUAGE FILM,"France; Annie Dorfmann, Producer","""Gervaise""",nominee
 1957,FOREIGN LANGUAGE FILM,"Japan; Masayuki Takagi, Producer","""Harp of Burma""",nominee
 1957,FOREIGN LANGUAGE FILM,"Denmark; O. Dalsgaard-Olsen, Producer","""Qivitoq""",nominee
@@ -50605,7 +50605,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1950,WRITING (Motion Picture Story),Douglas Morrow,"""The Stratton Story""",Winner
 1950,WRITING (Screenplay),Joseph L. Mankiewicz,"""A Letter to Three Wives""",Winner
 1950,WRITING (Story and Screenplay),Robert Pirosh,"""Battleground""",Winner
-1950,SPECIAL FOREIGN LANGUAGE FILM AWARD,The Bicycle Thief,voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1949.,Winner
+1950,SPECIAL FOREIGN LANGUAGE FILM AWARD,The Bicycle Thief - voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1949.,,Winner
 1950,SPECIAL AWARD,Bobby Driscoll,,Winner
 1950,ACTOR IN A SUPPORTING ROLE,John Ireland,"""All the King's Men""",nominee
 1950,ACTOR IN A SUPPORTING ROLE,Arthur Kennedy,"""Champion""",nominee
@@ -50712,7 +50712,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1949,SPECIAL EFFECTS,"Special Visual Effects by Paul Eagler, J. McMillan Johnson, Russell Shearman, Clarence Slifer; Special Audible Effects by Charles Freeman, James G. Stewart","""Portrait of Jennie""",Winner
 1949,WRITING (Motion Picture Story),"Richard Schweizer, David Wechsler","""The Search""",Winner
 1949,WRITING (Screenplay),John Huston,"""The Treasure of the Sierra Madre""",Winner
-1949,SPECIAL FOREIGN LANGUAGE FILM AWARD,Monsieur Vincent,voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1948.,Winner
+1949,SPECIAL FOREIGN LANGUAGE FILM AWARD,Monsieur Vincent - voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1948.,,Winner
 1949,SPECIAL AWARD,Ivan Jandl,,Winner
 1949,IRVING G. THALBERG MEMORIAL AWARD,Jerry Wald,,Winner
 1949,ACTOR IN A SUPPORTING ROLE,Charles Bickford,"""Johnny Belinda""",nominee
@@ -52040,7 +52040,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1940,SPECIAL EFFECTS,"Fred Sersen, E. H. Hansen","""The Rains Came""",Winner
 1940,WRITING (Original Story),Lewis R. Foster,"""Mr. Smith Goes to Washington""",Winner
 1940,WRITING (Screenplay),Sidney Howard,"""Gone with the Wind""",Winner
-1940,SPECIAL AWARD,Douglas Fairbanks (Commemorative Award),recognizing the unique and outstanding contribution of Douglas Fairbanks,Winner
+1940,SPECIAL AWARD,Douglas Fairbanks (Commemorative Award) - recognizing the unique and outstanding contribution of Douglas Fairbanks,,Winner
 1940,IRVING G. THALBERG MEMORIAL AWARD,David O. Selznick,,Winner
 1940,ACTOR IN A SUPPORTING ROLE,Brian Aherne,"""Juarez""",nominee
 1940,ACTOR IN A SUPPORTING ROLE,Harry Carey,"""Mr. Smith Goes to Washington""",nominee
@@ -52432,7 +52432,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1937,SOUND RECORDING,"Metro-Goldwyn-Mayer Studio Sound Department, Douglas Shearer, Sound Director","""San Francisco""",Winner
 1937,WRITING (Original Story),"Pierre Collings, Sheridan Gibney","""The Story of Louis Pasteur""",Winner
 1937,WRITING (Screenplay),"Pierre Collings, Sheridan Gibney","""The Story of Louis Pasteur""",Winner
-1937,SPECIAL AWARD,The March of Time for its significance to motion pictures and for having revolutionized one of the most important branches of the industry,the newsreel.,Winner
+1937,SPECIAL AWARD,The March of Time for its significance to motion pictures and for having revolutionized one of the most important branches of the industry - the newsreel.,,Winner
 1937,ACTOR IN A SUPPORTING ROLE,Mischa Auer,"""My Man Godfrey""",nominee
 1937,ACTOR IN A SUPPORTING ROLE,Stuart Erwin,"""Pigskin Parade""",nominee
 1937,ACTOR IN A SUPPORTING ROLE,Basil Rathbone,"""Romeo and Juliet""",nominee

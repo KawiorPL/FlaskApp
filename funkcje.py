@@ -1,13 +1,13 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 import numpy as np
-import requests
 from difflib import SequenceMatcher
 import pandas as pd
-import sys
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
+import requests, json, re, folium, sys, os
+from folium.features import DivIcon
+
 
 
 main = "https://oscar.warpechow.ski/"
@@ -79,28 +79,41 @@ def extract_winner(html_file_path, year):
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
-
+    listaHo=['HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD']
     winners = []
     for category_section in soup.find_all('div', class_='category-section'):
         category = category_section.find('h2').text.strip()
 
+        if category in listaHo:
+            winner_element = category_section.find('div', class_='winner')
 
-        # Przetwarzanie zwycięzcy (zakładam, że jest tylko jeden element z klasą 'winner' w sekcji)
-        winner_element = category_section.find('div', class_='winner')
+            if winner_element:
+                winner_paragraph = winner_element.find('p')
 
-        if winner_element:
-            winner_paragraph = winner_element.find('p')
-            #print(winner_paragraph)
-            if winner_paragraph:
-                winner = winner_paragraph.text.strip()
+                if winner_paragraph:
+                    winner = winner_paragraph.text.strip()
 
 
-                try:
-                    aktor, film = winner.split(' - ')
-                except ValueError:
-                    aktor = winner
-                    film = np.nan
-                winners.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'Winner'})
+                    winners.append({'YEAR': year, 'category': category, 'aktor': winner, 'film': np.nan, 'type': 'Winner'})
+
+        else:
+
+            # Przetwarzanie zwycięzcy (zakładam, że jest tylko jeden element z klasą 'winner' w sekcji)
+            winner_element = category_section.find('div', class_='winner')
+
+            if winner_element:
+                winner_paragraph = winner_element.find('p')
+
+                if winner_paragraph:
+                    winner = winner_paragraph.text.strip()
+
+
+                    try:
+                        aktor, film = winner.split(' - ')
+                    except ValueError:
+                        aktor = winner
+                        film = np.nan
+                    winners.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'Winner'})
 
     df = pd.DataFrame(winners)
     return df
@@ -146,7 +159,18 @@ def extract_nominee(html_file_path, year):
     for y,category in zip(other,cat):
 
         try:
-            aktor, film = y.split(' - ')
+            parts = y.split(' - ')
+            if len(parts) >= 2:
+                aktor = parts[0].strip()
+                film = ' - '.join(parts[1:]).strip()
+
+            elif len(parts) == 2:
+                aktor = parts[0].strip()
+                film = parts[1].strip()
+
+            else:
+                aktor = parts[0].strip()
+                film = np.nan
 
         except ValueError:
                     aktor = y
@@ -272,7 +296,8 @@ def usuwanie_dodatkowych_slow(data, kolumna='aktor'):
              ' for superlative artistry', 'Adapted for the screen by ', '  for the creation of'
              ' for superlative artistry', 'for the design', 'Adaptation Score by ',
              'Lyrics by ', ' for the wise', 'Adaptation by ', 'Song Score by ',
-             'Adaptation score by ']
+             'Adaptation score by ','Photographic Effects by ','head of department Score by ',
+             'musical director Score by ','musical director Score by ','Written for the Screen by ']
 
     for index, i in data.iterrows():
         YEAR = i['YEAR']
@@ -503,6 +528,95 @@ def zamiana(data,lista):
 
 
 
+def usuwanie_dodatkowych_slow2(data, kolumna='aktor'):
+
+    new = pd.DataFrame()
+    words = ['Special Audible Effects by ','Special Visual Effects by ', 'head of department ',' for the animation direction of Who Framed Roger Rabbit.']
+
+    for index, i in data.iterrows():
+        YEAR = i['YEAR']
+        category = i['category']
+        film = i['film']
+        ztype = i['type']
+        aktor = i[kolumna]
+
+        # Usuń dodatkowe słowa
+        for w in words:
+            if isinstance(aktor, str) and w in aktor:
+                aktor = aktor.replace(w, "").strip() # Dodano .strip()
+                tempo = pd.DataFrame({'YEAR': [YEAR], 'category': [category], 'aktor': [aktor.strip()], 'film': [film], 'type': [ztype]})
+                new = pd.concat([new, tempo], ignore_index=True)
+
+        # Rozdziel aktorów po średniku i dodaj do nowego DataFrame
+
+        if isinstance(aktor, str):
+            tempo = pd.DataFrame({'YEAR': [YEAR], 'category': [category], 'aktor': [aktor.strip()], 'film': [film], 'type': [ztype]})
+            new = pd.concat([new, tempo], ignore_index=True)
+        else:
+            print(f'Error w kolumnie "{kolumna}" dla wiersza z indeksem {index}: {aktor}')
+
+    return new
+
+
+
+
+def special_award(df):
+
+    lista2 = []
+    listaHo=['HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD']
+
+    listakto=df.loc[~df['category'].isin(listaHo)]['aktor'].unique()
+
+    warunek= df['category'].isin(listaHo)
+
+    df.loc[warunek, 'film'] = df.loc[warunek, 'aktor']
+
+    for i in listakto:
+        d=str(i).split()
+        if len(d) !=2:
+            continue
+        else:
+            lista2.append(i)
+
+    def sprawdz_imie_naziwsko(aktor, lista2):
+        """Sprawdza, czy aktor zawiera którekolwiek imię i nazwisko z listy2."""
+        for imie_nazwisko in lista2:
+            if imie_nazwisko in aktor:
+                return imie_nazwisko  # Zwraca znalezione imię i nazwisko
+        return aktor  # Zwraca oryginalną wartość, jeśli nic nie znaleziono
+
+
+    def extract_between_to_comma(text):
+        if "To " in text and "," in text:
+            part1 = text.split("To ", 1)[1]  # Dzielimy po pierwszym "To " i bierzemy drugą część
+            part2 = part1.split(",", 1)[0]   # Dzielimy po pierwszym "," i bierzemy pierwszą część
+            return part2.strip()              # Usuwamy ewentualne białe znaki na początku i końcu
+        else:
+            return text
+
+
+    # Załóżmy, że 'lista2' jest już zdefiniowana i zawiera imiona i nazwiska
+    maska = df['aktor'].apply(lambda aktor: any(imie_nazwisko in aktor for imie_nazwisko in lista2))
+
+    # Jeśli chcesz zastąpić całą wartość w 'aktor' znalezionym imieniem i nazwiskiem:
+    df['aktor'] = df['aktor'].apply(lambda aktor: next((imie_nazwisko for imie_nazwisko in lista2 if imie_nazwisko in aktor), aktor))
+
+    znaki =[' - ',' for ', ' in recognition',' in appreciation']
+    for znak in znaki:
+        df['aktor'] = df['aktor'].str.split(znak, n=1, expand=True)[0]
+
+
+
+    df['aktor'] = df['aktor'].apply(extract_between_to_comma)
+
+    return df
+
+
+
+
+
+
+
 def analizaaktorow(df):
     """
     Analizuje nominacje i zwycięstwa aktorów, tworzy wykresy i zapisuje dane do plików CSV.
@@ -639,4 +753,127 @@ def winnersfilm(df):
 
     plt.tight_layout()
     plt.savefig(CHART_PATH)
+
+
+
+
+def mapaswaita(data):
+    thelist = data.loc[(data['category'].isin(['FOREIGN LANGUAGE FILM','INTERNATIONAL FEATURE FILM']) & (data['type']=='Winner'))].groupby('aktor')['film'].count().sort_values()
+
+    country_list={'Bosnia':'Bosnia and Herzegovina',
+                'Federal Republic of Germany':'Germany',
+                'Czechoslovakia':'Czech Republic',
+                'Union of Soviet Socialist Republics':'Russia',
+                'The Netherlands':'Netherlands'}
+
+    updated_thelist = thelist.rename(country_list)
+
+    con={}
+    for i in updated_thelist.index:
+        con[i]=int(updated_thelist[i].sum())
+
+    countries = list(con.keys())
+    numbers = list(con.values())
+
+
+
+    # dynamically get the world-country boundaries
+    res = requests.get("https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/world-countries.json")
+    res.raise_for_status()
+    df = pd.DataFrame(json.loads(res.content.decode()))
+    df = df.assign(
+        id=df["features"].apply(pd.Series)["id"],
+        name=df["features"].apply(pd.Series)["properties"].apply(pd.Series)["name"]
+    )
+
+    # build a dataframe of country colours scraped from Wikipedia
+    resp = requests.get("https://en.wikipedia.org/wiki/National_colours")
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.content.decode(), "html.parser")
+    colours = []
+
+    for t in soup.find_all("table", class_="wikitable"):
+        cols = t.find_all("th")
+        ok = (len(cols) > 5 and cols[0].string.strip() == "Country" and cols[4].string.strip() == "Primary")
+        if ok:
+            for tr in t.find_all("tr"):
+                td = tr.find_all("td")
+                if len(td) > 5:
+                    try:
+                        country_name_element = td[0].find("a")
+                        if country_name_element and country_name_element.string:
+                            country_name = country_name_element.string.strip()
+                        else:
+                            country_name_element = td[0]
+                            if country_name_element and country_name_element.string:
+                                country_name = country_name_element.string.strip()
+                            else:
+                                continue # Pomiń wiersz, jeśli nie można znaleźć nazwy kraju
+
+                        sp = td[4].find_all("span")
+                        if sp:
+                            c1 = re.sub(r"background-color:([\w,#,0-9]*).*", r"\1", sp[0]["style"])
+                            c2 = c1 if len(sp) == 1 else re.sub(r"background-color:([\w,#,0-9]*).*", r"\1", sp[1]["style"])
+                            colours.append({
+                                "country": country_name,
+                                "colour1": c1,
+                                "colour2": c2,
+                            })
+                    except AttributeError:
+                        continue
+    dfc = pd.DataFrame(colours).set_index("country")
+
+    # style the overlays with the countries' own colors
+    def style_fn(feature):
+        try:
+            cc = dfc.loc[feature["properties"]["name"]]
+            ss = {'fillColor': f'{cc[0]}', 'color': f'{cc[1]}'}
+            return ss
+        except KeyError:
+            return {'fillColor': 'gray', 'color': 'black'}
+
+    def get_country_centroid(feature):
+        """Calculates a simple centroid for a GeoJSON feature."""
+        geometry_type = feature['geometry']['type']
+        coordinates = feature['geometry']['coordinates']
+        if geometry_type == 'Polygon':
+            coords = np.array(coordinates[0])
+            centroid_lon = np.mean(coords[:, 0])
+            centroid_lat = np.mean(coords[:, 1])
+            return [centroid_lat, centroid_lon]
+        elif geometry_type == 'MultiPolygon':
+            all_coords = np.concatenate([np.array(polygon[0]) for polygon in coordinates])
+            centroid_lon = np.mean(all_coords[:, 0])
+            centroid_lat = np.mean(all_coords[:, 1])
+            return [centroid_lat, centroid_lon]
+        return None
+
+    # create the base map
+    m = folium.Map(location=[50, 0], zoom_start=1, control_scale=True)
+
+    # overlay desired countries over the folium map and add labels
+    for i, country_name_from_list in enumerate(countries):
+        try:
+            country_data = df[df["name"] == country_name_from_list].iloc[0]
+            geo_json_data = country_data["features"]
+            tooltip_text = f"{country_name_from_list}: {numbers[i]}"
+            folium.GeoJson(geo_json_data, name=country_name_from_list, tooltip=tooltip_text, style_function=style_fn).add_to(m)
+
+            centroid = get_country_centroid(geo_json_data)
+            if centroid:
+                icon = DivIcon(
+                    icon_size=(40, 20),
+                    icon_anchor=(20, 10),
+                    html=f'<div style="font-size: 12pt; color: black; text-align: center;">{numbers[i]}</div>',
+                )
+                folium.Marker(centroid, icon=icon).add_to(m)
+        except IndexError:
+            print(f"Nie znaleziono danych GeoJSON dla: {country_name_from_list}")
+        except KeyError as e:
+            print(f"Błąd klucza podczas stylizowania: {e} dla kraju: {country_name_from_list}")
+
+    CHART_PATH = os.path.join('static', 'charts', 'country.html')
+    m.save(CHART_PATH)
+    return m
+
 

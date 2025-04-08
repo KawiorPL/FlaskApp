@@ -23,6 +23,7 @@
         <button onclick="uruchomChart()">Uruchom</button>
     </div>
 
+    <br><hr>
 
     <p>Drugi wykres, który został opracowany, prezentuje liczbę nominacji oraz zdobytych Oscarów przez aktorów w kategoriach pierwszoplanowych.
         W celu zwiększenia czytelności danych, na wykresie nałożono punkty: zielone reprezentują zdobyte Oscary, a czarne – nominacje.
@@ -83,6 +84,34 @@
 
         {% endif %}
 
+        <br>
+
+        <p>Wykres 5 przedstawia liczbę Oscarów zdobytych przez filmy, które otrzymały ich najwięcej.
+            Jak widać, większość filmów z tej elitarnej grupy zdobyła Oscara tylko raz w danym roku.
+            Wyjątkiem są „Titanic”, „West Side Story” , które dwukrotnie otrzymały nagrody. To może świadczyć
+            o tym, że stworzenie wybitnej produkcji filmowej, która zdobywa liczne Oscary, jest niezwykle trudne.
+
+            Warto również zauważyć, że remake filmu „West Side Story” z 2021 roku zdobył tylko jednego
+            Oscara, podczas gdy oryginalna wersja z 1961 roku otrzymała aż dziesięć nagród. To pokazuje,
+             jak trudno jest dorównać sukcesowi kultowych produkcji
+
+        </p>
+
+        {% if image_exists2 %}
+    <div id="chart-container">
+        <iframe src="{{ htmlPath }}"
+                width="100%"
+                height="500px" frameborder="0"
+                allowfullscreen>
+            Twoja przeglądarka nie obsługuje ramek inline.
+        </iframe>
+    </div>
+
+    {% else %}
+
+    <p>Kliknij Uruchom i poczkeaj 10 sekund</p>
+
+    {% endif %}
 
 
 
