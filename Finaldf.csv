@@ -24,6 +24,8 @@ YEAR,category,aktor,film,type
 2024,WRITING (Original Screenplay),"Screenplay - Justine Triet and Arthur Harari - ""Anatomy of a Fall""",,Winner
 2024,JEAN HERSHOLT HUMANITARIAN AWARD,nan,,Winner
 2024,HONORARY AWARD,"To Angela Bassett, who has inspired audiences around the world with her powerful and fearless performances.",,Winner
+2024,HONORARY AWARD,"To Mel Brooks, for his comedic brilliance, producing acumen and expansive body of work.",,Winner
+2024,HONORARY AWARD,"To Carol Littleton, whose commitment to her craft has significantly elevated the art of film editing.",,Winner
 2024,ACTOR IN A LEADING ROLE,Bradley Cooper,"""Maestro""",nominee
 2024,ACTOR IN A LEADING ROLE,Colman Domingo,"""Rustin""",nominee
 2024,ACTOR IN A LEADING ROLE,Paul Giamatti,"""The Holdovers""",nominee
@@ -146,8 +148,13 @@ YEAR,category,aktor,film,type
 2023,WRITING (Original Screenplay),Written by Daniel Kwan & Daniel Scheinert,"""Everything Everywhere All at Once""",Winner
 2023,JEAN HERSHOLT HUMANITARIAN AWARD,nan,,Winner
 2023,HONORARY AWARD,"To Euzhan Palcy, a masterful filmmaker who broke ground for Black women directors and inspired storytellers of all kinds across the globe.",,Winner
+2023,HONORARY AWARD,"To Diane Warren, for her genius, generosity and passionate commitment to the power of song in film.",,Winner
+2023,HONORARY AWARD,"To Peter Weir, a fearless and consummate filmmaker who has illuminated the human experience with his unique and expansive body of work.",,Winner
 2023,GORDON E. SAWYER AWARD,Iain Neil,,Winner
-2023,AWARD OF COMMENDATION,"To Ryan Laney for his innovative adaptation and deployment of AI-driven facial veiling technology used to protect the identities while preserving the visual relatability of subjects in documentary filmmaking as exemplified in Welcome to Chechnya (2020). - ""Welcome to Chechnya""",,Winner
+2023,HONORARY AWARD,"To Euzhan Palcy, a masterful filmmaker who broke ground for Black women directors and inspired storytellers of all kinds across the globe.",,Winner
+2023,HONORARY AWARD,"To Diane Warren, for her genius, generosity and passionate commitment to the power of song in film.",,Winner
+2023,HONORARY AWARD,"To Peter Weir, a fearless and consummate filmmaker who has illuminated the human experience with his unique and expansive body of work.",,Winner
+2023,AWARD OF COMMENDATION,To Ryan Laney for his innovative adaptation and deployment of AI-driven facial veiling technology used to protect the identities while preserving the visual relatability of subjects in documentary filmmaking as exemplified in Welcome to Chechnya (2020).,"""Welcome to Chechnya""",Winner
 2023,ACTOR IN A LEADING ROLE,Austin Butler,"""Elvis""",nominee
 2023,ACTOR IN A LEADING ROLE,Colin Farrell,"""The Banshees of Inisherin""",nominee
 2023,ACTOR IN A LEADING ROLE,Paul Mescal,"""Aftersun""",nominee
@@ -270,6 +277,8 @@ YEAR,category,aktor,film,type
 2022,WRITING (Original Screenplay),Written by Kenneth Branagh,"""Belfast""",Winner
 2022,JEAN HERSHOLT HUMANITARIAN AWARD,nan,,Winner
 2022,HONORARY AWARD,"To Samuel L. Jackson, whose dynamic performances resonate across genres and generations of audiences worldwide.",,Winner
+2022,HONORARY AWARD,"To Elaine May, writer, director, performer, pioneer whose bracing comedic spark illuminates us all.",,Winner
+2022,HONORARY AWARD,"To Liv Ullmann, for her deeply affecting screen portrayals and lifelong commitment to exploring the human condition.",,Winner
 2022,ACTOR IN A LEADING ROLE,Javier Bardem,"""Being the Ricardos""",nominee
 2022,ACTOR IN A LEADING ROLE,Benedict Cumberbatch,"""The Power of the Dog""",nominee
 2022,ACTOR IN A LEADING ROLE,Andrew Garfield,"""tick, tick...BOOM!""",nominee
@@ -512,6 +521,8 @@ YEAR,category,aktor,film,type
 2020,WRITING (Original Screenplay),"Screenplay by Bong Joon Ho, Han Jin Won; Story by Bong Joon Ho","""Parasite""",Winner
 2020,JEAN HERSHOLT HUMANITARIAN AWARD,Geena Davis,,Winner
 2020,HONORARY AWARD,David Lynch,,Winner
+2020,HONORARY AWARD,Wes Studi,,Winner
+2020,HONORARY AWARD,Lina Wertmüller,,Winner
 2020,ACTOR IN A LEADING ROLE,Antonio Banderas,"""Pain and Glory""",nominee
 2020,ACTOR IN A LEADING ROLE,Leonardo DiCaprio,"""Once upon a Time...in Hollywood""",nominee
 2020,ACTOR IN A LEADING ROLE,Adam Driver,"""Marriage Story""",nominee
@@ -637,6 +648,11 @@ YEAR,category,aktor,film,type
 2019,WRITING (Adapted Screenplay),Written by Charlie Wachtel & David Rabinowitz and Kevin Willmott & Spike Lee,"""BlacKkKlansman""",Winner
 2019,WRITING (Original Screenplay),"Written by Nick Vallelonga, Brian Currie, Peter Farrelly","""Green Book""",Winner
 2019,HONORARY AWARD,Marvin Levy,,Winner
+2019,HONORARY AWARD,Lalo Schifrin,,Winner
+2019,HONORARY AWARD,Cicely Tyson,,Winner
+2019,HONORARY AWARD,Marvin Levy,,Winner
+2019,HONORARY AWARD,Lalo Schifrin,,Winner
+2019,HONORARY AWARD,Cicely Tyson,,Winner
 2019,IRVING G. THALBERG MEMORIAL AWARD,Kathleen Kennedy and Frank Marshall,,Winner
 2019,ACTOR IN A LEADING ROLE,Christian Bale,"""Vice""",nominee
 2019,ACTOR IN A LEADING ROLE,Bradley Cooper,"""A Star Is Born""",nominee
@@ -760,7 +776,11 @@ YEAR,category,aktor,film,type
 2018,WRITING (Adapted Screenplay),Screenplay by James Ivory,"""Call Me by Your Name""",Winner
 2018,WRITING (Original Screenplay),Written by Jordan Peele,"""Get Out""",Winner
 2018,SPECIAL AWARD,Alejandro G. Iñárritu's CARNE y ARENA virtual reality installation,,Winner
+2018,SPECIAL AWARD,Alejandro G. Iñárritu's CARNE y ARENA virtual reality installation,,Winner
 2018,HONORARY AWARD,Charles Burnett,,Winner
+2018,HONORARY AWARD,Owen Roizman,,Winner
+2018,HONORARY AWARD,Donald Sutherland for a lifetime of indelible characters,,Winner
+2018,HONORARY AWARD,Agnès Varda,,Winner
 2018,ACTOR IN A LEADING ROLE,Timothée Chalamet,"""Call Me by Your Name""",nominee
 2018,ACTOR IN A LEADING ROLE,Daniel Day-Lewis,"""Phantom Thread""",nominee
 2018,ACTOR IN A LEADING ROLE,Daniel Kaluuya,"""Get Out""",nominee
@@ -884,6 +904,9 @@ YEAR,category,aktor,film,type
 2017,WRITING (Adapted Screenplay),Screenplay by Barry Jenkins; Story by Tarell Alvin McCraney,"""Moonlight""",Winner
 2017,WRITING (Original Screenplay),Written by Kenneth Lonergan,"""Manchester by the Sea""",Winner
 2017,HONORARY AWARD,Jackie Chan,,Winner
+2017,HONORARY AWARD,Anne V. Coates,,Winner
+2017,HONORARY AWARD,Lynn Stalmaster,,Winner
+2017,HONORARY AWARD,Frederick Wiseman,,Winner
 2017,ACTOR IN A LEADING ROLE,Andrew Garfield,"""Hacksaw Ridge""",nominee
 2017,ACTOR IN A LEADING ROLE,Ryan Gosling,"""La La Land""",nominee
 2017,ACTOR IN A LEADING ROLE,Viggo Mortensen,"""Captain Fantastic""",nominee
@@ -1008,6 +1031,7 @@ YEAR,category,aktor,film,type
 2016,WRITING (Original Screenplay),Written by Josh Singer & Tom McCarthy,"""Spotlight""",Winner
 2016,JEAN HERSHOLT HUMANITARIAN AWARD,Debbie Reynolds,,Winner
 2016,HONORARY AWARD,Spike Lee,,Winner
+2016,HONORARY AWARD,Gena Rowlands,,Winner
 2016,ACTOR IN A LEADING ROLE,Bryan Cranston,"""Trumbo""",nominee
 2016,ACTOR IN A LEADING ROLE,Matt Damon,"""The Martian""",nominee
 2016,ACTOR IN A LEADING ROLE,Michael Fassbender,"""Steve Jobs""",nominee
@@ -1131,6 +1155,8 @@ YEAR,category,aktor,film,type
 2015,WRITING (Original Screenplay),"Written by Alejandro G. Iñárritu, Nicolás Giacobone, Alexander Dinelaris, Jr. & Armando Bo","""Birdman or (The Unexpected Virtue of Ignorance)""",Winner
 2015,JEAN HERSHOLT HUMANITARIAN AWARD,Harry Belafonte,,Winner
 2015,HONORARY AWARD,Jean-Claude Carrière,,Winner
+2015,HONORARY AWARD,Hayao Miyazaki,,Winner
+2015,HONORARY AWARD,Maureen O'Hara,,Winner
 2015,ACTOR IN A LEADING ROLE,Steve Carell,"""Foxcatcher""",nominee
 2015,ACTOR IN A LEADING ROLE,Bradley Cooper,"""American Sniper""",nominee
 2015,ACTOR IN A LEADING ROLE,Benedict Cumberbatch,"""The Imitation Game""",nominee
@@ -1254,6 +1280,8 @@ YEAR,category,aktor,film,type
 2014,WRITING (Original Screenplay),Written by Spike Jonze,"""Her""",Winner
 2014,JEAN HERSHOLT HUMANITARIAN AWARD,Angelina Jolie,,Winner
 2014,HONORARY AWARD,Angela Lansbury,,Winner
+2014,HONORARY AWARD,Steve Martin in recognition of his extraordinary talents and the unique inspiration he has brought to the art of motion pictures.,,Winner
+2014,HONORARY AWARD,Piero si,,Winner
 2014,ACTOR IN A LEADING ROLE,Christian Bale,"""American Hustle""",nominee
 2014,ACTOR IN A LEADING ROLE,Bruce Dern,"""Nebraska""",nominee
 2014,ACTOR IN A LEADING ROLE,Leonardo DiCaprio,"""The Wolf of Wall Street""",nominee
@@ -1378,6 +1406,8 @@ YEAR,category,aktor,film,type
 2013,WRITING (Original Screenplay),Written by Quentin Tarantino,"""Django Unchained""",Winner
 2013,JEAN HERSHOLT HUMANITARIAN AWARD,Jeffrey Katzenberg,,Winner
 2013,HONORARY AWARD,Hal Needham,,Winner
+2013,HONORARY AWARD,D.A. Pennebaker,,Winner
+2013,HONORARY AWARD,George Stevens,,Winner
 2013,ACTOR IN A LEADING ROLE,Bradley Cooper,"""Silver Linings Playbook""",nominee
 2013,ACTOR IN A LEADING ROLE,Hugh Jackman,"""Les Misérables""",nominee
 2013,ACTOR IN A LEADING ROLE,Joaquin Phoenix,"""The Master""",nominee
@@ -1501,6 +1531,7 @@ YEAR,category,aktor,film,type
 2012,WRITING (Original Screenplay),Written by Woody Allen,"""Midnight in Paris""",Winner
 2012,JEAN HERSHOLT HUMANITARIAN AWARD,Oprah Winfrey,,Winner
 2012,HONORARY AWARD,James Earl Jones for his legacy of consistent excellence and uncommon versatility.,,Winner
+2012,HONORARY AWARD,Dick Smith for his unparalleled mastery of texture,,Winner
 2012,ACTOR IN A LEADING ROLE,Demián Bichir,"""A Better Life""",nominee
 2012,ACTOR IN A LEADING ROLE,George Clooney,"""The Descendants""",nominee
 2012,ACTOR IN A LEADING ROLE,Gary Oldman,"""Tinker Tailor Soldier Spy""",nominee
@@ -1621,6 +1652,11 @@ YEAR,category,aktor,film,type
 2011,WRITING (Adapted Screenplay),Screenplay by Aaron Sorkin,"""The Social Network""",Winner
 2011,WRITING (Original Screenplay),Screenplay by David Seidler,"""The King's Speech""",Winner
 2011,HONORARY AWARD,Kevin Brownlow for the wise and devoted chronicling of the cinematic parade.,,Winner
+2011,HONORARY AWARD,Jean-Luc Godard for passion. For confrontation. For a new kind of cinema.,,Winner
+2011,HONORARY AWARD,Eli Wallach for a lifetime's worth of indelible screen characters.,,Winner
+2011,HONORARY AWARD,Kevin Brownlow for the wise and devoted chronicling of the cinematic parade.,,Winner
+2011,HONORARY AWARD,Jean-Luc Godard for passion. For confrontation. For a new kind of cinema.,,Winner
+2011,HONORARY AWARD,Eli Wallach for a lifetime's worth of indelible screen characters.,,Winner
 2011,IRVING G. THALBERG MEMORIAL AWARD,Francis Ford Coppola,,Winner
 2011,ACTOR IN A LEADING ROLE,Javier Bardem,"""Biutiful""",nominee
 2011,ACTOR IN A LEADING ROLE,Jeff Bridges,"""True Grit""",nominee
@@ -1743,6 +1779,11 @@ YEAR,category,aktor,film,type
 2010,WRITING (Adapted Screenplay),Screenplay by Geoffrey Fletcher,"""Precious: Based on the Novel 'Push' by Sapphire""",Winner
 2010,WRITING (Original Screenplay),Written by Mark Boal,"""The Hurt Locker""",Winner
 2010,HONORARY AWARD,Lauren Bacall in recognition of her central place in the golden age of motion pictures.,,Winner
+2010,HONORARY AWARD,Roger Corman for his rich engendering of films and filmmakers.,,Winner
+2010,HONORARY AWARD,Gordon Willis for unsurpassed mastery of light,,Winner
+2010,HONORARY AWARD,Lauren Bacall in recognition of her central place in the golden age of motion pictures.,,Winner
+2010,HONORARY AWARD,Roger Corman for his rich engendering of films and filmmakers.,,Winner
+2010,HONORARY AWARD,Gordon Willis for unsurpassed mastery of light,,Winner
 2010,IRVING G. THALBERG MEMORIAL AWARD,John Calley,,Winner
 2010,ACTOR IN A LEADING ROLE,George Clooney,"""Up in the Air""",nominee
 2010,ACTOR IN A LEADING ROLE,Colin Firth,"""A Single Man""",nominee
@@ -2656,6 +2697,7 @@ YEAR,category,aktor,film,type
 2002,WRITING (Screenplay Written Directly for the Screen),Written by Julian Fellowes,"""Gosford Park""",Winner
 2002,JEAN HERSHOLT HUMANITARIAN AWARD,Arthur Hiller,,Winner
 2002,HONORARY AWARD,Sidney Poitier in recognition of his remarkable accomplishments as an artist and as a human being.,,Winner
+2002,HONORARY AWARD,Robert Redford:  Actor,,Winner
 2002,ACTOR IN A LEADING ROLE,Russell Crowe,"""A Beautiful Mind""",nominee
 2002,ACTOR IN A LEADING ROLE,Sean Penn,"""I Am Sam""",nominee
 2002,ACTOR IN A LEADING ROLE,Will Smith,"""Ali""",nominee
@@ -2765,6 +2807,9 @@ YEAR,category,aktor,film,type
 2001,WRITING (Screenplay Based on Material Previously Produced or Published),Screenplay by Stephen Gaghan,"""Traffic""",Winner
 2001,WRITING (Screenplay Written Directly for the Screen),Written by Cameron Crowe,"""Almost Famous""",Winner
 2001,HONORARY AWARD,Jack Cardiff,,Winner
+2001,HONORARY AWARD,Ernest Lehman,,Winner
+2001,HONORARY AWARD,Jack Cardiff,,Winner
+2001,HONORARY AWARD,Ernest Lehman,,Winner
 2001,IRVING G. THALBERG MEMORIAL AWARD,Dino De Laurentiis,,Winner
 2001,ACTOR IN A LEADING ROLE,Javier Bardem,"""Before Night Falls""",nominee
 2001,ACTOR IN A LEADING ROLE,Tom Hanks,"""Cast Away""",nominee
@@ -2872,6 +2917,7 @@ YEAR,category,aktor,film,type
 2000,VISUAL EFFECTS,"John Gaeta, Janek Sirrs, Steve Courtley, Jon Thum","""The Matrix""",Winner
 2000,WRITING (Screenplay Based on Material Previously Produced or Published),John Irving,"""The Cider House Rules""",Winner
 2000,WRITING (Screenplay Written Directly for the Screen),Alan Ball,"""American Beauty""",Winner
+2000,HONORARY AWARD,Andrzej Wajda in recognition of five decades of extraordinary film direction.,,Winner
 2000,HONORARY AWARD,Andrzej Wajda in recognition of five decades of extraordinary film direction.,,Winner
 2000,IRVING G. THALBERG MEMORIAL AWARD,Warren Beatty,,Winner
 2000,ACTOR IN A LEADING ROLE,Russell Crowe,"""The Insider""",nominee
@@ -2983,6 +3029,7 @@ YEAR,category,aktor,film,type
 1999,VISUAL EFFECTS,"Joel Hynek, Nicholas Brooks, Stuart Robertson, Kevin Mack","""What Dreams May Come""",Winner
 1999,WRITING (Screenplay Based on Material Previously Produced or Published),Bill Condon,"""Gods and Monsters""",Winner
 1999,WRITING (Screenplay Written Directly for the Screen),"Marc Norman, Tom Stoppard","""Shakespeare in Love""",Winner
+1999,HONORARY AWARD,Elia Kazan in recognition of his indelible contributions to the art of motion picture direction.,,Winner
 1999,HONORARY AWARD,Elia Kazan in recognition of his indelible contributions to the art of motion picture direction.,,Winner
 1999,IRVING G. THALBERG MEMORIAL AWARD,Norman Jewison,,Winner
 1999,ACTOR IN A LEADING ROLE,Tom Hanks,"""Saving Private Ryan""",nominee
@@ -3213,6 +3260,7 @@ YEAR,category,aktor,film,type
 1997,WRITING (Screenplay Based on Material Previously Produced or Published),Billy Bob Thornton,"""Sling Blade""",Winner
 1997,WRITING (Screenplay Written Directly for the Screen),"Ethan Coen, Joel Coen","""Fargo""",Winner
 1997,HONORARY AWARD,Michael Kidd in recognition of his services to the art of the dance in the art of the screen.,,Winner
+1997,HONORARY AWARD,Michael Kidd in recognition of his services to the art of the dance in the art of the screen.,,Winner
 1997,IRVING G. THALBERG MEMORIAL AWARD,Saul Zaentz,,Winner
 1997,ACTOR IN A LEADING ROLE,Tom Cruise,"""Jerry Maguire""",nominee
 1997,ACTOR IN A LEADING ROLE,Ralph Fiennes,"""The English Patient""",nominee
@@ -3329,6 +3377,7 @@ YEAR,category,aktor,film,type
 1996,WRITING (Screenplay Written Directly for the Screen),Christopher McQuarrie,"""The Usual Suspects""",Winner
 1996,SPECIAL ACHIEVEMENT AWARD,John Lasseter,,Winner
 1996,HONORARY AWARD,Kirk Douglas,,Winner
+1996,HONORARY AWARD,Chuck Jones,,Winner
 1996,ACTOR IN A LEADING ROLE,Richard Dreyfuss,"""Mr. Holland's Opus""",nominee
 1996,ACTOR IN A LEADING ROLE,Anthony Hopkins,"""Nixon""",nominee
 1996,ACTOR IN A LEADING ROLE,Sean Penn,"""Dead Man Walking""",nominee
@@ -3442,6 +3491,7 @@ YEAR,category,aktor,film,type
 1995,WRITING (Screenplay Based on Material Previously Produced or Published),Eric Roth,"""Forrest Gump""",Winner
 1995,WRITING (Screenplay Written Directly for the Screen),Screenplay by Quentin Tarantino;  Stories by Quentin Tarantino & Roger Avary,"""Pulp Fiction""",Winner
 1995,JEAN HERSHOLT HUMANITARIAN AWARD,Quincy Jones,,Winner
+1995,HONORARY AWARD,Michelangelo Antonioni in recognition of his place as one of the cinema's master visual stylists.,,Winner
 1995,HONORARY AWARD,Michelangelo Antonioni in recognition of his place as one of the cinema's master visual stylists.,,Winner
 1995,IRVING G. THALBERG MEMORIAL AWARD,Clint Eastwood,,Winner
 1995,ACTOR IN A LEADING ROLE,Morgan Freeman,"""The Shawshank Redemption""",nominee
@@ -3773,6 +3823,7 @@ YEAR,category,aktor,film,type
 1992,WRITING (Screenplay Based on Material Previously Produced or Published),Ted Tally,"""The Silence of the Lambs""",Winner
 1992,WRITING (Screenplay Written Directly for the Screen),Callie Khouri,"""Thelma & Louise""",Winner
 1992,HONORARY AWARD,Satyajit Ray,,Winner
+1992,HONORARY AWARD,Satyajit Ray,,Winner
 1992,IRVING G. THALBERG MEMORIAL AWARD,George Lucas,,Winner
 1992,ACTOR IN A LEADING ROLE,Warren Beatty,"""Bugsy""",nominee
 1992,ACTOR IN A LEADING ROLE,Robert De Niro,"""Cape Fear""",nominee
@@ -3880,6 +3931,9 @@ YEAR,category,aktor,film,type
 1991,WRITING (Screenplay Written Directly for the Screen),Bruce Joel Rubin,"""Ghost""",Winner
 1991,SPECIAL ACHIEVEMENT AWARD (Visual Effects),"Eric Brevig, Rob Bottin, Tim McGovern, Alex Funke","""Total Recall""",Winner
 1991,HONORARY AWARD,Sophia Loren,,Winner
+1991,HONORARY AWARD,Myrna Loy,,Winner
+1991,HONORARY AWARD,Sophia Loren,,Winner
+1991,HONORARY AWARD,Myrna Loy,,Winner
 1991,IRVING G. THALBERG MEMORIAL AWARD,David Brown and Richard D. Zanuck,,Winner
 1991,ACTOR IN A LEADING ROLE,Kevin Costner,"""Dances With Wolves""",nominee
 1991,ACTOR IN A LEADING ROLE,Robert De Niro,"""Awakenings""",nominee
@@ -4093,6 +4147,7 @@ YEAR,category,aktor,film,type
 1989,WRITING (Screenplay Written Directly for the Screen),"Screenplay by Ronald Bass, Barry Morrow;  Story by Barry Morrow","""Rain Man""",Winner
 1989,SPECIAL ACHIEVEMENT AWARD,Richard Williams for the animation direction of Who Framed Roger Rabbit.,,Winner
 1989,HONORARY AWARD,the National Film Board of Canada in recognition of its 50th anniversary and its dedicated commitment to originate artistic,,Winner
+1989,HONORARY AWARD,Eastman Kodak Company in recognition of the company's fundamental contributions to the art of motion pictures during the first century of film history.,,Winner
 1989,ACTOR IN A LEADING ROLE,Gene Hackman,"""Mississippi Burning""",nominee
 1989,ACTOR IN A LEADING ROLE,Tom Hanks,"""Big""",nominee
 1989,ACTOR IN A LEADING ROLE,Edward James Olmos,"""Stand and Deliver""",nominee
@@ -4299,6 +4354,7 @@ YEAR,category,aktor,film,type
 1987,WRITING (Screenplay Based on Material from Another Medium),Ruth Prawer Jhabvala,"""A Room with a View""",Winner
 1987,WRITING (Screenplay Written Directly for the Screen),Woody Allen,"""Hannah and Her Sisters""",Winner
 1987,HONORARY AWARD,Ralph Bellamy for his unique artistry and his distinguished service to the profession of acting.,,Winner
+1987,HONORARY AWARD,Ralph Bellamy for his unique artistry and his distinguished service to the profession of acting.,,Winner
 1987,IRVING G. THALBERG MEMORIAL AWARD,Steven Spielberg,,Winner
 1987,ACTOR IN A LEADING ROLE,Dexter Gordon,"""'Round Midnight""",nominee
 1987,ACTOR IN A LEADING ROLE,Bob Hoskins,"""Mona Lisa""",nominee
@@ -4406,6 +4462,7 @@ YEAR,category,aktor,film,type
 1986,WRITING (Screenplay Written Directly for the Screen),"Screenplay by Earl W. Wallace, William Kelley;  Story by William Kelley, Pamela Wallace, Earl W. Wallace","""Witness""",Winner
 1986,JEAN HERSHOLT HUMANITARIAN AWARD,Charles 'Buddy' Rogers,,Winner
 1986,HONORARY AWARD,Paul Newman,,Winner
+1986,HONORARY AWARD,Alex North,,Winner
 1986,ACTOR IN A LEADING ROLE,Harrison Ford,"""Witness""",nominee
 1986,ACTOR IN A LEADING ROLE,James Garner,"""Murphy's Romance""",nominee
 1986,ACTOR IN A LEADING ROLE,Jack Nicholson,"""Prizzi's Honor""",nominee
@@ -4514,6 +4571,7 @@ YEAR,category,aktor,film,type
 1985,SPECIAL ACHIEVEMENT AWARD (Sound Effects Editing),Kay Rose,"""The River""",Winner
 1985,JEAN HERSHOLT HUMANITARIAN AWARD,David L. Wolper,,Winner
 1985,HONORARY AWARD,James Stewart,,Winner
+1985,HONORARY AWARD,the National Endowment for the Arts,,Winner
 1985,ACTOR IN A LEADING ROLE,Jeff Bridges,"""Starman""",nominee
 1985,ACTOR IN A LEADING ROLE,Albert Finney,"""Under the Volcano""",nominee
 1985,ACTOR IN A LEADING ROLE,Tom Hulce,"""Amadeus""",nominee
@@ -4836,6 +4894,7 @@ YEAR,category,aktor,film,type
 1982,SPECIAL ACHIEVEMENT AWARD (Sound Effects Editing),"Ben Burtt, Richard L. Anderson","""Raiders of the Lost Ark""",Winner
 1982,JEAN HERSHOLT HUMANITARIAN AWARD,Danny Kaye,,Winner
 1982,HONORARY AWARD,Barbara Stanwyck for superlative creativity and unique contribution to the art of screen acting.,,Winner
+1982,HONORARY AWARD,Barbara Stanwyck for superlative creativity and unique contribution to the art of screen acting.,,Winner
 1982,IRVING G. THALBERG MEMORIAL AWARD,Albert R. Broccoli,,Winner
 1982,ACTOR IN A LEADING ROLE,Warren Beatty,"""Reds""",nominee
 1982,ACTOR IN A LEADING ROLE,Burt Lancaster,"""Atlantic City""",nominee
@@ -5038,6 +5097,9 @@ YEAR,category,aktor,film,type
 1980,SPECIAL ACHIEVEMENT AWARD (Sound Editing),Alan Splet,"""The Black Stallion""",Winner
 1980,JEAN HERSHOLT HUMANITARIAN AWARD,Robert Benjamin,,Winner
 1980,HONORARY AWARD,Alec Guinness for advancing the art of screen acting through a host of memorable and distinguished performances.,,Winner
+1980,HONORARY AWARD,Hal Elias for his dedication and distinguished service to the Academy of Motion Picture Arts and Sciences.,,Winner
+1980,HONORARY AWARD,Alec Guinness for advancing the art of screen acting through a host of memorable and distinguished performances.,,Winner
+1980,HONORARY AWARD,Hal Elias for his dedication and distinguished service to the Academy of Motion Picture Arts and Sciences.,,Winner
 1980,IRVING G. THALBERG MEMORIAL AWARD,Ray Stark,,Winner
 1980,ACTOR IN A LEADING ROLE,Jack Lemmon,"""The China Syndrome""",nominee
 1980,ACTOR IN A LEADING ROLE,Al Pacino,"""...And Justice for All""",nominee
@@ -5147,6 +5209,9 @@ YEAR,category,aktor,film,type
 1979,SPECIAL ACHIEVEMENT AWARD (Visual Effects),"Les Bowie, Colin Chilvers, Denys Coop, Roy Field, Derek Meddings, Zoran Perisic","""Superman""",Winner
 1979,JEAN HERSHOLT HUMANITARIAN AWARD,Leo Jaffe,,Winner
 1979,HONORARY AWARD,Walter Lantz for bringing joy and laughter to every part of the world through his unique animated motion pictures.,,Winner
+1979,HONORARY AWARD,The Museum of Modern Art Department of Film for the contribution it has made to the public's perception of movies as an art form.,,Winner
+1979,HONORARY AWARD,Laurence Olivier for the full body of his work,,Winner
+1979,HONORARY AWARD,King Vidor for his incomparable achievements as a cinematic creator and innovator.,,Winner
 1979,ACTOR IN A LEADING ROLE,Warren Beatty,"""Heaven Can Wait""",nominee
 1979,ACTOR IN A LEADING ROLE,Gary Busey,"""The Buddy Holly Story""",nominee
 1979,ACTOR IN A LEADING ROLE,Robert De Niro,"""The Deer Hunter""",nominee
@@ -5251,6 +5316,7 @@ YEAR,category,aktor,film,type
 1978,SPECIAL ACHIEVEMENT AWARD,Benjamin Burtt,,Winner
 1978,SPECIAL ACHIEVEMENT AWARD (Sound Effects Editing),Frank E. Warner,"""Close Encounters of the Third Kind""",Winner
 1978,JEAN HERSHOLT HUMANITARIAN AWARD,Charlton Heston,,Winner
+1978,HONORARY AWARD,Margaret Booth for her exceptional contribution to the art of film editing in the motion picture industry.,,Winner
 1978,HONORARY AWARD,Margaret Booth for her exceptional contribution to the art of film editing in the motion picture industry.,,Winner
 1978,IRVING G. THALBERG MEMORIAL AWARD,Walter Mirisch,,Winner
 1978,ACTOR IN A LEADING ROLE,Woody Allen,"""Annie Hall""",nominee
@@ -5463,6 +5529,7 @@ YEAR,category,aktor,film,type
 1976,SPECIAL ACHIEVEMENT AWARD (Visual Effects),"Albert Whitlock, Glen Robinson","""The Hindenburg""",Winner
 1976,JEAN HERSHOLT HUMANITARIAN AWARD,Dr. Jules C. Stein,,Winner
 1976,HONORARY AWARD,Mary Pickford in recognition of her unique contributions to the film industry and the development of film as an artistic medium.,,Winner
+1976,HONORARY AWARD,Mary Pickford in recognition of her unique contributions to the film industry and the development of film as an artistic medium.,,Winner
 1976,IRVING G. THALBERG MEMORIAL AWARD,Mervyn LeRoy,,Winner
 1976,ACTOR IN A SUPPORTING ROLE,Brad Dourif,"""One Flew over the Cuckoo's Nest""",nominee
 1976,ACTOR IN A SUPPORTING ROLE,Burgess Meredith,"""The Day of the Locust""",nominee
@@ -5568,7 +5635,8 @@ YEAR,category,aktor,film,type
 1975,WRITING (Screenplay Adapted from Other Material),"Francis Ford Coppola, Mario Puzo","""The Godfather Part II""",Winner
 1975,SPECIAL ACHIEVEMENT AWARD (Visual Effects),"Frank Brendel, Glen Robinson, Albert Whitlock","""Earthquake""",Winner
 1975,JEAN HERSHOLT HUMANITARIAN AWARD,Arthur B. Krim,,Winner
-1975,HONORARY AWARD,Howard Hawks - A master American filmmaker whose creative efforts hold a distinguished place in world cinema.,,Winner
+1975,HONORARY AWARD,Howard Hawks,A master American filmmaker whose creative efforts hold a distinguished place in world cinema.,Winner
+1975,HONORARY AWARD,Jean Renoir,a genius who,Winner
 1975,ACTOR IN A SUPPORTING ROLE,Fred Astaire,"""The Towering Inferno""",nominee
 1975,ACTOR IN A SUPPORTING ROLE,Jeff Bridges,"""Thunderbolt and Lightfoot""",nominee
 1975,ACTOR IN A SUPPORTING ROLE,Michael V. Gazzo,"""The Godfather Part II""",nominee
@@ -5674,6 +5742,9 @@ YEAR,category,aktor,film,type
 1974,WRITING (Story and Screenplay--based on factual material or material not previously published or produced),David S. Ward,"""The Sting""",Winner
 1974,JEAN HERSHOLT HUMANITARIAN AWARD,Lew Wasserman,,Winner
 1974,HONORARY AWARD,Henri Langlois for his devotion to the art of film,,Winner
+1974,HONORARY AWARD,Groucho Marx in recognition of his brilliant creativity and for the unequalled achievements of the Marx Brothers in the art of motion picture comedy.,,Winner
+1974,HONORARY AWARD,Henri Langlois for his devotion to the art of film,,Winner
+1974,HONORARY AWARD,Groucho Marx in recognition of his brilliant creativity and for the unequalled achievements of the Marx Brothers in the art of motion picture comedy.,,Winner
 1974,IRVING G. THALBERG MEMORIAL AWARD,Lawrence Weingarten,,Winner
 1974,ACTOR IN A SUPPORTING ROLE,Vincent Gardenia,"""Bang the Drum Slowly""",nominee
 1974,ACTOR IN A SUPPORTING ROLE,Jack Gilford,"""Save the Tiger""",nominee
@@ -5777,6 +5848,7 @@ YEAR,category,aktor,film,type
 1973,SPECIAL ACHIEVEMENT AWARD (Visual Effects),"L. B. Abbott, A. D. Flowers","""The Poseidon Adventure""",Winner
 1973,JEAN HERSHOLT HUMANITARIAN AWARD,Rosalind Russell,,Winner
 1973,HONORARY AWARD,Charles S. Boren,,Winner
+1973,HONORARY AWARD,Edward G. Robinson who achieved greatness as a player,,Winner
 1973,ACTOR IN A SUPPORTING ROLE,Eddie Albert,"""The Heartbreak Kid""",nominee
 1973,ACTOR IN A SUPPORTING ROLE,James Caan,"""The Godfather""",nominee
 1973,ACTOR IN A SUPPORTING ROLE,Robert Duvall,"""The Godfather""",nominee
@@ -48145,6 +48217,9 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1971,WRITING (Story and Screenplay--based on factual material or material not previously published or produced),"Francis Ford Coppola, Edmund H. North","""Patton""",Winner
 1971,JEAN HERSHOLT HUMANITARIAN AWARD,Frank Sinatra,,Winner
 1971,HONORARY AWARD,Lillian Gish for superlative artistry and for distinguished contribution to the progress of motion pictures.,,Winner
+1971,HONORARY AWARD,Orson Welles for superlative artistry and versatility in the creation of motion pictures.,,Winner
+1971,HONORARY AWARD,Lillian Gish for superlative artistry and for distinguished contribution to the progress of motion pictures.,,Winner
+1971,HONORARY AWARD,Orson Welles for superlative artistry and versatility in the creation of motion pictures.,,Winner
 1971,IRVING G. THALBERG MEMORIAL AWARD,Ingmar Bergman,,Winner
 1971,ACTOR IN A SUPPORTING ROLE,Richard Castellano,"""Lovers and Other Strangers""",nominee
 1971,ACTOR IN A SUPPORTING ROLE,Chief Dan George,"""Little Big Man""",nominee
@@ -48356,6 +48431,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1969,WRITING (Story and Screenplay--written directly for the screen),Mel Brooks,"""The Producers""",Winner
 1969,JEAN HERSHOLT HUMANITARIAN AWARD,Martha Raye,,Winner
 1969,HONORARY AWARD,John Chambers for his outstanding makeup achievement for Planet of the Apes.,,Winner
+1969,HONORARY AWARD,Onna White for her outstanding choreography achievement for Oliver!,,Winner
 1969,ACTOR IN A SUPPORTING ROLE,Seymour Cassel,"""Faces""",nominee
 1969,ACTOR IN A SUPPORTING ROLE,Daniel Massey,"""Star!""",nominee
 1969,ACTOR IN A SUPPORTING ROLE,Jack Wild,"""Oliver!""",nominee
@@ -48462,6 +48538,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1968,WRITING (Screenplay--based on material from another medium),Stirling Silliphant,"""In the Heat of the Night""",Winner
 1968,WRITING (Story and Screenplay--written directly for the screen),William Rose,"""Guess Who's Coming to Dinner""",Winner
 1968,JEAN HERSHOLT HUMANITARIAN AWARD,Gregory Peck,,Winner
+1968,HONORARY AWARD,Arthur Freed for distinguished service to the Academy and the production of six top-rated Awards telecasts.,,Winner
 1968,HONORARY AWARD,Arthur Freed for distinguished service to the Academy and the production of six top-rated Awards telecasts.,,Winner
 1968,IRVING G. THALBERG MEMORIAL AWARD,Alfred Hitchcock,,Winner
 1968,ACTOR IN A SUPPORTING ROLE,John Cassavetes,"""The Dirty Dozen""",nominee
@@ -48575,6 +48652,9 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1967,WRITING (Story and Screenplay--written directly for the screen),"Story by Claude Lelouch;  Screenplay by Claude Lelouch, Pierre Uytterhoeven","""A Man and a Woman""",Winner
 1967,JEAN HERSHOLT HUMANITARIAN AWARD,George Bagnall,,Winner
 1967,HONORARY AWARD,Y. Frank Freeman for unusual and outstanding service to the Academy during his thirty years in Hollywood.,,Winner
+1967,HONORARY AWARD,Yakima Canutt for achievements as a stunt man and for developing safety devices to protect stunt men everywhere.,,Winner
+1967,HONORARY AWARD,Y. Frank Freeman for unusual and outstanding service to the Academy during his thirty years in Hollywood.,,Winner
+1967,HONORARY AWARD,Yakima Canutt for achievements as a stunt man and for developing safety devices to protect stunt men everywhere.,,Winner
 1967,IRVING G. THALBERG MEMORIAL AWARD,Robert Wise,,Winner
 1967,ACTOR IN A SUPPORTING ROLE,Mako,"""The Sand Pebbles""",nominee
 1967,ACTOR IN A SUPPORTING ROLE,James Mason,"""Georgy Girl""",nominee
@@ -48697,6 +48777,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1966,WRITING (Screenplay--based on material from another medium),Robert Bolt,"""Doctor Zhivago""",Winner
 1966,WRITING (Story and Screenplay--written directly for the screen),Frederic Raphael,"""Darling""",Winner
 1966,JEAN HERSHOLT HUMANITARIAN AWARD,Edmond L. DePatie,,Winner
+1966,HONORARY AWARD,Bob Hope for unique and distinguished service to our industry and the Academy.,,Winner
 1966,HONORARY AWARD,Bob Hope for unique and distinguished service to our industry and the Academy.,,Winner
 1966,IRVING G. THALBERG MEMORIAL AWARD,William Wyler,,Winner
 1966,ACTOR IN A SUPPORTING ROLE,Ian Bannen,"""The Flight of the Phoenix""",nominee
@@ -49186,6 +49267,11 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1962,WRITING (Story and Screenplay--written directly for the screen),William Inge,"""Splendor in the Grass""",Winner
 1962,JEAN HERSHOLT HUMANITARIAN AWARD,George Seaton,,Winner
 1962,HONORARY AWARD,William L. Hendricks for his outstanding patriotic service in the conception,,Winner
+1962,HONORARY AWARD,Fred L. Metzler for his dedication and outstanding service to the Academy of Motion Picture Arts and Sciences.,,Winner
+1962,HONORARY AWARD,Jerome Robbins for his brilliant achievements in the art of choreography on film.,,Winner
+1962,HONORARY AWARD,William L. Hendricks for his outstanding patriotic service in the conception,,Winner
+1962,HONORARY AWARD,Fred L. Metzler for his dedication and outstanding service to the Academy of Motion Picture Arts and Sciences.,,Winner
+1962,HONORARY AWARD,Jerome Robbins for his brilliant achievements in the art of choreography on film.,,Winner
 1962,IRVING G. THALBERG MEMORIAL AWARD,Stanley Kramer,,Winner
 1962,ACTOR IN A SUPPORTING ROLE,Montgomery Clift,"""Judgment at Nuremberg""",nominee
 1962,ACTOR IN A SUPPORTING ROLE,Peter Falk,"""Pocketful of Miracles""",nominee
@@ -49308,6 +49394,8 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1961,WRITING (Story and Screenplay--written directly for the screen),"Billy Wilder, I. A. L. Diamond","""The Apartment""",Winner
 1961,JEAN HERSHOLT HUMANITARIAN AWARD,Sol Lesser,,Winner
 1961,HONORARY AWARD,Gary Cooper for his many memorable screen performances and the international recognition he,,Winner
+1961,HONORARY AWARD,Stan Laurel for his creative pioneering in the field of cinema comedy.,,Winner
+1961,HONORARY AWARD,Hayley Mills for Pollyanna,,Winner
 1961,ACTOR IN A SUPPORTING ROLE,Peter Falk,"""Murder, Inc.""",nominee
 1961,ACTOR IN A SUPPORTING ROLE,Jack Kruschen,"""The Apartment""",nominee
 1961,ACTOR IN A SUPPORTING ROLE,Sal Mineo,"""Exodus""",nominee
@@ -49428,6 +49516,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1960,WRITING (Story and Screenplay--written directly for the screen),"Story by Russell Rouse, Clarence Greene;  Screenplay by Stanley Shapiro, Maurice Richlin","""Pillow Talk""",Winner
 1960,JEAN HERSHOLT HUMANITARIAN AWARD,Bob Hope,,Winner
 1960,HONORARY AWARD,Lee De Forest for his pioneering inventions which brought sound to the motion picture.,,Winner
+1960,HONORARY AWARD,Buster Keaton for his unique talents which brought immortal comedies to the screen.,,Winner
 1960,ACTOR IN A SUPPORTING ROLE,Arthur O'Connell,"""Anatomy of a Murder""",nominee
 1960,ACTOR IN A SUPPORTING ROLE,George C. Scott,"""Anatomy of a Murder""",nominee
 1960,ACTOR IN A SUPPORTING ROLE,Robert Vaughn,"""The Young Philadelphians""",nominee
@@ -49543,6 +49632,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1959,WRITING (Screenplay--based on material from another medium),Alan Jay Lerner,"""Gigi""",Winner
 1959,WRITING (Story and Screenplay--written directly for the screen),"Nedrick Young, Harold Jacob Smith","""The Defiant Ones""",Winner
 1959,HONORARY AWARD,Maurice Chevalier for his contributions to the world of entertainment for more than half a century.,,Winner
+1959,HONORARY AWARD,Maurice Chevalier for his contributions to the world of entertainment for more than half a century.,,Winner
 1959,IRVING G. THALBERG MEMORIAL AWARD,Jack L. Warner,,Winner
 1959,ACTOR IN A SUPPORTING ROLE,Theodore Bikel,"""The Defiant Ones""",nominee
 1959,ACTOR IN A SUPPORTING ROLE,Lee J. Cobb,"""The Brothers Karamazov""",nominee
@@ -49652,6 +49742,9 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1958,WRITING (Story and Screenplay--written directly for the screen),George Wells,"""Designing Woman""",Winner
 1958,JEAN HERSHOLT HUMANITARIAN AWARD,Samuel Goldwyn,,Winner
 1958,HONORARY AWARD,Charles Brackett for outstanding service to the Academy.,,Winner
+1958,HONORARY AWARD,B.B. Kahane for distinguished service to the motion picture industry.,,Winner
+1958,HONORARY AWARD,"Gilbert M. (""Broncho Billy"") Anderson",,Winner
+1958,HONORARY AWARD,The Society of Motion Picture and Television Engineers for their contributions to the advancement of the motion picture industry.,,Winner
 1958,ACTOR IN A SUPPORTING ROLE,Vittorio De Sica,"""A Farewell to Arms""",nominee
 1958,ACTOR IN A SUPPORTING ROLE,Sessue Hayakawa,"""The Bridge on the River Kwai""",nominee
 1958,ACTOR IN A SUPPORTING ROLE,Arthur Kennedy,"""Peyton Place""",nominee
@@ -49755,6 +49848,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1957,WRITING (Screenplay--Adapted),"James Poe, John Farrow, S.J. Perelman","""Around the World in 80 Days""",Winner
 1957,WRITING (Screenplay--Original),Albert Lamorisse,"""The Red Balloon""",Winner
 1957,JEAN HERSHOLT HUMANITARIAN AWARD,Y. Frank Freeman,,Winner
+1957,HONORARY AWARD,Eddie Cantor for distinguished service to the film industry.,,Winner
 1957,HONORARY AWARD,Eddie Cantor for distinguished service to the film industry.,,Winner
 1957,IRVING G. THALBERG MEMORIAL AWARD,Buddy Adler,,Winner
 1957,ACTOR IN A SUPPORTING ROLE,Don Murray,"""Bus Stop""",nominee
@@ -50005,6 +50099,11 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1955,WRITING (Story and Screenplay),Budd Schulberg,"""On the Waterfront""",Winner
 1955,HONORARY FOREIGN LANGUAGE FILM AWARD,Gate of Hell,Best Foreign Language Film first released in the United States during 1954.,Winner
 1955,HONORARY AWARD,Bausch & Lomb Optical Company for their contributions to the advancement of the motion picture industry.,,Winner
+1955,HONORARY AWARD,Kemp R. Niver for the development of the Renovare Process which has made possible the restoration of the Library of Congress Paper Film Collection.,,Winner
+1955,HONORARY AWARD,Greta Garbo for her unforgettable screen performances.,,Winner
+1955,HONORARY AWARD,Danny Kaye for his unique talents,,Winner
+1955,HONORARY AWARD,Jon Whiteley for his outstanding juvenile performance in The Little Kidnappers.,,Winner
+1955,HONORARY AWARD,Vincent Winter for his outstanding juvenile performance in The Little Kidnappers.,,Winner
 1955,ACTOR IN A SUPPORTING ROLE,Lee J. Cobb,"""On the Waterfront""",nominee
 1955,ACTOR IN A SUPPORTING ROLE,Karl Malden,"""On the Waterfront""",nominee
 1955,ACTOR IN A SUPPORTING ROLE,Rod Steiger,"""On the Waterfront""",nominee
@@ -50126,6 +50225,13 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1954,WRITING (Screenplay),Daniel Taradash,"""From Here to Eternity""",Winner
 1954,WRITING (Story and Screenplay),"Charles Brackett, Walter Reisch, Richard Breen","""Titanic""",Winner
 1954,HONORARY AWARD,"Pete Smith for his witty and pungent observations on the American scene in his series of ""Pete Smith Specialties.""",,Winner
+1954,HONORARY AWARD,20th Century-Fox Film Corporation in recognition of their imagination,,Winner
+1954,HONORARY AWARD,Joseph I. Breen for his conscientious,,Winner
+1954,HONORARY AWARD,Bell and Howell Company for their pioneering and basic achievements in the advancement of the motion picture industry.,,Winner
+1954,HONORARY AWARD,"Pete Smith for his witty and pungent observations on the American scene in his series of ""Pete Smith Specialties.""",,Winner
+1954,HONORARY AWARD,20th Century-Fox Film Corporation in recognition of their imagination,,Winner
+1954,HONORARY AWARD,Joseph I. Breen for his conscientious,,Winner
+1954,HONORARY AWARD,Bell and Howell Company for their pioneering and basic achievements in the advancement of the motion picture industry.,,Winner
 1954,IRVING G. THALBERG MEMORIAL AWARD,George Stevens,,Winner
 1954,ACTOR IN A SUPPORTING ROLE,Eddie Albert,"""Roman Holiday""",nominee
 1954,ACTOR IN A SUPPORTING ROLE,Brandon De Wilde,"""Shane""",nominee
@@ -50253,6 +50359,15 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1953,WRITING (Story and Screenplay),T. E. B. Clarke,"""The Lavender Hill Mob""",Winner
 1953,HONORARY FOREIGN LANGUAGE FILM AWARD,Forbidden Games,Best Foreign Language Film first released in the United States during 1952.,Winner
 1953,HONORARY AWARD,George Alfred Mitchell for the design and development of the camera which bears his name and for his continued and dominant presence in the field of cinematography.,,Winner
+1953,HONORARY AWARD,Joseph M. Schenck for long and distinguished service to the motion picture industry.,,Winner
+1953,HONORARY AWARD,Merian C. Cooper for his many innovations and contributions to the art of motion pictures.,,Winner
+1953,HONORARY AWARD,Harold Lloyd,,Winner
+1953,HONORARY AWARD,Bob Hope for his contribution to the laughter of the world,,Winner
+1953,HONORARY AWARD,George Alfred Mitchell for the design and development of the camera which bears his name and for his continued and dominant presence in the field of cinematography.,,Winner
+1953,HONORARY AWARD,Joseph M. Schenck for long and distinguished service to the motion picture industry.,,Winner
+1953,HONORARY AWARD,Merian C. Cooper for his many innovations and contributions to the art of motion pictures.,,Winner
+1953,HONORARY AWARD,Harold Lloyd,,Winner
+1953,HONORARY AWARD,Bob Hope for his contribution to the laughter of the world,,Winner
 1953,IRVING G. THALBERG MEMORIAL AWARD,Cecil B. DeMille,,Winner
 1953,ACTOR IN A SUPPORTING ROLE,Richard Burton,"""My Cousin Rachel""",nominee
 1953,ACTOR IN A SUPPORTING ROLE,Arthur Hunnicutt,"""The Big Sky""",nominee
@@ -50378,6 +50493,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1952,WRITING (Story and Screenplay),Alan Jay Lerner,"""An American in Paris""",Winner
 1952,HONORARY FOREIGN LANGUAGE FILM AWARD,Rashomon,voted by the Board of Governors as the most outstanding foreign language film released in the United States during 1951.,Winner
 1952,HONORARY AWARD,Gene Kelly in appreciation of his versatility as an actor,,Winner
+1952,HONORARY AWARD,Gene Kelly in appreciation of his versatility as an actor,,Winner
 1952,IRVING G. THALBERG MEMORIAL AWARD,Arthur Freed,,Winner
 1952,ACTOR IN A SUPPORTING ROLE,Leo Genn,"""Quo Vadis""",nominee
 1952,ACTOR IN A SUPPORTING ROLE,Kevin McCarthy,"""Death of a Salesman""",nominee
@@ -50496,6 +50612,9 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1951,WRITING (Story and Screenplay),"Charles Brackett, Billy Wilder, D. M. Marshman, Jr.","""Sunset Blvd.""",Winner
 1951,HONORARY FOREIGN LANGUAGE FILM AWARD,The Walls of Malapaga,voted by the Board of Governors as the most outstanding foreign language film released in the United States in 1950.,Winner
 1951,HONORARY AWARD,George Murphy for his services in interpreting the film industry to the country at large.,,Winner
+1951,HONORARY AWARD,Louis B. Mayer for distinguished service to the motion picture industry.,,Winner
+1951,HONORARY AWARD,George Murphy for his services in interpreting the film industry to the country at large.,,Winner
+1951,HONORARY AWARD,Louis B. Mayer for distinguished service to the motion picture industry.,,Winner
 1951,IRVING G. THALBERG MEMORIAL AWARD,Darryl F. Zanuck,,Winner
 1951,ACTOR IN A SUPPORTING ROLE,Jeff Chandler,"""Broken Arrow""",nominee
 1951,ACTOR IN A SUPPORTING ROLE,Edmund Gwenn,"""Mister 880""",nominee
@@ -50605,8 +50724,12 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1950,WRITING (Motion Picture Story),Douglas Morrow,"""The Stratton Story""",Winner
 1950,WRITING (Screenplay),Joseph L. Mankiewicz,"""A Letter to Three Wives""",Winner
 1950,WRITING (Story and Screenplay),Robert Pirosh,"""Battleground""",Winner
-1950,SPECIAL FOREIGN LANGUAGE FILM AWARD,The Bicycle Thief - voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1949.,,Winner
+1950,SPECIAL FOREIGN LANGUAGE FILM AWARD,The Bicycle Thief,voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1949.,Winner
+1950,SPECIAL FOREIGN LANGUAGE FILM AWARD,The Bicycle Thief,voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1949.,Winner
 1950,SPECIAL AWARD,Bobby Driscoll,,Winner
+1950,SPECIAL AWARD,Fred Astaire for his unique artistry and his contributions to the technique of musical pictures.,,Winner
+1950,SPECIAL AWARD,Cecil B. DeMille,,Winner
+1950,SPECIAL AWARD,Jean Hersholt,,Winner
 1950,ACTOR IN A SUPPORTING ROLE,John Ireland,"""All the King's Men""",nominee
 1950,ACTOR IN A SUPPORTING ROLE,Arthur Kennedy,"""Champion""",nominee
 1950,ACTOR IN A SUPPORTING ROLE,Ralph Richardson,"""The Heiress""",nominee
@@ -50712,8 +50835,19 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1949,SPECIAL EFFECTS,"Special Visual Effects by Paul Eagler, J. McMillan Johnson, Russell Shearman, Clarence Slifer; Special Audible Effects by Charles Freeman, James G. Stewart","""Portrait of Jennie""",Winner
 1949,WRITING (Motion Picture Story),"Richard Schweizer, David Wechsler","""The Search""",Winner
 1949,WRITING (Screenplay),John Huston,"""The Treasure of the Sierra Madre""",Winner
-1949,SPECIAL FOREIGN LANGUAGE FILM AWARD,Monsieur Vincent - voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1948.,,Winner
+1949,SPECIAL FOREIGN LANGUAGE FILM AWARD,Monsieur Vincent,voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1948.,Winner
+1949,SPECIAL FOREIGN LANGUAGE FILM AWARD,Monsieur Vincent,voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1948.,Winner
 1949,SPECIAL AWARD,Ivan Jandl,,Winner
+1949,SPECIAL AWARD,Sid Grauman,,Winner
+1949,SPECIAL AWARD,Adolph Zukor,,Winner
+1949,SPECIAL AWARD,Walter Wanger for distinguished service to the industry in adding to its moral stature in the world community by his production of the picture Joan of Arc.,,Winner
+1949,SPECIAL AWARD,Jean Hersholt,in recognition of his service to the Academy during four terms as president.,Winner
+1949,SPECIAL FOREIGN LANGUAGE FILM AWARD,Monsieur Vincent,voted by the Academy Board of Governors as the most outstanding foreign language film released in the United States during 1948.,Winner
+1949,SPECIAL AWARD,Ivan Jandl,,Winner
+1949,SPECIAL AWARD,Sid Grauman,,Winner
+1949,SPECIAL AWARD,Adolph Zukor,,Winner
+1949,SPECIAL AWARD,Walter Wanger for distinguished service to the industry in adding to its moral stature in the world community by his production of the picture Joan of Arc.,,Winner
+1949,SPECIAL AWARD,Jean Hersholt,in recognition of his service to the Academy during four terms as president.,Winner
 1949,IRVING G. THALBERG MEMORIAL AWARD,Jerry Wald,,Winner
 1949,ACTOR IN A SUPPORTING ROLE,Charles Bickford,"""Johnny Belinda""",nominee
 1949,ACTOR IN A SUPPORTING ROLE,José Ferrer,"""Joan of Arc""",nominee
@@ -50817,6 +50951,9 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1948,WRITING (Original Screenplay),Sidney Sheldon,"""The Bachelor and the Bobby-Soxer""",Winner
 1948,WRITING (Screenplay),George Seaton,"""Miracle on 34th Street""",Winner
 1948,SPECIAL AWARD,James Baskett for his able and heart-warming characterization of Uncle Remus,,Winner
+1948,SPECIAL AWARD,Bill and Coo,,Winner
+1948,SPECIAL AWARD,Shoe-Shine,the high quality of this motion picture,Winner
+1948,SPECIAL AWARD,Colonel William N. Selig,,Winner
 1948,ACTOR IN A SUPPORTING ROLE,Charles Bickford,"""The Farmer's Daughter""",nominee
 1948,ACTOR IN A SUPPORTING ROLE,Thomas Gomez,"""Ride the Pink Horse""",nominee
 1948,ACTOR IN A SUPPORTING ROLE,Robert Ryan,"""Crossfire""",nominee
@@ -50918,6 +51055,13 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1947,WRITING (Original Screenplay),"Muriel Box, Sydney Box","""The Seventh Veil""",Winner
 1947,WRITING (Screenplay),Robert E. Sherwood,"""The Best Years of Our Lives""",Winner
 1947,SPECIAL AWARD,Laurence Olivier for his outstanding achievement as actor,,Winner
+1947,SPECIAL AWARD,Harold Russell for bringing hope and courage to his fellow veterans through his appearance in The Best Years of Our Lives.,,Winner
+1947,SPECIAL AWARD,Ernst Lubitsch for his distinguished contributions to the art of the motion picture.,,Winner
+1947,SPECIAL AWARD,Claude Jarman,,Winner
+1947,SPECIAL AWARD,Laurence Olivier for his outstanding achievement as actor,,Winner
+1947,SPECIAL AWARD,Harold Russell for bringing hope and courage to his fellow veterans through his appearance in The Best Years of Our Lives.,,Winner
+1947,SPECIAL AWARD,Ernst Lubitsch for his distinguished contributions to the art of the motion picture.,,Winner
+1947,SPECIAL AWARD,Claude Jarman,,Winner
 1947,IRVING G. THALBERG MEMORIAL AWARD,Samuel Goldwyn,,Winner
 1947,ACTOR IN A SUPPORTING ROLE,Charles Coburn,"""The Green Years""",nominee
 1947,ACTOR IN A SUPPORTING ROLE,William Demarest,"""The Jolson Story""",nominee
@@ -51020,6 +51164,9 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1946,WRITING (Original Screenplay),Richard Schweizer,"""Marie-Louise""",Winner
 1946,WRITING (Screenplay),"Charles Brackett, Billy Wilder","""The Lost Weekend""",Winner
 1946,SPECIAL AWARD,Walter Wanger for his six years service as President of the Academy of Motion Picture Arts and Sciences.,,Winner
+1946,SPECIAL AWARD,Peggy Ann Garner,,Winner
+1946,SPECIAL AWARD,The House I Live In,,Winner
+1946,SPECIAL AWARD,Republic Studio,,Winner
 1946,ACTOR IN A SUPPORTING ROLE,Michael Chekhov,"""Spellbound""",nominee
 1946,ACTOR IN A SUPPORTING ROLE,John Dall,"""The Corn Is Green""",nominee
 1946,ACTOR IN A SUPPORTING ROLE,Robert Mitchum,"""G. I. Joe""",nominee
@@ -51177,6 +51324,9 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1945,WRITING (Original Screenplay),Lamar Trotti,"""Wilson""",Winner
 1945,WRITING (Screenplay),"Frank Butler, Frank Cavett","""Going My Way""",Winner
 1945,SPECIAL AWARD,Margaret O'Brien,,Winner
+1945,SPECIAL AWARD,Bob Hope for his many services to the Academy.,,Winner
+1945,SPECIAL AWARD,Margaret O'Brien,,Winner
+1945,SPECIAL AWARD,Bob Hope for his many services to the Academy.,,Winner
 1945,IRVING G. THALBERG MEMORIAL AWARD,Darryl F. Zanuck,,Winner
 1945,ACTOR IN A SUPPORTING ROLE,Hume Cronyn,"""The Seventh Cross""",nominee
 1945,ACTOR IN A SUPPORTING ROLE,Claude Rains,"""Mr. Skeffington""",nominee
@@ -51344,6 +51494,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1944,WRITING (Original Motion Picture Story),William Saroyan,"""The Human Comedy""",Winner
 1944,WRITING (Original Screenplay),Norman Krasna,"""Princess O'Rourke""",Winner
 1944,WRITING (Screenplay),"Julius J. Epstein, Philip G. Epstein, Howard Koch","""Casablanca""",Winner
+1944,SPECIAL AWARD,George Pal for the development of novel methods and techniques in the production of short subjects known as Puppetoons.,,Winner
 1944,SPECIAL AWARD,George Pal for the development of novel methods and techniques in the production of short subjects known as Puppetoons.,,Winner
 1944,IRVING G. THALBERG MEMORIAL AWARD,Hal B. Wallis,,Winner
 1944,ACTOR IN A SUPPORTING ROLE,Charles Bickford,"""The Song of Bernadette""",nominee
@@ -51526,6 +51677,11 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1943,WRITING (Original Screenplay),"Ring Lardner, Jr., Michael Kanin","""Woman of the Year""",Winner
 1943,WRITING (Screenplay),"Arthur Wimperis, George Froeschel, James Hilton, Claudine West","""Mrs. Miniver""",Winner
 1943,SPECIAL AWARD,Charles Boyer for his progressive cultural achievement in establishing the French Research Foundation in Los Angeles as a source of reference for the Hollywood Motion Picture Industry.,,Winner
+1943,SPECIAL AWARD,Noel Coward for his outstanding production achievement in In Which We Serve.,,Winner
+1943,SPECIAL AWARD,"Metro-Goldwyn-Mayer for its achievement in representing the American Way of Life in the production of the ""Andy Hardy"" series of films.",,Winner
+1943,SPECIAL AWARD,Charles Boyer for his progressive cultural achievement in establishing the French Research Foundation in Los Angeles as a source of reference for the Hollywood Motion Picture Industry.,,Winner
+1943,SPECIAL AWARD,Noel Coward for his outstanding production achievement in In Which We Serve.,,Winner
+1943,SPECIAL AWARD,"Metro-Goldwyn-Mayer for its achievement in representing the American Way of Life in the production of the ""Andy Hardy"" series of films.",,Winner
 1943,IRVING G. THALBERG MEMORIAL AWARD,Sidney Franklin,,Winner
 1943,ACTOR IN A SUPPORTING ROLE,William Bendix,"""Wake Island""",nominee
 1943,ACTOR IN A SUPPORTING ROLE,Walter Huston,"""Yankee Doodle Dandy""",nominee
@@ -51707,6 +51863,13 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1942,WRITING (Original Story),Harry Segall,"""Here Comes Mr. Jordan""",Winner
 1942,WRITING (Screenplay),"Sidney Buchman, Seton I. Miller","""Here Comes Mr. Jordan""",Winner
 1942,SPECIAL AWARD,Rey Scott for his extraordinary achievement in producing Kukan,,Winner
+1942,SPECIAL AWARD,The British Ministry of Information for its vivid and dramatic presentation of the heroism of the RAF in the documentary film,,Winner
+1942,SPECIAL AWARD,Leopold Stokowski and his associates for their unique achievement in the creation of a new form of visualized music in Walt Disney's production,,Winner
+1942,SPECIAL AWARD,Walt Disney,,Winner
+1942,SPECIAL AWARD,Rey Scott for his extraordinary achievement in producing Kukan,,Winner
+1942,SPECIAL AWARD,The British Ministry of Information for its vivid and dramatic presentation of the heroism of the RAF in the documentary film,,Winner
+1942,SPECIAL AWARD,Leopold Stokowski and his associates for their unique achievement in the creation of a new form of visualized music in Walt Disney's production,,Winner
+1942,SPECIAL AWARD,Walt Disney,,Winner
 1942,IRVING G. THALBERG MEMORIAL AWARD,Walt Disney,,Winner
 1942,ACTOR IN A SUPPORTING ROLE,Walter Brennan,"""Sergeant York""",nominee
 1942,ACTOR IN A SUPPORTING ROLE,Charles Coburn,"""The Devil and Miss Jones""",nominee
@@ -51885,6 +52048,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1941,WRITING (Original Story),"Benjamin Glazer, John S. Toldy","""Arise, My Love""",Winner
 1941,WRITING (Screenplay),Donald Ogden Stewart,"""The Philadelphia Story""",Winner
 1941,SPECIAL AWARD,Bob Hope,,Winner
+1941,SPECIAL AWARD,Colonel Nathan Levinson for his outstanding service to the industry and the Army during the past nine years,,Winner
 1941,ACTOR IN A SUPPORTING ROLE,Albert Basserman,"""Foreign Correspondent""",nominee
 1941,ACTOR IN A SUPPORTING ROLE,William Gargan,"""They Knew What They Wanted""",nominee
 1941,ACTOR IN A SUPPORTING ROLE,Jack Oakie,"""The Great Dictator""",nominee
@@ -52040,7 +52204,16 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1940,SPECIAL EFFECTS,"Fred Sersen, E. H. Hansen","""The Rains Came""",Winner
 1940,WRITING (Original Story),Lewis R. Foster,"""Mr. Smith Goes to Washington""",Winner
 1940,WRITING (Screenplay),Sidney Howard,"""Gone with the Wind""",Winner
-1940,SPECIAL AWARD,Douglas Fairbanks (Commemorative Award) - recognizing the unique and outstanding contribution of Douglas Fairbanks,,Winner
+1940,SPECIAL AWARD,Douglas Fairbanks (Commemorative Award),recognizing the unique and outstanding contribution of Douglas Fairbanks,Winner
+1940,SPECIAL AWARD,The Motion Picture Relief Fund,acknowledging the outstanding services to the industry during the past year of the Motion Picture Relief Fund and its progressive leadership.  Presented to Jean Hersholt,Winner
+1940,SPECIAL AWARD,Judy Garland for her outstanding performance as a screen juvenile during the past year.,,Winner
+1940,SPECIAL AWARD,William Cameron Menzies for outstanding achievement in the use of color for the enhancement of dramatic mood in the production of Gone with the Wind.,,Winner
+1940,SPECIAL AWARD,the Technicolor Company for its contributions in successfully bringing three-color feature production to the screen.,,Winner
+1940,SPECIAL AWARD,Douglas Fairbanks (Commemorative Award),recognizing the unique and outstanding contribution of Douglas Fairbanks,Winner
+1940,SPECIAL AWARD,The Motion Picture Relief Fund,acknowledging the outstanding services to the industry during the past year of the Motion Picture Relief Fund and its progressive leadership.  Presented to Jean Hersholt,Winner
+1940,SPECIAL AWARD,Judy Garland for her outstanding performance as a screen juvenile during the past year.,,Winner
+1940,SPECIAL AWARD,William Cameron Menzies for outstanding achievement in the use of color for the enhancement of dramatic mood in the production of Gone with the Wind.,,Winner
+1940,SPECIAL AWARD,the Technicolor Company for its contributions in successfully bringing three-color feature production to the screen.,,Winner
 1940,IRVING G. THALBERG MEMORIAL AWARD,David O. Selznick,,Winner
 1940,ACTOR IN A SUPPORTING ROLE,Brian Aherne,"""Juarez""",nominee
 1940,ACTOR IN A SUPPORTING ROLE,Harry Carey,"""Mr. Smith Goes to Washington""",nominee
@@ -52178,6 +52351,17 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1939,WRITING (Original Story),"Dore Schary, Eleanore Griffin","""Boys Town""",Winner
 1939,WRITING (Screenplay),"Screenplay and Dialogue by George Bernard Shaw; Adaptation by W. P. Lipscomb, Cecil Lewis, Ian Dalrymple","""Pygmalion""",Winner
 1939,SPECIAL AWARD,Deanna Durbin and Mickey Rooney for their significant contribution in bringing to the screen the spirit and personification of youth,,Winner
+1939,SPECIAL AWARD,Harry M. Warner in recognition of patriotic service in the production of historical short subjects presenting significant episodes in the early struggle of the American people for liberty.,,Winner
+1939,SPECIAL AWARD,Walt Disney for Snow White and the Seven Dwarfs,,Winner
+1939,SPECIAL AWARD,Oliver Marsh and Allen Davey for the color cinematography of the Metro-Goldwyn-Mayer production,,Winner
+1939,SPECIAL AWARD,For outstanding achievement in creating Special Photographic and Sound Effects in the Paramount production,,Winner
+1939,SPECIAL AWARD,J. Arthur Ball for his outstanding contributions to the advancement of color in Motion Picture Photography.,,Winner
+1939,SPECIAL AWARD,Deanna Durbin and Mickey Rooney for their significant contribution in bringing to the screen the spirit and personification of youth,,Winner
+1939,SPECIAL AWARD,Harry M. Warner in recognition of patriotic service in the production of historical short subjects presenting significant episodes in the early struggle of the American people for liberty.,,Winner
+1939,SPECIAL AWARD,Walt Disney for Snow White and the Seven Dwarfs,,Winner
+1939,SPECIAL AWARD,Oliver Marsh and Allen Davey for the color cinematography of the Metro-Goldwyn-Mayer production,,Winner
+1939,SPECIAL AWARD,For outstanding achievement in creating Special Photographic and Sound Effects in the Paramount production,,Winner
+1939,SPECIAL AWARD,J. Arthur Ball for his outstanding contributions to the advancement of color in Motion Picture Photography.,,Winner
 1939,IRVING G. THALBERG MEMORIAL AWARD,Hal B. Wallis,,Winner
 1939,ACTOR IN A SUPPORTING ROLE,John Garfield,"""Four Daughters""",nominee
 1939,ACTOR IN A SUPPORTING ROLE,Gene Lockhart,"""Algiers""",nominee
@@ -52313,6 +52497,13 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1938,WRITING (Original Story),"William A. Wellman, Robert Carson","""A Star Is Born""",Winner
 1938,WRITING (Screenplay),"Norman Reilly Raine, Heinz Herald, Geza Herczeg","""The Life of Emile Zola""",Winner
 1938,SPECIAL AWARD,Mack Sennett,,Winner
+1938,SPECIAL AWARD,Edgar Bergen for his outstanding comedy creation,,Winner
+1938,SPECIAL AWARD,The Museum of Modern Art Film Library for its significant work in collecting films dating from 1895 to the present and for the first time making available to the public the means of studying the historical and aesthetic development of the motion picture as one of the major arts.,,Winner
+1938,SPECIAL AWARD,W. Howard Greene for the color photography of A Star Is Born.  (This Award was recommended by a committee of leading cinematographers after viewing all the color pictures made during the year.),,Winner
+1938,SPECIAL AWARD,Mack Sennett,,Winner
+1938,SPECIAL AWARD,Edgar Bergen for his outstanding comedy creation,,Winner
+1938,SPECIAL AWARD,The Museum of Modern Art Film Library for its significant work in collecting films dating from 1895 to the present and for the first time making available to the public the means of studying the historical and aesthetic development of the motion picture as one of the major arts.,,Winner
+1938,SPECIAL AWARD,W. Howard Greene for the color photography of A Star Is Born.  (This Award was recommended by a committee of leading cinematographers after viewing all the color pictures made during the year.),,Winner
 1938,IRVING G. THALBERG MEMORIAL AWARD,Darryl F. Zanuck,,Winner
 1938,ACTOR IN A SUPPORTING ROLE,Ralph Bellamy,"""The Awful Truth""",nominee
 1938,ACTOR IN A SUPPORTING ROLE,Thomas Mitchell,"""The Hurricane""",nominee
@@ -52432,7 +52623,8 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1937,SOUND RECORDING,"Metro-Goldwyn-Mayer Studio Sound Department, Douglas Shearer, Sound Director","""San Francisco""",Winner
 1937,WRITING (Original Story),"Pierre Collings, Sheridan Gibney","""The Story of Louis Pasteur""",Winner
 1937,WRITING (Screenplay),"Pierre Collings, Sheridan Gibney","""The Story of Louis Pasteur""",Winner
-1937,SPECIAL AWARD,The March of Time for its significance to motion pictures and for having revolutionized one of the most important branches of the industry - the newsreel.,,Winner
+1937,SPECIAL AWARD,The March of Time for its significance to motion pictures and for having revolutionized one of the most important branches of the industry,the newsreel.,Winner
+1937,SPECIAL AWARD,W. Howard Greene and Harold Rosson for the color cinematography of the Selznick International Production,,Winner
 1937,ACTOR IN A SUPPORTING ROLE,Mischa Auer,"""My Man Godfrey""",nominee
 1937,ACTOR IN A SUPPORTING ROLE,Stuart Erwin,"""Pigskin Parade""",nominee
 1937,ACTOR IN A SUPPORTING ROLE,Basil Rathbone,"""Romeo and Juliet""",nominee
@@ -52904,6 +53096,7 @@ Roy Scheider - ""The French Connection""",Roy Scheider,"""The French Connection"
 1928,WRITING (Original Story),Ben Hecht,"""Underworld""",Winner
 1928,WRITING (Title Writing),Joseph Farnham,,Winner
 1928,SPECIAL AWARD,Warner Bros.,,Winner
+1928,SPECIAL AWARD,Charles Chaplin,,Winner
 1928,ACTRESS,Louise Dresser,"""A Ship Comes In""",nominee
 1928,ACTRESS,Gloria Swanson,"""Sadie Thompson""",nominee
 1928,ART DIRECTION,Rochus Gliese,"""Sunrise""",nominee

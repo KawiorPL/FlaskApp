@@ -123,6 +123,7 @@ prawiefinal = pd.concat([Honor,pozamianie], ignore_index=True)
 final = fu.usuwanie_dodatkowych_slow2(prawiefinal)
 
 
+final = final.dropna(subset=['aktor'])
 
 
 final.to_csv("CleanData.csv", index=False)

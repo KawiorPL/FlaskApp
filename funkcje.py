@@ -70,7 +70,6 @@ def znajdz_roznice(lista1, lista2):
     return lista3
 
 
-
 def extract_winner(html_file_path, year):
 
     with open(html_file_path, 'r', encoding='utf-8') as f:
@@ -79,22 +78,50 @@ def extract_winner(html_file_path, year):
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
+    other=[]
+    cat=[]
+
     listaHo=['HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD']
     winners = []
+
     for category_section in soup.find_all('div', class_='category-section'):
         category = category_section.find('h2').text.strip()
 
         if category in listaHo:
-            winner_element = category_section.find('div', class_='winner')
-
-            if winner_element:
-                winner_paragraph = winner_element.find('p')
-
-                if winner_paragraph:
-                    winner = winner_paragraph.text.strip()
+            for nominee_element in category_section.find_all('div', class_='winner'):
+                nominee_paragraph = nominee_element.find('p')
 
 
-                    winners.append({'YEAR': year, 'category': category, 'aktor': winner, 'film': np.nan, 'type': 'Winner'})
+                if nominee_paragraph:
+                    nominee = nominee_paragraph.text.strip()
+                    other.append(nominee)
+                    cat.append(category)
+
+
+            for y,category in zip(other,cat):
+
+                try:
+                    parts = y.split(' - ')
+                    if len(parts) >= 2:
+                        aktor = parts[0].strip()
+                        film = ' - '.join(parts[1:]).strip()
+
+                    elif len(parts) == 2:
+                        aktor = parts[0].strip()
+                        film = parts[1].strip()
+
+                    else:
+                        aktor = parts[0].strip()
+                        film = np.nan
+
+                except ValueError:
+                            aktor = y
+                            film = np.nan
+
+                winners.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'Winner'})
+
+
+
 
         else:
 
@@ -117,6 +144,7 @@ def extract_winner(html_file_path, year):
 
     df = pd.DataFrame(winners)
     return df
+
 
 
 def extract_nominee(html_file_path, year):
