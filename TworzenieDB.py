@@ -1,6 +1,9 @@
 import csv
 import sqlite3
 import os
+import time
+
+from socketio import Client
 
 csv_file = 'CleanData.csv'
 db_file = 'DbOksary.db'
@@ -106,6 +109,17 @@ def populate_database(db_file, csv_file):
 
         conn.commit()
     conn.close()
+
+def notify_db_created():
+    sio = Client()
+    try:
+        sio.connect('http://localhost:5000')  # Zmień adres, jeśli Twój serwer działa na innym porcie
+        sio.emit('db_created')
+        sio.disconnect()
+        print("Wysłano powiadomienie o utworzeniu bazy danych.")
+    except Exception as e:
+        print(f"Błąd podczas łączenia z SocketIO: {e}")
+
 
 if __name__ == "__main__":
     create_database(db_file)

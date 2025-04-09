@@ -16,10 +16,13 @@
         <h2>Wyjście Skryptu:</h2>
     </div>
     <hr><br>
-    {% if dash_url %}
+    {% if db_exist %}
             <iframe src="{{ dash_url }}" style="width:100%; height:600px; border:0;"></iframe>
         {% else %}
             <p>Aplikacja wizualizacji danych jest niedostępna.</p>
+            <hr>
+            <p>Kliknij Uruchom i poczekaj 20 sekund</p>
+            <button onclick="uruchomTworzenie_Db()">Uruchom</button>
         {% endif %}
 
 

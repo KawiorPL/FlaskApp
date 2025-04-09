@@ -1,6 +1,10 @@
 import os
 from bs4 import BeautifulSoup
 
+
+
+
+
 folder_sciezka='pliki'
 
 if not os.path.isdir(folder_sciezka):

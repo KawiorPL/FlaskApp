@@ -590,12 +590,14 @@ def usuwanie_dodatkowych_slow2(data, kolumna='aktor'):
 
 def special_award(df):
 
+
+
     lista2 = []
     listaHo=['HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD']
 
     listakto=df.loc[~df['category'].isin(listaHo)]['aktor'].unique()
 
-    warunek= df['category'].isin(listaHo)
+    warunek= df['film'].isna()
 
     df.loc[warunek, 'film'] = df.loc[warunek, 'aktor']
 
@@ -622,6 +624,11 @@ def special_award(df):
         else:
             return text
 
+    def remove_producer(text):
+        if ', Producer' in text:
+            text=text.replace(', Producer',"")
+        return text
+
 
     # Załóżmy, że 'lista2' jest już zdefiniowana i zawiera imiona i nazwiska
     maska = df['aktor'].apply(lambda aktor: any(imie_nazwisko in aktor for imie_nazwisko in lista2))
@@ -634,11 +641,12 @@ def special_award(df):
         df['aktor'] = df['aktor'].str.split(znak, n=1, expand=True)[0]
 
 
-
     df['aktor'] = df['aktor'].apply(extract_between_to_comma)
+    df['aktor'] = df['aktor'].apply(remove_producer)
 
-    return df
+    final = df.drop_duplicates()
 
+    return final
 
 
 

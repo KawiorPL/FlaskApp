@@ -9,6 +9,15 @@ import plotly.express as px
 import sqlite3
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
+from dash import Dash, html, dcc, dash_table, callback, Output, Input
+import dash_bootstrap_components as dbc
+import pandas as pd
+import plotly.express as px
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
+
+
+
 # Flask app initialization
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'twoja_tajna_klucz'
@@ -99,10 +108,14 @@ def handle_uruchom_Chart():
         thread.start()
         active_threads[session_id] = thread
 
+@socketio.on('db_created')
+def handle_db_created():
+    print("Otrzymano sygnał o utworzeniu bazy danych.")
+    emit('dash_needs_refresh_baza', {}, broadcast=True)
 
-
-
-
+# DASH APP EMBEDDING FOR /baza_danych
+DATABASE_PATH = r"DbOksary.db"
+dash_app = None
 
 
 @app.route('/')
@@ -111,19 +124,26 @@ def index():
 
 @app.route('/baza_danych')
 def baza_danych_page():
-    dash_url = '/baza_danych/'  # Ensure this matches the `url_base_pathname` of your Dash app
-    return render_template('bazadanych.html', dash_url=dash_url)
+    db_exist = os.path.exists(DATABASE_PATH)
+    dash_url = '/baza_danych/'
+    return render_template('bazadanych.html', dash_url=dash_url, db_exist=db_exist)
+
+
+
+
 
 @app.route('/wizualizacja')
 def wizualizacja_page():
     dash_url = '/wizualizacja/'
+    dash_urls = '/wizualizacja2/'
     image_path = os.path.join(app.static_folder, 'charts', 'analizaAktorow.png')
     image_exists = os.path.exists(image_path)
 
     image_path2 = os.path.join('static', 'charts', 'country.html')
     image_exists2 = os.path.exists(image_path2)
 
-    return render_template('wizualizacja.html', dash_url=dash_url,image_exists=image_exists,image_exists2=image_exists2, htmlPath=image_path2)
+    return render_template('wizualizacja.html', dash_url=dash_url,image_exists=image_exists,image_exists2=image_exists2, htmlPath=image_path2, dash_urls=dash_urls)
+
 
 
 
@@ -141,71 +161,84 @@ def dokumentacja_page():
 
 
 
-
-
-
-
-# DASH APP EMBEDDING FOR /baza_danych
-DATABASE_PATH = r"DbOksary.db"
-
 def fetch_data():
-    """Fetches data based on the specific SQL query."""
     conn = sqlite3.connect(DATABASE_PATH)
-    query = """SELECT tn.nazwa_typu AS Type, a.imie_nazwisko AS Actor, n.rok AS Year, n.film AS Film
+    query = """SELECT a.imie_nazwisko AS Actor, n.rok AS Year, n.film AS Film, tn.nazwa_typu AS Type, k.nazwa_kategorii AS Category
                FROM nagrody n
                JOIN kategorie k ON k.id_kategorii = n.id_kategorii
                JOIN typy_nagrod tn ON tn.id_typu = n.id_typu
                JOIN aktorzy a ON a.id_aktora = n.id_aktora"""
-    df = pd.read_sql_query(query, conn)
-    conn.close()
+    try:
+        df = pd.read_sql_query(query, conn)
+    except pd.errors.DatabaseError as e:
+        print(f"Error fetching data: {e}")
+        df = pd.DataFrame()
+    finally:
+        conn.close()
     return df
 
-initial_data = fetch_data()
 
-dash_app = Dash(__name__, server=app, url_base_pathname='/baza_danych/')
 
-dash_app.layout = html.Div([
-    html.Div(children='My App with Filters for All Columns', style={'textAlign': 'center', 'color': 'blue', 'fontSize': 20}),
+def create_dash_layout(initial_df):
+    return html.Div([
+        html.Div(children='My App with Filters for All Columns', style={'textAlign': 'center', 'color': 'blue', 'fontSize': 20}),
+        html.Div(className='row', children=[
+            html.Label("Filter by Actor:"),
+            dcc.Input(id='actor-input', type='text', placeholder='Enter Actor', value='', style={'margin': '10px'}),
+            html.Label("Filter by Year:"),
+            dcc.Input(id='year-input', type='number', placeholder='Enter Year', value=None, style={'margin': '10px'}),
+            html.Label("Filter by Film:"),
+            dcc.Input(id='film-input', type='text', placeholder='Enter Film', value='', style={'margin': '10px'}),
+            html.Label("Filter by Type:"),
+            dcc.Input(id='type-input', type='text', placeholder='Enter Type', value='', style={'margin': '10px'}),
+            html.Label("Filter by Category:"),
+            dcc.Input(id='category-input', type='text', placeholder='Enter Category', value='', style={'margin': '10px'}),
+        ], style={'display': 'flex', 'flex-wrap': 'wrap', 'align-items': 'center'}),
+        dash_table.DataTable(
+            id='data-table-baza',
+            columns=[{"name": i, "id": i} for i in initial_df.columns],
+            data=initial_df.to_dict('records'),
+            page_size=10,
+            style_table={'overflowX': 'auto'},
+            filter_action='none',
+            sort_action='native'
+        )
+    ])
 
-    html.Div(className='row', children=[
-        html.Label("Filter by Type:"),
-        dcc.Input(id='type-input', type='text', placeholder='Enter Type', value=None, style={'margin': '10px'}),
-        html.Label("Filter by Actor:"),
-        dcc.Input(id='actor-input', type='text', placeholder='Enter Actor', value=None, style={'margin': '10px'}),
-        html.Label("Filter by Year:"),
-        dcc.Input(id='year-input', type='number', placeholder='Enter Year', value=None, style={'margin': '10px'}),
-        html.Label("Filter by Film:"),
-        dcc.Input(id='film-input', type='text', placeholder='Enter Film', value=None, style={'margin': '10px'}),
-    ]),
+initial_data = None
+db_exists_on_start = os.path.exists(DATABASE_PATH)
+if db_exists_on_start:
+    initial_data = fetch_data()
+    dash_app = Dash(__name__, server=app, url_base_pathname='/baza_danych/')
+    dash_app.layout = create_dash_layout(initial_data)
 
-    dash_table.DataTable(
-        id='data-table-baza',  # Changed ID to be unique
-        columns=[{"name": i, "id": i} for i in initial_data.columns],
-        data=initial_data.to_dict('records'),
-        page_size=10,
-        style_table={'overflowX': 'auto'}
+    @dash_app.callback(
+        Output('data-table-baza', 'data'),
+        [Input('actor-input', 'value'), Input('year-input', 'value'), Input('film-input', 'value'), Input('type-input', 'value'), Input('category-input', 'value')]
     )
-])
-
-@dash_app.callback(
-    Output('data-table-baza', 'data'),  # Updated Output ID
-    [Input('type-input', 'value'),
-     Input('actor-input', 'value'),
-     Input('year-input', 'value'),
-     Input('film-input', 'value')]
-)
-def update_table_baza_danych(type_value, actor_value, year_value, film_value):
-    filtered_data = initial_data
-    if type_value:
-        filtered_data = filtered_data[filtered_data['Type'].str.contains(type_value, case=False, na=False)]
-    if actor_value:
-        filtered_data = filtered_data[filtered_data['Actor'].str.contains(actor_value, case=False, na=False)]
-    if year_value:
-        filtered_data = filtered_data[filtered_data['Year'] == year_value]
-    if film_value:
-        filtered_data = filtered_data[filtered_data['Film'].str.contains(film_value, case=False, na=False)]
-
-    return filtered_data.to_dict('records')
+    def update_table_baza_danych(actor_value, year_value, film_value, type_value, category_value):
+        global initial_data # Access the module-level variable
+        if initial_data is None:
+            return [] # Or handle the case where data hasn't loaded yet
+        filtered_data = initial_data.copy()
+        if actor_value:
+            filtered_data = filtered_data[filtered_data['Actor'].str.contains(actor_value, case=False, na=False)]
+        if year_value:
+            try:
+                year_value = int(year_value)
+                filtered_data = filtered_data[filtered_data['Year'] == year_value]
+            except ValueError:
+                pass
+        if film_value:
+            filtered_data = filtered_data[filtered_data['Film'].str.contains(film_value, case=False, na=False)]
+        if type_value:
+            filtered_data = filtered_data[filtered_data['Type'].str.contains(type_value, case=False, na=False)]
+        if category_value:
+            filtered_data = filtered_data[filtered_data['Category'].str.contains(category_value, case=False, na=False)]
+        return filtered_data.to_dict('records')
+else:
+    dash_app = Dash(__name__, server=app, url_base_pathname='/baza_danych/')
+    dash_app.layout = html.Div("Baza danych nie została jeszcze utworzona.")
 
 
 
@@ -214,6 +247,8 @@ df = pd.read_csv('CleanData.csv')
 
 # Filter data to include only specific categories
 filtered_df = df.loc[df['category'].isin(['ACTOR IN A LEADING ROLE', 'ACTOR', 'ACTRESS IN A LEADING ROLE', 'ACTRESS'])]
+
+dash3_data = df.loc[~df['category'].isin(['FOREIGN LANGUAGE FILM','INTERNATIONAL FEATURE FILM'])]
 
 # Group and count occurrences for each actor and type
 grouped_df = filtered_df.groupby(['aktor', 'type']).size().reset_index(name='count')
@@ -232,7 +267,7 @@ dash_app2 = Dash(
     __name__,
     server=app,
     url_base_pathname='/wizualizacja/',
-    external_stylesheets=external_stylesheets
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 
 
@@ -291,16 +326,119 @@ def update_graph_and_table(col_chosen, min_count):
 
 
 
-mounted_app = DispatcherMiddleware(app.wsgi_app, {
+dash_app3 = Dash(
+    __name__,
+    server=app,
+    url_base_pathname='/wizualizacja2/',
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
+)
+
+unique_categories = dash3_data['category'].unique().tolist()
+
+
+
+dash_app3.layout = dbc.Container([
+    html.Div(className='row', children='Aktorzy i Nagrody Filmowe',
+             style={'textAlign': 'center', 'color': 'blue', 'fontSize': 30, 'margin-bottom': '20px'}),
+    dbc.Row([
+        dbc.Col(md=4, children=[
+            html.Div("Wybierz kategorie:", style={'margin-bottom': '10px'}),
+            dcc.Checklist(
+                id='category-checklist',
+                options=[{'label': cat, 'value': cat} for cat in sorted(unique_categories)],
+                value=[],
+                labelStyle={'display': 'block', 'margin-right': '10px', 'width': '150px'},  # Reduced width
+                style={'margin-bottom': '20px'}
+            ),
+        ]),
+        dbc.Col(md=8, children=[
+            dash_table.DataTable(
+                id='data-table',
+                data=[],
+                page_size=20,
+                style_table={'overflowX': 'auto'},
+                style_cell={'textAlign': 'left'},
+                sort_action='native',
+                filter_action='native',
+                export_format='csv',
+            ),
+            dcc.Graph(id='histo-chart-final', figure={})
+        ]),
+    ])
+], fluid=True)
+
+
+# Add controls to build the interaction
+@dash_app3.callback(
+    [Output('histo-chart-final', 'figure'),
+     Output('data-table', 'data')],
+    Input('category-checklist', 'value'),
+)
+
+
+def update_graph_and_table(selected_categories):
+    if not selected_categories:
+        # If no category is selected, show data for all 'Winners'
+        filtered_df = dash3_data[dash3_data['type'] == 'Winner'].groupby('aktor')[['film']].count().sort_values('film',ascending=False).reset_index().head(20)
+        title = "Liczba otrzymanaych oskarów, w których wystąpili zwycięzcy (Wszystkie Kategorie)"
+    else:
+        # If categories are selected, filter by categories and 'Winner' type
+        filtered_df = dash3_data[
+            (dash3_data['type'] == 'Winner') & (dash3_data['category'].isin(selected_categories))
+            ].groupby('aktor')[['film']].count().sort_values('film', ascending=False).reset_index().head(20)
+        title = f"Liczba filmów, w których wystąpili zwycięzcy (Kategorie: {', '.join(selected_categories)})"
+
+    # Create the horizontal bar chart
+    fig = make_subplots(rows=1, cols=1, subplot_titles=(title,))
+    fig.add_trace(go.Bar(y=filtered_df['aktor'],  # Swapped x and y
+                         x=filtered_df['film'],
+                         marker_color=px.colors.qualitative.Set1,
+                         name="Liczba Filmów",
+                         orientation='h'),
+                  row=1, col=1)
+
+    fig.update_layout(
+        xaxis_title="Liczba Filmów",  # swapped
+        yaxis_title="Aktor",  # swapped
+        showlegend=False,
+        margin=dict(l=20, r=20, t=40, b=20),
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        height=500,
+    )
+
+    # Return the figure and the DataFrame's data for the DataTable
+    return fig, filtered_df.to_dict('records')
+
+
+
+
+
+
+
+
+
+url_map = {
     '/wizualizacja': dash_app2.server,
-    '/baza_danych': dash_app.server
-
-})
-
+    '/wizualizacja2': dash_app3.server,
+}
 
 
+if db_exists_on_start:
+    url_map['/baza_danych'] = dash_app.server
+else:
+    print("Warning: dash_app not initialized, '/baza_danych' route not mounted.")
+
+
+
+mounted_app = DispatcherMiddleware(app.wsgi_app, url_map)
+
+
+
+def uruchom_serwer(app, debug_mode=True):
+    socketio.run(app, debug=debug_mode)
 
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    uruchom_serwer(app, debug_mode=True)

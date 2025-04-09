@@ -42,6 +42,9 @@ function wyswietlWykres() {
 
 function uruchomTworzenie_Db() {
     socket.emit('uruchom_Tworzenie_DB');
+    setTimeout(function() {
+        location.reload();
+    }, 5000);
 }
 
 

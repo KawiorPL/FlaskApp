@@ -114,11 +114,11 @@ pozamianie=fu.zamiana(newdata3,Datazamiana)
 
 
 
-Honor= fu.special_award(df_z_listaHo)
+honorary= fu.special_award(df_z_listaHo)
+honorary.to_csv("honorary.csv", index=False)
 
 
-
-prawiefinal = pd.concat([Honor,pozamianie], ignore_index=True)
+prawiefinal = pd.concat([honorary,pozamianie], ignore_index=True)
 
 final = fu.usuwanie_dodatkowych_slow2(prawiefinal)
 

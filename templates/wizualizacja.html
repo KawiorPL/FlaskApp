@@ -7,6 +7,9 @@
 <br>
 <hr>
     <h1>Wizualizacja Danych Wykresów dynamicznych</h1>
+
+    <br><hr>
+
     <div>
         {% if dash_url %}
         <iframe src="{{ dash_url }}" style="width:100%; height:600px; border:0;"></iframe>
@@ -112,6 +115,18 @@
     <p>Kliknij Uruchom i poczkeaj 10 sekund</p>
 
     {% endif %}
+
+
+    <br><hr>
+
+    <div>
+        {% if dash_urls %}
+        <iframe src="{{ dash_urls }}" style="width:100%; height:600px; border:0;"></iframe>
+    {% else %}
+        <p>Aplikacja wizualizacji danych jest niedostępna.</p>
+    {% endif %}
+
+
 
 
 
