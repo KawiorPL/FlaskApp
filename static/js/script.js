@@ -57,19 +57,37 @@ function uruchomClear_Data() {
 }
 
 
-function zbierajDane() {
-    const urlInput = document.getElementById('urlInput');
-    if (urlInput && urlInput.value) {
-        const url = urlInput.value;
-        socket.emit('zbieraj_Dane', { url: url });
-    } else {
-        alert('Proszę wprowadzić URL.');
-    }
+function isValidURL(url) {
+    const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+    return urlPattern.test(url);
 }
 
-socket.on('connect', function() {
-    console.log('Połączono z serwerem SocketIO');
-});
+function zbierajDane() {
+    const urlInput = document.getElementById('urlInput');
+    if (!urlInput) {
+        alert('Błąd: Pole URL nie zostało znalezione w HTML.');
+        return;
+    }
+
+    const url = urlInput.value.trim(); // Remove whitespace
+    if (!url) {
+        alert('Proszę wprowadzić URL.');
+        return;
+    }
+
+    if (!isValidURL(url)) {
+        alert('Niepoprawny URL. Proszę wprowadzić poprawny adres URL.');
+        return;
+    }
+
+    if (!socket) {
+        alert('Błąd: Socket nie został zainicjalizowany.');
+        return;
+    }
+
+    socket.emit('zbieraj_Dane', { url: url });
+    console.log('Wysłano URL:', url);
+}
 
 socket.on('disconnect', function() {
     console.log('Rozłączono z serwerem SocketIO');

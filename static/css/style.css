@@ -34,7 +34,7 @@ hr {
 
 .content {
     padding: 20px;
-    max-width: 1200px;
+    max-width: 1800px;
     margin: 20px auto; /* Content nadal wyśrodkowany */
     background-color: #c2c5c8; /* Białe tło dla każdego bloku */
     border-radius: 8px;
@@ -156,4 +156,35 @@ input[type="text"] {
 .error {
     color: #c0392b;
     margin-top: 5px;
+}
+
+
+/* Style specyficzne dla kontenera wykresu Dash */
+#histo-chart-final {
+    /* Spróbuj zmniejszyć margines górny, jeśli jest domyślnie duży */
+    /* margin-top: 0px !important; */
+
+    /* Możesz spróbować dostosować ogólny margines */
+    margin: 10px auto !important; /* Wyśrodkowanie i mniejszy margines */
+
+    /* Jeśli wrapper kolumny ma padding, możesz go skompensować */
+    /* padding-top: 0px !important; */
+    /* padding-bottom: 0px !important; */
+
+    /* Upewnij się, że nie ma ustawionej stałej wysokości, która by go "pchała" */
+    /* height: auto !important; */
+}
+
+/* Możliwe style dla kontenera rodzica (np. dbc.Col) */
+.col-md-8 { /* Jeśli wykres jest w kolumnie md-8 Bootstrapa */
+    /* Możesz spróbować zmniejszyć padding */
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+/* Możliwe style dla kontenera wiersza (np. dbc.Row) */
+.row {
+    /* Możesz spróbować zmniejszyć marginesy pionowe */
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
 }

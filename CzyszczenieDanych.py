@@ -115,7 +115,7 @@ pozamianie=fu.zamiana(newdata3,Datazamiana)
 
 
 honorary= fu.special_award(df_z_listaHo)
-honorary.to_csv("honorary.csv", index=False)
+
 
 
 prawiefinal = pd.concat([honorary,pozamianie], ignore_index=True)

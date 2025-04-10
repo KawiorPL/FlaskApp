@@ -15,6 +15,7 @@ import pandas as pd
 import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
+import textwrap
 
 
 
@@ -273,9 +274,11 @@ dash_app2 = Dash(
 
 
 # App layout
+
+
 dash_app2.layout = html.Div([
-    html.Div(className='row', children='My First App with Data, Graph, and Controls',
-             style={'textAlign': 'center', 'color': 'blue', 'fontSize': 30}),
+    html.Div(className='row', children='Ilość zdobytych oskarów dla rół pierwszo Planowch.',
+             style={'textAlign': 'center', 'color': 'blue', 'fontSize': 30, 'justifyContent': 'center', 'display': 'flex'}),
 
     html.Div(className='row', children=[
         dcc.RadioItems(options=['count'],
@@ -339,7 +342,7 @@ unique_categories = dash3_data['category'].unique().tolist()
 
 dash_app3.layout = dbc.Container([
     html.Div(className='row', children='Aktorzy i Nagrody Filmowe',
-             style={'textAlign': 'center', 'color': 'blue', 'fontSize': 30, 'margin-bottom': '20px'}),
+             style={'textAlign': 'center', 'color': 'blue', 'fontSize': 30, 'justifyContent': 'center', 'display': 'flex'}),
     dbc.Row([
         dbc.Col(md=4, children=[
             html.Div("Wybierz kategorie:", style={'margin-bottom': '10px'}),
@@ -352,6 +355,7 @@ dash_app3.layout = dbc.Container([
             ),
         ]),
         dbc.Col(md=8, children=[
+            dcc.Graph(id='histo-chart-final', figure={}),
             dash_table.DataTable(
                 id='data-table',
                 data=[],
@@ -362,7 +366,8 @@ dash_app3.layout = dbc.Container([
                 filter_action='native',
                 export_format='csv',
             ),
-            dcc.Graph(id='histo-chart-final', figure={})
+
+            html.Div(id='title-container', style={'textAlign': 'center', 'margin-top': '20px'})  # Title container
         ]),
     ])
 ], fluid=True)
@@ -371,44 +376,69 @@ dash_app3.layout = dbc.Container([
 # Add controls to build the interaction
 @dash_app3.callback(
     [Output('histo-chart-final', 'figure'),
-     Output('data-table', 'data')],
-    Input('category-checklist', 'value'),
+     Output('data-table', 'data'),
+     Output('title-container', 'children')],
+    Input('category-checklist', 'value')
 )
 
 
 def update_graph_and_table(selected_categories):
     if not selected_categories:
-        # If no category is selected, show data for all 'Winners'
         filtered_df = dash3_data[dash3_data['type'] == 'Winner'].groupby('aktor')[['film']].count().sort_values('film',ascending=False).reset_index().head(20)
-        title = "Liczba otrzymanaych oskarów, w których wystąpili zwycięzcy (Wszystkie Kategorie)"
+        title_main = "Zwycięzcy Oscarów (liczba filmów)"
+        title_sub = "(Wszystkie Kategorie)"
     else:
-        # If categories are selected, filter by categories and 'Winner' type
         filtered_df = dash3_data[
             (dash3_data['type'] == 'Winner') & (dash3_data['category'].isin(selected_categories))
-            ].groupby('aktor')[['film']].count().sort_values('film', ascending=False).reset_index().head(20)
-        title = f"Liczba filmów, w których wystąpili zwycięzcy (Kategorie: {', '.join(selected_categories)})"
+        ].groupby('aktor')[['film']].count().sort_values('film', ascending=False).reset_index().head(20)
+        categories_str = ", ".join(selected_categories)
+        title_main = "Zwycięzcy Oscarów (liczba filmów)"
+        title_sub = f"(Kategorie: {categories_str})"
+
+
+    def split_into_lines(text, line_length=105):
+
+        wrapped_lines = textwrap.wrap(text, width=line_length)
+        return "\n".join(wrapped_lines)
+
+    # Apply the function to `title_sub`
+    split_title_sub = split_into_lines(title_sub, line_length=105)
+
+
 
     # Create the horizontal bar chart
-    fig = make_subplots(rows=1, cols=1, subplot_titles=(title,))
-    fig.add_trace(go.Bar(y=filtered_df['aktor'],  # Swapped x and y
+    fig = make_subplots(rows=1, cols=1)
+    fig.add_trace(go.Bar(y=filtered_df['aktor'],
                          x=filtered_df['film'],
                          marker_color=px.colors.qualitative.Set1,
                          name="Liczba Filmów",
                          orientation='h'),
                   row=1, col=1)
 
+
     fig.update_layout(
-        xaxis_title="Liczba Filmów",  # swapped
-        yaxis_title="Aktor",  # swapped
+        xaxis_title="Liczba Oskarów",
+        yaxis_title="Aktor",
         showlegend=False,
-        margin=dict(l=20, r=20, t=40, b=20),
+        margin=dict(l=20, r=20, t=50, b=50),  # Adjust margins
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        height=500,
+        height=600  # Adjusted figure height
     )
 
+    title_component = html.Div(
+        [
+            html.Span(title_main, style={'font-size': '24px', 'color': 'red'}),
+            html.Br(),
+            html.Span(split_title_sub, style={'font-size': '10px', 'color': 'blue'})
+        ],
+        style={'textAlign': 'center', 'margin-top': '20px'}
+    )
+
+
     # Return the figure and the DataFrame's data for the DataTable
-    return fig, filtered_df.to_dict('records')
+    return fig, filtered_df.to_dict('records'), title_component
+
 
 
 

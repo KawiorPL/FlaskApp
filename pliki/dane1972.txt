@@ -113,8 +113,8 @@
 <body>
     <header>
         <div class="container">
-            <h1>Oscar Awards Ceremony 1972
-        
+            <h1>Oscar Awards Ceremony 1972</h1>
+        </div>
     </header>
 
     <main class="container">
@@ -124,7 +124,7 @@
     
     
     <div class="category-section">
-        <h2>ACTOR
+        <h2>ACTOR</h2>
         
         <div class="winners">
             <h3>Winners</h3>
@@ -133,7 +133,7 @@
                 
                 <p>Gene Hackman - "The French Connection"</p>
                 
-            
+            </div>
             
         </div>
         
@@ -170,7 +170,7 @@
     </div>
     
     <div class="category-section">
-        <h2>ACTOR IN A SUPPORTING ROLE
+        <h2>ACTOR IN A SUPPORTING ROLE</h2>
         
         <div class="winners">
             <h3>Winners</h3>
