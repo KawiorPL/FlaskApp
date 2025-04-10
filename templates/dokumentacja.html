@@ -7,6 +7,81 @@
 
 <br>
 <hr>
+
+<div class="section">
     <h1>Dokumentacja</h1>
+</div>
+
+<div class="section">
+    <h3>Rozpoczęcie działania Skryptu</h3>
+    <p>
+        Otwierając aplikację, znajdujemy się na stronie Skrypt. Rozpoczynamy działanie aplikacji poprzez
+        podanie strony internetowej. Nasza aplikacja działa dla strony <a href="https://oscar.warpechow.ski/">https://oscar.warpechow.ski/</a>.
+        Klikamy przycisk <span class="important">Uruchom</span>. Po uruchomieniu, w oknie <span class="code">Wyjście skryptu</span> będziemy mieli informacje o postępach skryptu.
+    </p>
+</div>
+
+<div class="section">
+    <h3>Działanie Skryptu - Pobieranie Lat</h3>
+    <p>
+        Skrypt ma za zadanie zebranie wszystkich lat ze strony głównej. Uruchamiana jest funkcja <span class="code">sonda</span>, która na podstawie biblioteki <span class="code">request</span> pobiera całą stronę. Zapisuje w folderze <span class="code">pliki</span> plik tekstowy <span class="code">linki</span>. Po zakończeniu działania tej funkcji i sprawdzeniu, czy plik został poprawnie zapisany,
+        jeżeli nie, użytkownik jest powiadamiany, że plik nie istnieje i nie można przetworzyć linków.
+    </p>
+</div>
+
+<div class="section">
+    <h3>Tworzenie DataFrame i Listy Lat</h3>
+    <p>
+        Jeżeli plik jest poprawnie zapisany, to na podstawie tych danych jest tworzony DataFrame z latami i linkami. Funkcja <span class="code">DataFrameYearLink</span> tworzy plik <span class="code">"years_and_links.csv"</span> i na podstawie tego jest ukazany ‘Rzut z DataFrame’. Użytkownik w <span class="code">Wyjście Skryptu</span> ma szansę zobaczyć, jak ten plik wygląda. Na podstawie tych danych tworzona jest lista lat. Ma to za zadanie stworzyć listę, jakie lata trzeba pobrać.
+    </p>
+</div>
+
+<div class="section">
+    <h3>Eliminacja Duplikatów i Zabezpieczenie Danych</h3>
+    <p>
+        Dodatkowo jest stworzony argument, który sprawdza, jakie pliki zostały już zapisane w folderze <span class="code">pliki</span>. Ma to na celu stworzenie listy brakujących lat. Celem tego jest eliminacja duplikacji i zabezpieczenie przed utratą danych. Skrypt informuje użytkownika, jakie lata do tej pory zostały przetworzone i jaka jest lista lat do pobrania.
+    </p>
+</div>
+
+<div class="section">
+    <h3>Pętla Pobierania Danych i Weryfikacje</h3>
+    <p>
+        Następnym etapem jest pętla, która ma za zadanie pobrać wszystkie dane. W pętli występują zabezpieczenia i weryfikacje. Czyli jeżeli dostaniemy bana lub blokadę, wtedy czas kolejnego zapytania się nam wydłuża. Jeżeli pobraliśmy dane, to musimy zweryfikować, czy dane, które pobieramy, są poprawne. Dodatkowo mam wgląd w te dane, aby móc sprawdzić, jak działa nasz plik.
+    </p>
+</div>
+
+<div class="section">
+    <h3>Obsługa Błędów i Zakończenie</h3>
+    <p>
+        Błędne dane, które zostały pobrane, zapisywane są w folderze <span class="code">bley/bledne{rok}.txt</span>. Użytkownik może sprawdzić i zweryfikować, jaki był powód błędu. Jeżeli pełna lista jest pobrana, to wtedy skrypt informuje nas i kończy działanie.
+    </p>
+</div>
+
+
+<div class="section">
+    <h3>Sprawdzenie Poprawności Pobranych Danych</h3>
+    <p>
+        Kolejnym krokiem w tej sekcji jest sprawdzenie danych. Kod weryfikuje, czy pobrane dane są poprawne.
+        Takie zabezpieczenie, choć wprowadzone już w sekcji zbierania danych, jest powtarzane tutaj ponownie, aby zapewnić
+        stuprocentową pewność co do zgodności informacji.
+    </p>
+    <p>
+        Jeżeli okaże się, że dane są błędne, tworzony jest plik <span class="code">remove.txt</span>, w którym zapisywane są
+        nazwy plików zawierających nieprawidłowe dane. Celem tego jest umożliwienie ich usunięcia i ponownego
+        uruchomienia sekcji <span class="code">Zbieraj dane</span>. Wówczas skrypt ponownie pobierze dane dla danego roku.
+    </p>
+</div>
+
+<div class="section">
+    <h3>Uruchomienie Skryptu Czyszczenie Danych</h3>
+    <p>
+        Ostatnim elementem dostępnym w zakładce Skrypt jest możliwość uruchomienia skryptu
+        <span class="code">Czyszczenie Danych</span>.
+    </p>
+</div>
+
+
+
+
 
     {% endblock %}

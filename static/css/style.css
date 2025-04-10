@@ -1,11 +1,11 @@
-/* style.css */
+/* style.css - Połączone style dla aplikacji i dokumentacji */
 
 /* Ogólne style */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #c2c5c8; /* Białe tło dla każdego bloku */
+    background-color: #c2c5c8; /* Białe tło */
     color: #333;
     line-height: 1.6;
 }
@@ -26,17 +26,16 @@ hr {
 /* Kontener głównej treści i wrapper */
 .wrapper {
     display: grid;
-    background-color: #c2c5c8; /* Białe tło dla każdego bloku */
-    grid-template-columns: 1fr; /* Jedna kolumna */
-    /* justify-items: center; Usuń centrowanie, jeśli navbar ma być na całą szerokość */
-    padding: 0; /* Usuń padding, aby navbar dotykał krawędzi wrapper'a */
+    background-color: #c2c5c8;
+    grid-template-columns: 1fr;
+    padding: 0;
 }
 
 .content {
     padding: 20px;
     max-width: 1800px;
-    margin: 20px auto; /* Content nadal wyśrodkowany */
-    background-color: #c2c5c8; /* Białe tło dla każdego bloku */
+    margin: 20px auto;
+    background-color: #c2c5c8;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -44,28 +43,26 @@ hr {
 }
 
 /* Menu nawigacyjne */
-nav.navbar { /* Dodaj selektor klasy, aby odróżnić od ogólnych stylów nav */
-
-
-    width: 100%; /* Ustaw szerokość na 100% kontenera wrapper */
-    border-radius: 8px; /* Zaokrąglenie rogów navbar */
-    box-sizing: border-box; /* Uwzględnij padding i border w szerokości */
-    margin: 0; /* Usuń marginesy, które mogłyby wpływać na szerokość */
+nav.navbar {
+    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 nav.navbar ul {
     list-style: none;
     padding: 0;
-    margin: 0 auto; /* Wyśrodkuj menu wewnątrz navbar */
-    max-width: 1200px; /* Ogranicz maksymalną szerokość menu */
+    margin: 0 auto;
+    max-width: 1200px;
     overflow: hidden;
-    display: flex; /* Użyj flexbox do rozmieszczenia elementów menu */
-    justify-content: center; /* Wyśrodkuj elementy menu */
-    border-radius: 0; /* Usuń zaokrąglenie z ul, jeśli chcesz tylko na navbar */
+    display: flex;
+    justify-content: center;
+    border-radius: 0;
 }
 
 nav.navbar ul li {
-    float: none; /* Usuń float, gdy używamy flexbox */
+    float: none;
 }
 
 nav.navbar ul li a {
@@ -86,7 +83,6 @@ nav.navbar ul li a:hover {
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #070000;
-
     border-radius: 4px;
 }
 
@@ -98,24 +94,23 @@ nav.navbar ul li a:hover {
     padding-bottom: 0.5em;
 }
 
-/* Style dla każdego nowego div z wyjściem skryptu */
 #output > div {
-    margin-bottom: 12px; /* Zwiększony margines dolny */
+    margin-bottom: 12px;
     padding: 10px;
-    border: 1px solid #999; /* Ciemniejszy szary */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Mocniejszy cień */
-    background-color: #adb5bd; /* Białe tło dla każdego bloku */
+    border: 1px solid #999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #adb5bd;
     white-space: pre-wrap;
     word-break: break-word;
     max-width: 100%;
     overflow-x: auto;
     color: #0d23a2;
     border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Delikatny cień dla każdego bloku */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 #output > div:last-child {
-    margin-bottom: 0; /* Usuń margines dolny dla ostatniego elementu */
+    margin-bottom: 0;
 }
 
 /* Style dla przycisków */
@@ -158,33 +153,54 @@ input[type="text"] {
     margin-top: 5px;
 }
 
-
 /* Style specyficzne dla kontenera wykresu Dash */
 #histo-chart-final {
-    /* Spróbuj zmniejszyć margines górny, jeśli jest domyślnie duży */
-    /* margin-top: 0px !important; */
-
-    /* Możesz spróbować dostosować ogólny margines */
-    margin: 10px auto !important; /* Wyśrodkowanie i mniejszy margines */
-
-    /* Jeśli wrapper kolumny ma padding, możesz go skompensować */
-    /* padding-top: 0px !important; */
-    /* padding-bottom: 0px !important; */
-
-    /* Upewnij się, że nie ma ustawionej stałej wysokości, która by go "pchała" */
-    /* height: auto !important; */
+    margin: 10px auto !important;
 }
 
-/* Możliwe style dla kontenera rodzica (np. dbc.Col) */
-.col-md-8 { /* Jeśli wykres jest w kolumnie md-8 Bootstrapa */
-    /* Możesz spróbować zmniejszyć padding */
+/* Możliwe style dla kontenera rodzica wykresu Dash */
+.col-md-8 {
     padding-top: 5px !important;
     padding-bottom: 5px !important;
 }
 
-/* Możliwe style dla kontenera wiersza (np. dbc.Row) */
+/* Możliwe style dla kontenera wiersza wykresu Dash */
 .row {
-    /* Możesz spróbować zmniejszyć marginesy pionowe */
     margin-top: 5px !important;
     margin-bottom: 5px !important;
+}
+
+/* === Style dla dokumentacji HTML === */
+
+.section {
+    margin-bottom: 2em;
+    padding: 15px;
+    background-color: #f8f9fa; /* Jasnoszary tło dla sekcji */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dee2e6; /* Delikatne obramowanie */
+}
+
+.important {
+    font-weight: bold;
+    color: #0a06ec; /* Czerwony kolor dla ważnych elementów */
+}
+
+.code {
+    font-family: monospace;
+    background-color: #e9ecef; /* Bardzo jasnoszary tło dla kodu */
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    color: #0056b3; /* Niebieski kolor dla kodu */
+    border: 1px solid #ced4da; /* Delikatne obramowanie kodu */
+    font-size: 0.9em;
+}
+
+.section a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.section a:hover {
+    text-decoration: underline;
 }

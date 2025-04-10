@@ -11,7 +11,7 @@ from folium.features import DivIcon
 
 
 main = "https://oscar.warpechow.ski/"
-folder='pliki2'
+folder='pliki'
 
 def Sonda(main,folder):
 

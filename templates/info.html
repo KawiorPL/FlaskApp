@@ -4,122 +4,146 @@
 
 {% block content %}
 
-    <h1>Informacje o projekcie</h1>
+    <div class="content">
+        <h1>Informacje o projekcie</h1>
+        <hr>
+        <h1>Aplikacja do Pozyskiwania, Transformacji, Analizy i Wizualizacji Danych</h1>
+        <hr>
 
-    <hr>
+        <div class="section">
+        <p>Niniejsza aplikacja została stworzona, aby usprawnić proces pozyskiwania, przekształcania, analizowania i wizualizacji danych ze strony internetowej
+            <a href="https://oscar.warpechow.ski/">https://oscar.warpechow.ski/</a>. Jej zaawansowane funkcjonalności umożliwiają kompleksową eksplorację informacji, począwszy od
+            pobrania surowych danych, poprzez ich inteligentne uporządkowanie, aż po prezentację w przystępnej formie.</p>
+        </div>
 
-    <h1>Aplikacja do Pozyskiwania, Transformacji, Analizy i Wizualizacji Danych</h1>
 
-    <p>Niniejsza aplikacja została stworzona, aby usprawnić proces pozyskiwania, przekształcania, analizowania i wizualizacji danych ze strony internetowej
-        <strong>https://oscar.warpechow.ski/</strong>. Jej zaawansowane funkcjonalności umożliwiają kompleksową eksplorację informacji, począwszy od
-        pobrania surowych danych, poprzez ich inteligentne uporządkowanie, aż po prezentację w przystępnej formie.</p>
+        <h2>Kluczowe Funkcjonalności Aplikacji</h2>
 
-    <h2>Kluczowe Funkcjonalności Aplikacji</h2>
+        <div class="section">
+            <h3>Inteligentne Pobieranie Strony Głównej</h3>
+            <p>Aplikacja rozpoczyna pracę od pobrania zawartości wskazanej strony głównej, stanowiącej punkt wyjścia do dalszej eksploracji danych.</p>
+        </div>
 
-    <h3>Inteligentne Pobieranie Strony Głównej</h3>
-    <p>Aplikacja rozpoczyna pracę od pobrania zawartości wskazanej strony głównej, stanowiącej punkt wyjścia do dalszej eksploracji danych.</p>
+        <div class="section">
+            <h3>Ekstrakcja Listy Ceremonii (Lat)</h3>
+            <p>Aplikacja identyfikuje i wyodrębnia wszystkie lata, w których odbyły się ceremonie, tworząc uporządkowany spis dostępnych roczników.
+                Skrypt działa w sposób inteligentny, pobierając dane dla losowo wybranych lat, a następnie pomijając już przetworzone roczniki w kolejnych iteracjach.
+                Taka strategia pobierania danych ma na celu zminimalizowanie ryzyka wykrycia i zablokowania przez systemy zabezpieczające strony internetowej,
+                które mogą reagować na zbyt szybkie i sekwencyjne pobieranie dużej ilości danych z wielu podstron.</p>
+        </div>
 
-    <h3>Ekstrakcja Listy Ceremonii (Lat)</h3>
-    <p>Aplikacja identyfikuje i wyodrębnia wszystkie lata, w których odbyły się ceremonie, tworząc uporządkowany spis dostępnych roczników.
-        Skrypt działa w sposób inteligentny, pobierając dane dla losowo wybranych lat, a następnie pomijając już przetworzone roczniki w kolejnych iteracjach.
-        Taka strategia pobierania danych ma na celu zminimalizowanie ryzyka wykrycia i zablokowania przez systemy zabezpieczające strony internetowej,
-        które mogą reagować na zbyt szybkie i sekwencyjne pobieranie dużej ilości danych z wielu podstron.</p>
+        <div class="section">
+            <h3>Pozyskiwanie Linków do Szczegółów Ceremonii</h3>
+            <p>Dla każdego zidentyfikowanego roku, aplikacja pobiera i zapisuje odnośniki (linki) do dedykowanych podstron zawierających szczegółowe informacje o danej ceremonii.
+                Ze zgromadzonych danych tworzona jest struktura danych i zapisywana do pliku CSV.</p>
+        </div>
 
-    <h3>Pozyskiwanie Linków do Szczegółów Ceremonii</h3>
-    <p>Dla każdego zidentyfikowanego roku, aplikacja pobiera i zapisuje odnośniki (linki) do dedykowanych podstron zawierających szczegółowe informacje o danej ceremonii.
-        Ze zgromadzonych danych tworzona jest struktura danych i zapisywana do pliku CSV.</p>
+        <div class="section">
+            <h3>Precyzyjne Pozyskiwanie Danych ze Szczegółowych Podstron (Scraping)</h3>
+            <p>Aplikacja odwiedza każdą z podstron rocznikowych, skrupulatnie ekstrahując kluczowe detale dotyczące nominowanych i zwycięzców. Każdy przetworzony rok jest zapisywany,
+                co umożliwia bieżącą weryfikację pobranych danych.</p>
+        </div>
 
-    <h3>Precyzyjne Pozyskiwanie Danych ze Szczegółowych Podstron (Scraping)</h3>
-    <p>Aplikacja odwiedza każdą z podstron rocznikowych, skrupulatnie ekstrahując kluczowe detale dotyczące nominowanych i zwycięzców. Każdy przetworzony rok jest zapisywany,
-        co umożliwia bieżącą weryfikację pobranych danych.</p>
-
-    <h3>Wyodrębnianie Kluczowych Informacji z Każdej Podstrony</h3>
-    <ul>
-        <li><strong>Rok Ceremonii:</strong> Precyzyjne określenie roku, którego dotyczy dana ceremonia.</li>
-        <li><strong>Zestawienie Kategorii:</strong> Pełna lista kategorii nagród wręczonych podczas danej ceremonii.</li>
-        <li><strong>Laureaci w Poszczególnych Kategoriach:</strong> Wskazanie zwycięzców w każdej z wyróżnionych kategorii.</li>
-        <li><strong>Lista Nominowanych (Tam, Gdzie Występują):</strong> Zebranie informacji o osobach i dziełach nominowanych w każdej kategorii, o ile takie dane są dostępne.</li>
-        <li><strong>Unikalny Identyfikator Strony:</strong> Przypisanie niepowtarzalnego identyfikatora do każdej analizowanej podstrony, ułatwiającego śledzenie i referencje.</li>
-    </ul>
-
-    <h3>Zachowanie Integralności Struktury Danych</h3>
-    <p>Aplikacja dba o zachowanie pełnej i logicznej struktury pozyskanych informacji poprzez:</p>
-    <ul>
-        <li><strong>Łączenie Nominowanych i Zwycięzców:</strong> Nominowani i zwycięzcy są precyzyjnie powiązani z odpowiednią kategorią, rokiem oraz filmem, za który otrzymali nominację lub nagrodę.</li>
-        <li><strong>Filtrowanie i Sortowanie:</strong> Funkcjonalność filtrowania i sortowania danych według różnych kryteriów (kategoria, rok, nazwisko, tytuł filmu, status laureata).</li>
-    </ul>
-
-    <h3>Zaawansowane Przetwarzanie i Zapis Danych</h3>
-    <p>Pozyskane i uporządkowane dane są następnie przetwarzane i zapisywane w dwóch popularnych formatach:</p>
-
-    <h4>JSON (JavaScript Object Notation)</h4>
-    <ul>
-        <li><strong>Zachowanie Relacji Między Encjami:</strong> Struktura JSON odzwierciedla złożone powiązania między różnymi elementami danych.</li>
-        <li><strong>Umożliwienie Łatwego Filtrowania i Analizy:</strong> Format JSON jest łatwo parsowalny i idealnie nadaje się do dalszej analizy i filtrowania danych za pomocą różnych narzędzi programistycznych.</li>
-        <li><strong>Zapewnienie Spójności Danych:</strong> Struktura JSON zapewnia integralność i jednoznaczność zapisanych informacji.</li>
-        <li><strong>Pełna Struktura Hierarchiczna:</strong> Dane są zapisywane w logicznej, hierarchicznej formie, odzwierciedlającej ich wzajemne zależności.</li>
-        <li><strong>Wszystkie Powiązania Między Danymi:</strong> Plik JSON zawiera kompletne informacje o wszystkich zidentyfikowanych powiązaniach między nominowanymi, zwycięzcami, osobami i filmami.</li>
-    </ul>
-
-    <h4>CSV (Comma Separated Values)</h4>
-    <ul>
-        <li><strong>Zachowanie Relacji Między Encjami:</strong> Dane w formacie CSV są starannie strukturyzowane, aby w możliwie najlepszy sposób odzwierciedlać relacje między poszczególnymi encjami.</li>
-        <li><strong>Umożliwienie Łatwego Filtrowania i Analizy:</strong> Format CSV jest powszechnie obsługiwany przez arkusze kalkulacyjne i narzędzia do analizy danych, umożliwiając łatwe filtrowanie i manipulację danymi.</li>
-        <li><strong>Zapewnienie Spójności Danych:</strong> Dane w plikach CSV są zapisywane w sposób uporządkowany, co przyczynia się do ich spójności.</li>
-    </ul>
-
-    <h2>Dodatkowe Funkcjonalności i Implementacje</h2>
-
-    <h3>Solidna Obsługa Wyjątków i Problemów Połączenia</h3>
-    <p>Aplikacja została wyposażona w mechanizmy zapewniające stabilność i niezawodność procesu pozyskiwania danych:</p>
-    <ul>
-        <li><strong>Implementacja Obsługi Błędów HTTP:</strong> Aplikacja inteligentnie reaguje na różnorodne statusy błędów HTTP, umożliwiając kontynuację pracy.</li>
-        <li><strong>Mechanizm Ponowień (Retry) z Zwiększaniem Czasu Oczekiwania:</strong> W przypadku tymczasowych problemów z połączeniem, aplikacja automatycznie ponawia próby
-            pobrania danych, stopniowo zwiększając odstępy czasowe między kolejnymi próbami, co minimalizuje obciążenie serwerów i zwiększa szanse na sukces.</li>
-        <li><strong>Prawidłowa Reakcja na Ograniczenia Częstotliwości Zapytań (Rate Limiting):</strong> Aplikacja rozpoznaje i respektuje ograniczenia narzucane przez serwery, unikając blokad poprzez inteligentne
-            zarządzanie częstotliwością wysyłanych zapytań.</li>
-        <li><strong>Logowanie Nieudanych Prób wraz z Ich Przyczynami:</strong> Wszystkie nieudane próby pobrania danych są szczegółowo rejestrowane wraz z informacjami o niepowodzeniu,
-            co ułatwia diagnozowanie problemów i optymalizację procesu.</li>
-        <li><strong>Zabezpieczenie przed przerwaniem procesu i ponownym wznowieniem:</strong> Wszystkie dane są od razu zapisywane do plików tekstowych, co ułatwia kontynuację pobierania. Pobieranie można zatrzymać w każdym czasie bez utraty pobranych danych.</li>
-        <li><strong>Zabezpieczenie i Wznawianie Procesu:</strong> Wszystkie pobrane dane są na bieżąco zapisywane do plików tekstowych, co zapewnia ich trwałość i ułatwia kontynuację pobierania. Proces można bezpiecznie zatrzymać w dowolnym momencie bez ryzyka utraty dotychczas zgromadzonych informacji.</li>
-        <li><strong>Podwójna Weryfikacja Danych:</strong> Zastosowano specjalny algorytm, który weryfikuje poprawność pobranych danych i ich zgodność z przypisanym rokiem. To zabezpieczenie zostało wprowadzone w odpowiedzi na sytuacje,
-            w których program, mimo poprawnego linku do danego roku, pobierał dane z innego okresu.</li>
-    </ul>
-
-    <h3>Implementacja Bazy Danych SQLite</h3>
-    <p>W celu trwałego przechowywania i efektywnego zarządzania pozyskanymi danymi, zaimplementowano bazę danych SQLite:</p>
-    <ul>
-        <li><strong>Przygotowanie Bazy SQLite wraz ze Skryptami:</strong> Stworzono kompletną bazę danych SQLite, w tym:
+        <div class="section">
+            <h3>Wyodrębnianie Kluczowych Informacji z Każdej Podstrony</h3>
             <ul>
-                <li><strong>Tworzenie Struktury Bazy Danych (Schemat):</strong> Zaprojektowano i zaimplementowano normalizowany schemat bazy danych, definiujący tabele, kolumny i ich typy danych,
-                    optymalizując przechowywanie i wyszukiwanie informacji.</li>
-                <li><strong>Zasilanie Bazy Pozyskanymi Danymi:</strong> Opracowano skrypty, które automatycznie zapisują pozyskane, przetworzone dane do odpowiednich tabel w bazie danych.</li>
-                <li><strong>Dostęp i Weryfikacja Danych w Aplikacji:</strong> Użytkownik posiada intuicyjny dostęp do danych prezentowanych w tabelach. Zaawansowane opcje filtrowania umożliwiają precyzyjną weryfikację informacji,
-                    co znacząco usprawnia proces kontroli danych w prosty i szybki sposób.</li>
+                <li><strong>Rok Ceremonii:</strong> Precyzyjne określenie roku, którego dotyczy dana ceremonia.</li>
+                <li><strong>Zestawienie Kategorii:</strong> Pełna lista kategorii nagród wręczonych podczas danej ceremonii.</li>
+                <li><strong>Laureaci w Poszczególnych Kategoriach:</strong> Wskazanie zwycięzców w każdej z wyróżnionych kategorii.</li>
+                <li><strong>Lista Nominowanych (Tam, Gdzie Występują):</strong> Zebranie informacji o osobach i dziełach nominowanych w każdej kategorii, o ile takie dane są dostępne.</li>
+                <li><strong>Unikalny Identyfikator Strony:</strong> Przypisanie niepowtarzalnego identyfikatora do każdej analizowanej podstrony, ułatwiającego śledzenie i referencje.</li>
             </ul>
-        </li>
-        <li><strong>Normalizacja Bazy Danych:</strong> Projekt bazy danych został przeprowadzony zgodnie z zasadami normalizacji, co skutecznie eliminuje duplikację danych i zapewnia ich integralność.</li>
-        <li><strong>Uwzględnienie Relacji Między Encjami:</strong> Schemat bazy danych został zaprojektowany tak, aby wiernie odzwierciedlać relacje między różnymi encjami, takimi jak filmy, osoby (aktorzy, reżyserzy itp.) i kategorie nagród,
-            umożliwiając złożone zapytania i analizy.</li>
-    </ul>
+        </div>
 
-    <h3>Wizualizacja Danych</h3>
-    <ul>
-        <li><strong>Wykresy Statyczne:</strong> Użytkownik, po naciśnięciu przycisku uruchamiającego, uzyskuje dostęp do predefiniowanych wykresów statycznych, prezentujących kluczowe dane w ustalonej formie.</li>
-        <li><strong>Wykresy Dynamiczne (Dash):</strong> Użytkownik ma dostęp do interaktywnych wykresów dynamicznych, stworzonych przy użyciu technologii Dash.
+        <div class="section">
+            <h3>Zachowanie Integralności Struktury Danych</h3>
+            <p>Aplikacja dba o zachowanie pełnej i logicznej struktury pozyskanych informacji poprzez:</p>
             <ul>
-                <li><strong>Interaktywna Wizualizacja:</strong> Wykorzystanie technologii Dash zapewnia użytkownikowi większą interaktywność i możliwość dostosowania wizualizacji danych do indywidualnych potrzeb.
-                    Dzięki opcjom filtrowania i wyboru atrybutów, dynamiczne wykresy prezentują informacje w sposób oczekiwany przez użytkownika, umożliwiając dogłębną analizę.</li>
+                <li><strong>Łączenie Nominowanych i Zwycięzców:</strong> Nominowani i zwycięzcy są precyzyjnie powiązani z odpowiednią kategorią, rokiem oraz filmem, za który otrzymali nominację lub nagrodę.</li>
+                <li><strong>Filtrowanie i Sortowanie:</strong> Funkcjonalność filtrowania i sortowania danych według różnych kryteriów (kategoria, rok, nazwisko, tytuł filmu, status laureata).</li>
             </ul>
-        </li>
-    </ul>
+        </div>
 
-    <p>W ramach wizualizacji danych, aplikacja oferuje dwa rodzaje wykresów. Pierwsza grupa to <strong>wykresy statyczne</strong>, które zostały zaprojektowane przez autora aplikacji i prezentują dane w z góry określony sposób.
-        Użytkownik może je wyświetlić, ale nie ma możliwości modyfikowania ich wyglądu ani zawartości. Druga grupa to <strong>wykresy dynamiczne</strong>, stworzone w technologii Dash. Te wykresy charakteryzują się
-        interaktywnością, pozwalając użytkownikowi na filtrowanie danych, wybór wyświetlanych atrybutów oraz dostosowywanie wizualizacji do własnych potrzeb analitycznych.</p>
+        <div class="section">
+            <h3>Zaawansowane Przetwarzanie i Zapis Danych</h3>
+            <p>Pozyskane i uporządkowane dane są następnie przetwarzane i zapisywane w dwóch popularnych formatach:</p>
 
-    <hr>
-    <p>Dzięki swojej wszechstronności i dbałości o szczegóły, niniejsza aplikacja stanowi potężne narzędzie do eksploracji i analizy danych zawartych na stronach internetowych,
-        dostarczając użytkownikom uporządkowanych i gotowych do dalszego wykorzystania informacji.</p>
+            <h4>JSON (JavaScript Object Notation)</h4>
+            <ul>
+                <li><strong>Zachowanie Relacji Między Encjami:</strong> Struktura JSON odzwierciedla złożone powiązania między różnymi elementami danych.</li>
+                <li><strong>Umożliwienie Łatwego Filtrowania i Analizy:</strong> Format JSON jest łatwo parsowalny i idealnie nadaje się do dalszej analizy i filtrowania danych za pomocą różnych narzędzi programistycznych.</li>
+                <li><strong>Zapewnienie Spójności Danych:</strong> Struktura JSON zapewnia integralność i jednoznaczność zapisanych informacji.</li>
+                <li><strong>Pełna Struktura Hierarchiczna:</strong> Dane są zapisywane w logicznej, hierarchicznej formie, odzwierciedlającej ich wzajemne zależności.</li>
+                <li><strong>Wszystkie Powiązania Między Danymi:</strong> Plik JSON zawiera kompletne informacje o wszystkich zidentyfikowanych powiązaniach między nominowanymi, zwycięzcami, osobami i filmami.</li>
+            </ul>
+
+            <h4>CSV (Comma Separated Values)</h4>
+            <ul>
+                <li><strong>Zachowanie Relacji Między Encjami:</strong> Dane w formacie CSV są starannie strukturyzowane, aby w możliwie najlepszy sposób odzwierciedlać relacje między poszczególnymi encjami.</li>
+                <li><strong>Umożliwienie Łatwego Filtrowania i Analizy:</strong> Format CSV jest powszechnie obsługiwany przez arkusze kalkulacyjne i narzędzia do analizy danych, umożliwiając łatwe filtrowanie i manipulację danymi.</li>
+                <li><strong>Zapewnienie Spójności Danych:</strong> Dane w plikach CSV są zapisywane w sposób uporządkowany, co przyczynia się do ich spójności.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Dodatkowe Funkcjonalności i Implementacje</h2>
+
+            <h3>Solidna Obsługa Wyjątków i Problemów Połączenia</h3>
+            <p>Aplikacja została wyposażona w mechanizmy zapewniające stabilność i niezawodność procesu pozyskiwania danych:</p>
+            <ul>
+                <li><strong>Implementacja Obsługi Błędów HTTP:</strong> Aplikacja inteligentnie reaguje na różnorodne statusy błędów HTTP, umożliwiając kontynuację pracy.</li>
+                <li><strong>Mechanizm Ponowień (Retry) z Zwiększaniem Czasu Oczekiwania:</strong> W przypadku tymczasowych problemów z połączeniem, aplikacja automatycznie ponawia próby
+                    pobrania danych, stopniowo zwiększając odstępy czasowe między kolejnymi próbami, co minimalizuje obciążenie serwerów i zwiększa szanse na sukces.</li>
+                <li><strong>Prawidłowa Reakcja na Ograniczenia Częstotliwości Zapytań (Rate Limiting):</strong> Aplikacja rozpoznaje i respektuje ograniczenia narzucane przez serwery, unikając blokad poprzez inteligentne
+                    zarządzanie częstotliwością wysyłanych zapytań.</li>
+                <li><strong>Logowanie Nieudanych Prób wraz z Ich Przyczynami:</strong> Wszystkie nieudane próby pobrania danych są szczegółowo rejestrowane wraz z informacjami o niepowodzeniu,
+                    co ułatwia diagnozowanie problemów i optymalizację procesu.</li>
+                <li><strong>Zabezpieczenie przed przerwaniem procesu i ponownym wznowieniem:</strong> Wszystkie dane są od razu zapisywane do plików tekstowych, co ułatwia kontynuację pobierania. Pobieranie można zatrzymać w każdym czasie bez utraty pobranych danych.</li>
+                <li><strong>Zabezpieczenie i Wznawianie Procesu:</strong> Wszystkie pobrane dane są na bieżąco zapisywane do plików tekstowych, co zapewnia ich trwałość i ułatwia kontynuację pobierania. Proces można bezpiecznie zatrzymać w dowolnym momencie bez ryzyka utraty dotychczas zgromadzonych informacji.</li>
+                <li><strong>Podwójna Weryfikacja Danych:</strong> Zastosowano specjalny algorytm, który weryfikuje poprawność pobranych danych i ich zgodność z przypisanym rokiem. To zabezpieczenie zostało wprowadzone w odpowiedzi na sytuacje,
+                    w których program, mimo poprawnego linku do danego roku, pobierał dane z innego okresu.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Implementacja Bazy Danych SQLite</h3>
+            <p>W celu trwałego przechowywania i efektywnego zarządzania pozyskanymi danymi, zaimplementowano bazę danych SQLite:</p>
+            <ul>
+                <li><strong>Przygotowanie Bazy SQLite wraz ze Skryptami:</strong> Stworzono kompletną bazę danych SQLite, w tym:
+                    <ul>
+                        <li><strong>Tworzenie Struktury Bazy Danych (Schemat):</strong> Zaprojektowano i zaimplementowano normalizowany schemat bazy danych, definiujący tabele, kolumny i ich typy danych,
+                            optymalizując przechowywanie i wyszukiwanie informacji.</li>
+                        <li><strong>Zasilanie Bazy Pozyskanymi Danymi:</strong> Opracowano skrypty, które automatycznie zapisują pozyskane, przetworzone dane do odpowiednich tabel w bazie danych.</li>
+                        <li><strong>Dostęp i Weryfikacja Danych w Aplikacji:</strong> Użytkownik posiada intuicyjny dostęp do danych prezentowanych w tabelach. Zaawansowane opcje filtrowania umożliwiają precyzyjną weryfikację informacji,
+                            co znacząco usprawnia proces kontroli danych w prosty i szybki sposób.</li>
+                    </ul>
+                </li>
+                <li><strong>Normalizacja Bazy Danych:</strong> Projekt bazy danych został przeprowadzony zgodnie z zasadami normalizacji, co skutecznie eliminuje duplikację danych i zapewnia ich integralność.</li>
+                <li><strong>Uwzględnienie Relacji Między Encjami:</strong> Schemat bazy danych został zaprojektowany tak, aby wiernie odzwierciedlać relacje między różnymi encjami, takimi jak filmy, osoby (aktorzy, reżyserzy itp.) i kategorie nagród,
+                    umożliwiając złożone zapytania i analizy.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Wizualizacja Danych</h3>
+            <ul>
+                <li><strong>Wykresy Statyczne:</strong> Użytkownik, po naciśnięciu przycisku uruchamiającego, uzyskuje dostęp do predefiniowanych wykresów statycznych, prezentujących kluczowe dane w ustalonej formie.</li>
+                <li><strong>Wykresy Dynamiczne (Dash):</strong> Użytkownik ma dostęp do interaktywnych wykresów dynamicznych, stworzonych przy użyciu technologii Dash.
+                    <ul>
+                        <li><strong>Interaktywna Wizualizacja:</strong> Wykorzystanie technologii Dash zapewnia użytkownikowi większą interaktywność i możliwość dostosowania wizualizacji danych do indywidualnych potrzeb.
+                            Dzięki opcjom filtrowania i wyboru atrybutów, dynamiczne wykresy prezentują informacje w sposób oczekiwany przez użytkownika, umożliwiając dogłębną analizę.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <p>W ramach wizualizacji danych, aplikacja oferuje dwa rodzaje wykresów. Pierwsza grupa to <strong>wykresy statyczne</strong>, które zostały zaprojektowane przez autora aplikacji i prezentują dane w z góry określony sposób.
+            Użytkownik może je wyświetlić, ale nie ma możliwości modyfikowania ich wyglądu ani zawartości. Druga grupa to <strong>wykresy dynamiczne</strong>, stworzone w technologii Dash. Te wykresy charakteryzują się
+            interaktywnością, pozwalając użytkownikowi na filtrowanie danych, wybór wyświetlanych atrybutów oraz dostosowywanie wizualizacji do własnych potrzeb analitycznych.</p>
+
+        <hr>
+        <p>Dzięki swojej wszechstronności i dbałości o szczegóły, niniejsza aplikacja stanowi potężne narzędzie do eksploracji i analizy danych zawartych na stronach internetowych,
+            dostarczając użytkownikom uporządkowanych i gotowych do dalszego wykorzystania informacji.</p>
+    </div>
 
 {% endblock %}
