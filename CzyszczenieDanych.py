@@ -32,8 +32,6 @@ sys.stdout.flush()
 #dla kazdego roku pobieranie danych
 for i in year:
 
-    #okreslenie sciezki dla danego roku.
-    file_name=dataframe.loc[dataframe['year'] == i]['link'].values[0]
 
     file_path = os.path.join(base_dir, f"dane{i}.txt")
 
@@ -136,7 +134,7 @@ print('Dane gotowe do Analizy')
 sys.stdout.flush()
 
 # Zapis do pliku JSON w formacie tabeli
-newdata3.to_json('data_table.json', orient='table')
+final.to_json('data_table.json', orient='table')
 
 print('Zapisanie danych do json plik: data_table.json')
 sys.stdout.flush()

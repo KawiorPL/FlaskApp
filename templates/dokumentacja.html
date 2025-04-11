@@ -13,7 +13,7 @@
 </div>
 
 <div class="section">
-    <h3>Rozpoczęcie działania Skryptu</h3>
+    <h2>Rozpoczęcie działania Skryptu</h2>
     <p>
         Otwierając aplikację, znajdujemy się na stronie Skrypt. Rozpoczynamy działanie aplikacji poprzez
         podanie strony internetowej. Nasza aplikacja działa dla strony <a href="https://oscar.warpechow.ski/">https://oscar.warpechow.ski/</a>.
@@ -72,13 +72,128 @@
     </p>
 </div>
 
+
+
 <div class="section">
     <h3>Uruchomienie Skryptu Czyszczenie Danych</h3>
     <p>
-        Ostatnim elementem dostępnym w zakładce Skrypt jest możliwość uruchomienia skryptu
-        <span class="code">Czyszczenie Danych</span>.
+        Ostatnim elementem w zakładce Skrypt jest uruchomienie skryptu Czyszczenie Danych.
+        Skrypt, na podstawie zebranych danych z pliku <span class="code">years_and_links.csv</span>, pobiera listę lat, dla których dane zostały pobrane.
+        Następnie tworzona jest pętla, która iteruje po tych latach, określając, które pliki wymagają przetworzenia.
+        Dane z każdego roku są pobierane z plików w formacie <span class="code">dane&lt;rok&gt;.txt</span>, znajdujących się w folderze "pliki".
+        Algorytm <span class="code">extract_winner</span>, zdefiniowany w pliku <span class="code">funkcje.py</span>, przetwarza dane z każdego roku.
+        Algorytm ten, oparty na przeprowadzonych badaniach i analizach, identyfikuje zwycięzców w kategoriach:
+        <span class="code" style="color:red;">'HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD'.</span>
+        W tych kategoriach w niektórych latach występuje więcej niż jeden zwycięzca, co wymaga specjalnej logiki przetwarzania.
+        Dlatego zastosowano filtrację i transformację danych za pomocą <span class="code">soup.find_all('div', class_='category-section')</span>.
+        Dla pozostałych kategorii zwycięzców stosowane jest pojedyncze wyszukiwanie: <span class="code">winner_element = category_section.find('div', class_='winner')</span>.
+        Po przetworzeniu danych zwycięzców, DataFrame jest łączony z głównym DataFrame.
+        Następnie tworzony jest DataFrame dla nominowanych aktorów za pomocą funkcji <span class="code">extract_nominee</span>.
+        Funkcja ta została rozbudowana, aby obsłużyć błędy, które występowały podczas prób pobierania danych.
+        W szczególności, dla kategorii ACTOR pobierane były dane ze wszystkich kategorii, co zostało naprawione poprzez sprawdzenie różnic między kategorią ACTOR a pozostałymi kategoriami.
+        Dzięki temu uzyskujemy tylko nominowane osoby dla kategorii ACTOR.
+        Zidentyfikowane osoby są dodawane do listy aktorów, a liczba słów ACTOR jest dodawana do listy kategorii.
+        Wynikiem jest poprawna lista kategorii i nominowanych osób.
+        Dane są zapisywane w pliku <span class="code">Finaldf.csv</span>.
     </p>
 </div>
+
+<div class="section">
+    <h3>Czyszczenie Danych i Tworzenie Dodatkowych Rekordów</h3>
+    <p>
+        W następnej części skryptu specjalne kategorie są oddzielane od pozostałych.
+        Ta część zajmuje się czyszczeniem danych z dodatkowych słów i tworzeniem dodatkowych rekordów dla osób przypisanych do danego filmu (gdy występuje więcej niż jedna osoba).
+        Każda osoba, wymieniona po przecinku, spójniku "i" lub innym spójniku, jest oddzielana i tworzony jest nowy rekord z danymi tej osoby.
+        Celem jest zapewnienie, że każda osoba ma swój własny rekord z przypisanym filmem.
+
+    Dla pozostałych kategorii zastosowano następujące funkcje: <span class="code">weryfikuj_i_rozdziel_osoby</span>, <span class="code">czyszczenie_and</span>, <span class="code">usuwanie_dodatkowych_slow</span>, <span class="code">czyszczenie_at</span>, <span class="code">usun_nawiasy_w_miejscu</span>, <span class="code">usun_wszystkie_biale_znaki</span>.
+    Celem tych algorytmów było oczyszczenie danych i przypisanie każdej osoby do odpowiedniego filmu.
+    Po transformacji danych tworzona jest lista aktorów.
+    Następnie dane te są weryfikowane przez algorytm <span class="code">znajdz_prawie_podobne</span>, którego zadaniem jest znalezienie osób o podobnych imionach i nazwiskach.
+    Ustawiono próg podobieństwa na 90%.
+    Jeśli takie podobieństwo występuje, dane osób są dodawane do krotki (tuple).
+    Dzieje się tak, ponieważ następny algorytm, <span class="code">sugestia_zamiany</span>, weryfikuje i ustala, która nazwa jest poprawna.
+    Algorytm analizuje, które imię i nazwisko występuje najczęściej, i zastępuje rzadsze wystąpienia tym częstszym.
+    Jeśli w jednym rekordzie występuje imię i nazwisko, a w innym rekordzie to samo imię i nazwisko, ale z dodatkowym skrótem drugiego imienia, następuje ujednolicenie.
+    Takie podejście zostało zastosowane i zweryfikowane pod kątem poprawności.
+    Testy wykazały, że jest ono słuszne, ponieważ nie zauważono błędów podczas wizualizacji danych.
+    Następnie, za pomocą funkcji <span class="code">zamiana</span>, dane w kolumnie "aktor" są aktualizowane.
+    Funkcja <span class="code">special_award</span> przetwarza dane z kategorii specjalnych.
+    Wprowadzono ten podział ze względu na specyfikę danych w tej kategorii.
+    W kolumnie "film" zachowywane są oryginalne wartości.
+    Jeśli na przykład <span style="font-weight: bold; color: #007bff;">Walt Disney</span> otrzymał nagrodę specjalną, np. za "<span style="font-style: italic; color: #d9534f;">Myszkę Miki</span>",
+    cały opis znajduje się w kolumnie "film", ponieważ na stronie źródłowej nie podano tytułu filmu. Chciałem zachować pełne informacje, za co dana osoba otrzymała wyróżnienie.
+    Na końcu oba DataFrame są łączone i tworzony jest plik <span class="code">CleanData.csv</span>, który staje się głównym źródłem danych do wizualizacji i bazą danych SQLite.
+    Dodatkowo, dane te są zapisywane w formacie JSON, który jest ustrukturyzowanym formatem tekstowym, idealnym do wymiany danych między aplikacjami.
+    Format JSON pozwala na reprezentację danych w postaci par klucz-wartość oraz list, co ułatwia ich odczyt i przetwarzanie.
+</div>
+
+
+
+<div class="section">
+    <h2>Tworzenie bazy danych.</h2>
+    <p>
+        Cały proces jest realizowany przez skrypt <span class="code">TworzenieDB.py</span>.
+        W celu przechowywania i przetwarzania danych o nagrodach filmowych tworzona jest baza danych SQLite.
+    </p>
+</div>
+    <div class="section">
+        <h2>Cel skryptu</h2>
+        <p>
+            Skrypt <code>TworzenieDB.py</code> służy do tworzenia i wypełniania bazy danych SQLite danymi z pliku CSV.
+            Baza danych jest tworzona od zera, a istniejąca baza jest usuwana, jeśli istnieje.
+            Po utworzeniu i wypełnieniu bazy danych, skrypt wysyła powiadomienie do serwera SocketIO o zakończeniu procesu.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Funkcje</h2>
+        <ul>
+            <li>
+                <h3><code>create_database(db_file)</code></h3>
+                <p>
+                    Funkcja ta tworzy bazę danych SQLite o nazwie <code>db_file</code>.
+                    Jeśli baza danych o tej nazwie już istnieje, jest usuwana.
+                    Następnie tworzone są cztery tabele: <code>kategorie</code>, <code>aktorzy</code>, <code>typy_nagrod</code> i <code>nagrody</code>.
+                    Tabele te są tworzone z odpowiednimi kolumnami i kluczami obcymi, aby zachować relacje między danymi.
+                </p>
+            </li>
+            <li>
+                <h3><code>populate_database(db_file, csv_file)</code></h3>
+                <p>
+                    Funkcja ta wczytuje dane z pliku CSV <code>csv_file</code> i wypełnia nimi utworzoną bazę danych.
+                    Dane z pliku CSV są przetwarzane wiersz po wierszu.
+                    Dla każdej kategorii, aktora i typu nagrody, funkcja sprawdza, czy dany rekord już istnieje w odpowiedniej tabeli.
+                    Jeśli rekord nie istnieje, jest dodawany.
+                    Następnie, rekord nagrody jest dodawany do tabeli <code>nagrody</code>, zawierający odniesienia do odpowiednich kategorii, aktorów i typów nagród.
+                </p>
+            </li>
+            <li>
+                <h3><code>notify_db_created()</code></h3>
+                <p>
+                    Funkcja ta łączy się z serwerem SocketIO na adresie <code>http://localhost:5000</code> i wysyła powiadomienie o nazwie <code>db_created</code>.
+                    Powiadomienie to informuje serwer o zakończeniu procesu tworzenia i wypełniania bazy danych.
+                    W przypadku wystąpienia błędów podczas łączenia z serwerem SocketIO, błąd jest wypisywany na konsolę.
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Główna część skryptu</h2>
+        <p>
+            W głównej części skryptu, funkcje <code>create_database</code> i <code>populate_database</code> są wywoływane, aby utworzyć i wypełnić bazę danych.
+            Po zakończeniu procesu, na konsolę wypisywany jest komunikat informujący o utworzeniu i wypełnieniu bazy danych.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Podsumowanie</h2>
+        <p>
+            Skrypt <code>TworzenieDB.py</code> automatyzuje proces tworzenia i wypełniania bazy danych SQLite danymi z pliku CSV.
+            Umożliwia to szybkie i efektywne przetwarzanie danych oraz ich przechowywanie w ustrukturyzowanej formie, gotowej do dalszej analizy lub wizualizacji.
+        </p>
+    </div>
 
 
 
