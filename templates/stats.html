@@ -12,11 +12,19 @@
         <h2>Uruchom Statystki</h2>
         <button onclick="uruchom_Stats()">Uruchom</button>
     </div>
-    <div>
-        <h2>Wyjście Skryptu Stats:</h2>
 
+        <hr>
+
+        <br>
+        <div class="section" >
+        <h2 style="color: #333; font-size: 1.8em; margin-bottom: 10px;">Statystyki Naszych Danych</h2>
+        <p style="font-size: 1.1em; line-height: 1.6;">
+            Tutaj znajdziesz szczegółowe statystyki dotyczące analizowanych danych.
+            Przedstawiamy kluczowe informacje, które pomogą Ci zrozumieć trendy i zależności.
+        </p>
 
     </div>
+
         <div id="stats">
             {% for eleme in stats %}
             <div class="section" style="border: 1px solid black; margin: 10px; padding: 10px;">
@@ -32,17 +40,79 @@
 
 
     {% if dash_url %}
-    <div class="section" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-        <p>
-          Poniższy
+    <div class="section" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: 'Arial', sans-serif; line-height: 1.6;">
+
+
+        <h2 style="color: #3366cc; border-bottom: 2px solid #3366cc; padding-bottom: 10px;">Interaktywna Analiza Karier Aktorskich: Oscary za Role Pierwszo- i Drugoplanowe</h2>
+
+        <p style="text-align: justify;">
+            Ten interaktywny panel prezentuje szczegółowe statystyki dotyczące aktorów i aktorek, którzy zdobyli co najmniej dwa Oscary za role pierwszo- i drugoplanowe.
+            Wizualizacja ta została zaprojektowana, aby umożliwić dogłębną analizę osiągnięć tych wybitnych artystów,
+            oferując unikalny wgląd w ich kariery filmowe.
         </p>
+
+        <h3 style="color: #c00bf2;">Kluczowe Elementy Interaktywne:</h3>
+
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>
+                <strong>Interaktywny Wykres Słupkowy (Bar Chart):</strong>
+                <p style="text-align: justify;">
+                    Wizualnie prezentuje liczbę Oscarów zdobytych przez każdego aktora/aktorkę. Wysokość słupka odzwierciedla liczbę nagród,
+                    a kolor słupka identyfikuje konkretnego artystę. Wykres dynamicznie aktualizuje się w odpowiedzi na zmiany ustawień suwaka i wybór danych na osi Y.
+                </p>
+            </li>
+            <li>
+                <strong>Dynamiczna Tabela Danych (Data Table):</strong>
+                <p style="text-align: justify;">
+                    Wyświetla szczegółowe dane w formie tabelarycznej, w tym imię i nazwisko aktora, liczbę otrzymanych Oscarów,
+                    a także dodatkowe statystyki, takie jak **<span style="color: #c00bf2;">minimalny i maksymalny rok otrzymania nagrody (Min, Max)</span>** oraz **<span style="color: #c00bf2;">rozstęp lat (Rozstęp)</span>** między tymi nagrodami.
+                    Tabela jest automatycznie aktualizowana w zależności od filtrów ustawionych za pomocą suwaka, co umożliwia analizę wyselekcjonowanych danych.
+                </p>
+            </li>
+            <li>
+                <strong>RadioItems do Wyboru Danych na Osi Y:</strong>
+                <p style="text-align: justify;">
+                    Pozwala użytkownikowi na interaktywny wybór danych, które są wyświetlane na osi Y wykresu słupkowego.
+                    Użytkownik może przełączać się między różnymi statystykami, takimi jak **<span style="color: #c00bf2;">liczba nominacji i wygranych (count)</span>**, **<span style="color: #c00bf2;">średni rok otrzymania nagrody (mean)</span>**,
+                    czy **<span style="color: #c00bf2;">odchylenie standardowe (std)</span>**, co pozwala na eksplorację danych z różnych perspektyw.
+                </p>
+            </li>
+            <li>
+                <strong>Funkcja Pobierania i Eksportu Wykresu:</strong>
+                <p style="text-align: justify;">
+                    Umożliwia pobranie aktualnie wyświetlanego wykresu w formacie PNG.
+                    Dzięki temu użytkownik może zapisać statyczną wersję danych do dalszej analizy lub udostępnienia.
+                    Funkcja eksportu uwzględnia filtry nałożone za pomocą suwaka, co pozwala na zapisanie spersonalizowanych wyników analizy.
+                </p>
+            </li>
+            <li>
+                <strong>Analiza Dodatkowych Statystyk:</strong>
+                <p style="text-align: justify;">
+                    Oprócz podstawowych danych, wizualizacja umożliwia analizę dodatkowych statystyk, takich jak **<span style="color: #c00bf2;">częstotliwość nominacji i wygranych w poszczególnych latach</span>**,
+                    co pozwala na zrozumienie dynamiki karier aktorskich w kontekście nagród Oscarów.
+                </p>
+            </li>
+        </ul>
+
+        <h3 style="color: #339966;">Analiza i Wnioski:</h3>
+
+        <p style="text-align: justify;">
+            Dzięki interaktywnym elementom, użytkownik może łatwo identyfikować aktorów z największą liczbą Oscarów, porównywać ich osiągnięcia i analizować dane w dynamiczny sposób.
+            Wizualizacja umożliwia dogłębne zrozumienie karier aktorskich w kontekście nagród Oscarów, ukazując zarówno ich szczyty, jak i okresy stabilnej aktywności.
+        </p>
+
+        <p style="text-align: justify;">
+            Ta interaktywna analiza dostarcza cennych informacji na temat wybitnych aktorów i aktorek, ukazując ich drogę do sukcesu i uznania w branży filmowej,
+            a także pozwala na identyfikację wzorców i trendów w historii nagród Oscarów.
+        </p>
+
       </div>
 
     <div id="chart-container" style="display: flex; justify-content: center;">
         <iframe src="{{ dash_url }}" style="width:100%; height:1200px; border:0;"></iframe>
     </div>
 
-
+</div>
         {% else %}
 
         <p>Kliknij Uruchom i poczkeaj 10 sekund</p>
