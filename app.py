@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, emit
 import subprocess
 import threading
 import os
+from flask import Flask, jsonify
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
 import pandas as pd
 import plotly.express as px
@@ -16,7 +17,17 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import textwrap
-
+import funkcje as fu
+import sqlite3
+import pandas as pd
+import pytest
+import re
+from flask import Flask, render_template
+import io
+import sys
+import contextlib
+import os
+import inspect
 
 
 # Flask app initialization
@@ -101,6 +112,15 @@ def handle_uruchom_Tworzenie_DB():
         active_threads[session_id] = thread
 
 
+@socketio.on('uruchom_Stats')
+def handle_uruchom_Stats():
+    session_id = request.sid
+    if session_id not in active_threads:  # Uruchom skrypt tylko raz dla sesji
+        thread = threading.Thread(target=run_script_once, args=('stats.py', [], session_id))
+        thread.start()
+        active_threads[session_id] = thread
+
+
 @socketio.on('uruchom_Chart')
 def handle_uruchom_Chart():
     session_id = request.sid
@@ -159,8 +179,33 @@ def dokumentacja_page():
     return render_template('dokumentacja.html')
 
 
+TEST_FILE = 'test_data_consistency.py'
 
 
+
+@app.route('/stats')
+def stats_page():
+    stats = fu.analizuj_dane()
+
+    try:
+        # Uruchom Pytest
+        result = subprocess.run(['pytest', '-q', TEST_FILE], capture_output=True, text=True)
+
+        # Przetwórz wynik
+        if result.returncode == 0:
+            test_status = 'Passed'
+        else:
+            test_status = 'Failed'
+        test_output = result.stdout
+
+
+    except Exception as e:
+        test_status = 'Error'
+        test_output = str(e)
+
+
+    dash_url = '/stats/'
+    return render_template('stats.html', dash_url=dash_url, stats=stats, test_status=test_status, test_output=test_output)
 
 def fetch_data():
     conn = sqlite3.connect(DATABASE_PATH)
@@ -182,19 +227,29 @@ def fetch_data():
 
 def create_dash_layout(initial_df):
     return html.Div([
-        html.Div(children='My App with Filters for All Columns', style={'textAlign': 'center', 'color': 'blue', 'fontSize': 20}),
+        html.Div(children='Przegląd Danych', style={'textAlign': 'center', 'color': 'blue', 'fontSize': 20, 'margin-bottom': '20px'}),
         html.Div(className='row', children=[
-            html.Label("Filter by Actor:"),
-            dcc.Input(id='actor-input', type='text', placeholder='Enter Actor', value='', style={'margin': '10px'}),
-            html.Label("Filter by Year:"),
-            dcc.Input(id='year-input', type='number', placeholder='Enter Year', value=None, style={'margin': '10px'}),
-            html.Label("Filter by Film:"),
-            dcc.Input(id='film-input', type='text', placeholder='Enter Film', value='', style={'margin': '10px'}),
-            html.Label("Filter by Type:"),
-            dcc.Input(id='type-input', type='text', placeholder='Enter Type', value='', style={'margin': '10px'}),
-            html.Label("Filter by Category:"),
-            dcc.Input(id='category-input', type='text', placeholder='Enter Category', value='', style={'margin': '10px'}),
-        ], style={'display': 'flex', 'flex-wrap': 'wrap', 'align-items': 'center'}),
+            html.Div(className='input-group', children=[
+                html.Label("Filter by Actor:", className='input-label'),
+                dcc.Input(id='actor-input', type='text', placeholder='Enter Actor', value='', className='input-field'),
+            ], style={'margin': '10px'}),  # Dodano margin
+            html.Div(className='input-group', children=[
+                html.Label("Filter by Year:", className='input-label'),
+                dcc.Input(id='year-input', type='number', placeholder='Enter Year', value=None, className='input-field'),
+            ], style={'margin': '10px'}),  # Dodano margin
+            html.Div(className='input-group', children=[
+                html.Label("Filter by Film:", className='input-label'),
+                dcc.Input(id='film-input', type='text', placeholder='Enter Film', value='', className='input-field'),
+            ], style={'margin': '10px'}),  # Dodano margin
+            html.Div(className='input-group', children=[
+                html.Label("Filter by Type:", className='input-label'),
+                dcc.Input(id='type-input', type='text', placeholder='Enter Type', value='', className='input-field'),
+            ], style={'margin': '10px'}),  # Dodano margin
+            html.Div(className='input-group', children=[
+                html.Label("Filter by Category:", className='input-label'),
+                dcc.Input(id='category-input', type='text', placeholder='Enter Category', value='', className='input-field'),
+            ], style={'margin': '10px'}),  # Dodano margin
+        ], style={'display': 'flex', 'flex-wrap': 'wrap', 'align-items': 'center', 'padding': '10px'}),  # Dodano padding
         dash_table.DataTable(
             id='data-table-baza',
             columns=[{"name": i, "id": i} for i in initial_df.columns],
@@ -202,9 +257,20 @@ def create_dash_layout(initial_df):
             page_size=10,
             style_table={'overflowX': 'auto'},
             filter_action='none',
-            sort_action='native'
+            sort_action='native',
+            style_cell={'padding': '5px', 'textAlign': 'left'},
+            style_header={
+                'backgroundColor': 'lightgray',
+                'fontWeight': 'bold'
+            },
+            style_data_conditional=[
+                {
+                    'if': {'row_index': 'odd'},
+                    'backgroundColor': 'rgb(248, 248, 248)'
+                }
+            ]
         )
-    ])
+    ], style={'padding': '20px'})
 
 initial_data = None
 db_exists_on_start = os.path.exists(DATABASE_PATH)
@@ -259,6 +325,8 @@ sorted_df = grouped_df.sort_values(by=['aktor', 'type', 'count'], ascending=[Tru
 
 # Filter data for winners only
 winners_df = sorted_df[sorted_df['type'] == 'Winner'].sort_values(by='count', ascending=False)
+winners_df = winners_df.rename(columns={'count': 'Ilość'})
+
 
 
 
@@ -277,12 +345,12 @@ dash_app2 = Dash(
 
 
 dash_app2.layout = html.Div([
-    html.Div(className='row', children='Ilość zdobytych oskarów dla rół pierwszo Planowch.',
+    html.Div(className='row', children='Zestawienie liczby Oscarów zdobytych za role pierwszoplanowe',
              style={'textAlign': 'center', 'color': 'blue', 'fontSize': 30, 'justifyContent': 'center', 'display': 'flex'}),
 
     html.Div(className='row', children=[
-        dcc.RadioItems(options=['count'],
-                       value='count',
+        dcc.RadioItems(options=['Ilość'],
+                       value='Ilość',
                        inline=True,
                        id='my-radio-buttons-final')
     ]),
@@ -291,10 +359,10 @@ dash_app2.layout = html.Div([
         dcc.Slider(
             id='count-slider',
             min=0,
-            max=winners_df['count'].max(),
+            max=winners_df['Ilość'].max(),
             step=1,
             value=0,
-            marks={i: str(i) for i in range(0, winners_df['count'].max() + 1, 5)},
+            marks={i: str(i) for i in range(0, winners_df['Ilość'].max() + 1, 5)},
             tooltip={"placement": "bottom", "always_visible": True}
         )
     ], style={'margin': '20px'}),
@@ -318,10 +386,10 @@ dash_app2.layout = html.Div([
 )
 def update_graph_and_table(col_chosen, min_count):
     # Filter the data based on the slider's value
-    filtered_df = winners_df[winners_df['count'] >= min_count]
+    filtered_df = winners_df[winners_df['Ilość'] >= min_count]
 
     # Create the bar chart with filtered data
-    fig = px.bar(filtered_df, x='aktor', y=col_chosen, color='aktor', title=f'Filtered Data by {col_chosen}')
+    fig = px.bar(filtered_df, x='aktor', y=col_chosen, color='aktor', title=f'Aktorzy i {col_chosen} otrzymanaych Oksarów za role pierwszoplanowe')
 
     # Return both the figure and the filtered DataFrame's data for the DataTable
     return fig, filtered_df.to_dict('records')
@@ -364,7 +432,7 @@ dash_app3.layout = dbc.Container([
                 style_cell={'textAlign': 'left'},
                 sort_action='native',
                 filter_action='native',
-                export_format='csv',
+                #export_format='csv',
             ),
 
             html.Div(id='title-container', style={'textAlign': 'center', 'margin-top': '20px'})  # Title container
@@ -397,7 +465,7 @@ def update_graph_and_table(selected_categories):
 
 
     def split_into_lines(text, line_length=105):
-
+    # S Split the text into lines at word boundaries, respecting the line length
         wrapped_lines = textwrap.wrap(text, width=line_length)
         return "\n".join(wrapped_lines)
 
@@ -441,6 +509,103 @@ def update_graph_and_table(selected_categories):
 
 
 
+df = pd.read_csv('CleanData.csv')
+
+last=df.loc[(df['type']=='Winner')& ( df['category'].isin(['ACTOR IN A LEADING ROLE',\
+                                                           'ACTOR IN A SUPPORTING ROLE','ACTRESS',
+                                                             'ACTOR', 'ACTRESS IN A LEADING ROLE', 'ACTRESS','ACTRESS IN A SUPPORTING ROLE']))]
+lastn=last.groupby(['aktor', 'type']).size().reset_index(name='count')
+lastn=lastn.sort_values(by='count', ascending=False)
+
+#lista aktorow
+al=lastn[lastn['count']>1]['aktor']
+aktorzy=df[df['aktor'].isin(al)]
+myData = pd.DataFrame()
+
+for i in al:
+    akt=pd.DataFrame({i:aktorzy.loc[aktorzy['aktor']==i]['YEAR'].describe()})
+    myData=pd.concat([myData, akt], axis=1)
+
+myData.loc['Rozstep']=myData.loc['max']-myData.loc['min']
+
+myData['mean']=myData.mean(axis=1)
+
+finalmyData=myData.T
+finalmyData = finalmyData.rename(index={'index': 'Aktor'})
+
+oskar=aktorzy.loc[aktorzy['type']=='Winner'].groupby('aktor')[['film']].count().sort_values('film').reset_index()
+polaczony_df = pd.merge(finalmyData, oskar, left_index=True, right_on='aktor', how='left').rename(columns={'film': 'Ilosc Oskarow'})
+polaczony_df[['aktor', 'Ilosc Oskarow','count', 'mean', 'std', 'min', '25%', '50%', '75%', 'max', 'Rozstep']]
+polaczony_df = polaczony_df.set_index('aktor')
+
+
+
+dash_app4 = Dash(
+    __name__,
+    server=app,
+    url_base_pathname='/stats/',
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
+)
+
+
+
+# App layout
+
+
+dash_app4.layout = html.Div([
+    html.H1("Aktorzy i statystyki"),
+    dcc.Dropdown(
+        id='data-column-dropdown',
+        options=[
+            {'label': 'Ilosc Oskarow', 'value': 'Ilosc Oskarow'},
+            {'label': 'Ilość', 'value': 'count'},
+            {'label': 'Mean', 'value': 'mean'},
+            {'label': 'Standard Deviation', 'value': 'std'},  # Poprawiony label
+            {'label': 'Minimum Year', 'value': 'min'},      # Poprawiony label
+            {'label': '25th Percentile', 'value': '25%'},
+            {'label': 'Median', 'value': '50%'},
+            {'label': '75th Percentile', 'value': '75%'},
+            {'label': 'Maximum Year', 'value': 'max'},      # Poprawiony label
+            {'label': 'Range', 'value': 'Rozstep'}       # Poprawiony label
+        ],
+        value='count',
+    ),
+    dcc.Graph(id='actor-stats-chart'),
+    dash_table.DataTable(
+        id='actor-stats-table',
+        columns=[{"name": i, "id": i} for i in polaczony_df.reset_index().columns],
+        data=polaczony_df.reset_index().to_dict('records'),
+        page_size=50
+    )
+])
+
+
+# Callback
+@dash_app4.callback(
+    [Output('actor-stats-chart', 'figure'),
+     Output('actor-stats-table', 'data')],
+    [Input('data-column-dropdown', 'value')]
+)
+def update_chart_and_table(selected_column):
+    tytul = f"Aktorzy i {selected_column.title()}"
+    if selected_column == 'count':
+        tytul = "Aktorzy i Ilość"
+    fig = px.bar(polaczony_df.reset_index(), x=polaczony_df.index, y=selected_column,
+                 title=tytul)
+    # Dodaj opcjonalne skalowanie osi Y tutaj, jeśli jest to potrzebne dla konkretnych kolumn
+    if selected_column in ['mean', 'min', '25%','50%', '75%', 'max']:
+        fig.update_layout(yaxis=dict(range=[1920, polaczony_df[selected_column].max()]))
+    return fig, polaczony_df.reset_index().to_dict('records')
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -451,6 +616,7 @@ def update_graph_and_table(selected_categories):
 url_map = {
     '/wizualizacja': dash_app2.server,
     '/wizualizacja2': dash_app3.server,
+    '/stats': dash_app4.server,
 }
 
 

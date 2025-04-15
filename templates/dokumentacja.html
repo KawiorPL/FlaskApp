@@ -15,7 +15,7 @@
 <div class="section">
     <h2>Rozpoczęcie działania Skryptu</h2>
     <p>
-        Otwierając aplikację, znajdujemy się na stronie Skrypt. Rozpoczynamy działanie aplikacji poprzez
+        Otwierając aplikację, znajdujemy się na stronie <span class="code">Skrypt</span>. Rozpoczynamy działanie aplikacji poprzez
         podanie strony internetowej. Nasza aplikacja działa dla strony <a href="https://oscar.warpechow.ski/">https://oscar.warpechow.ski/</a>.
         Klikamy przycisk <span class="important">Uruchom</span>. Po uruchomieniu, w oknie <span class="code">Wyjście skryptu</span> będziemy mieli informacje o postępach skryptu.
     </p>
@@ -99,7 +99,7 @@
 </div>
 
 <div class="section">
-    <h3>Czyszczenie Danych i Tworzenie Dodatkowych Rekordów</h3>
+    <h3>Czyszczenie Danych i Tworzenie Dodatkowych Rekordów</h2>
     <p>
         W następnej części skryptu specjalne kategorie są oddzielane od pozostałych.
         Ta część zajmuje się czyszczeniem danych z dodatkowych słów i tworzeniem dodatkowych rekordów dla osób przypisanych do danego filmu (gdy występuje więcej niż jedna osoba).
@@ -138,7 +138,7 @@
     </p>
 </div>
     <div class="section">
-        <h2>Cel skryptu</h2>
+        <h3>Cel skryptu</h3>
         <p>
             Skrypt <code>TworzenieDB.py</code> służy do tworzenia i wypełniania bazy danych SQLite danymi z pliku CSV.
             Baza danych jest tworzona od zera, a istniejąca baza jest usuwana, jeśli istnieje.
@@ -147,7 +147,7 @@
     </div>
 
     <div class="section">
-        <h2>Funkcje</h2>
+        <h3>Funkcje</h3>
         <ul>
             <li>
                 <h3><code>create_database(db_file)</code></h3>
@@ -180,7 +180,7 @@
     </div>
 
     <div class="section">
-        <h2>Główna część skryptu</h2>
+        <h3>Główna część skryptu</h3>
         <p>
             W głównej części skryptu, funkcje <code>create_database</code> i <code>populate_database</code> są wywoływane, aby utworzyć i wypełnić bazę danych.
             Po zakończeniu procesu, na konsolę wypisywany jest komunikat informujący o utworzeniu i wypełnieniu bazy danych.
@@ -188,13 +188,85 @@
     </div>
 
     <div class="section">
-        <h2>Podsumowanie</h2>
+        <h3>Efekt końcowy: Baza danych DbOksary.db</h3>
+        <p>
+            Finalnym rezultatem działania skryptu jest utworzenie bazy danych <span class="code">DbOksary.db</span>.
+            Dzięki wykorzystaniu biblioteki Dash, użytkownik ma możliwość interaktywnego przeglądania danych bezpośrednio w aplikacji.
+            Aplikacja Dash udostępnia interfejs z filtrowaniem danych w pięciu kolumnach, co ułatwia eksplorację i weryfikację.
+        </p>
+        <p>
+            Niemniej jednak, do zaawansowanej analizy danych i wykonywania złożonych zapytań SQL, zalecane jest użycie dedykowanych narzędzi, takich jak DBeaver,
+            lub bezpośrednie wykonywanie zapytań za pomocą biblioteki <span class="code">sqlite3</span> w Pythonie.
+            Te metody oferują większą elastyczność i kontrolę nad danymi.
+        </p>
+        <p>
+            Aktualnie napotykam problem z dynamicznym odświeżaniem danych w aplikacji Dash po utworzeniu bazy danych.
+            Aplikacja Flask nie aktualizuje widoku danych w Dash automatycznie.
+            Pracuję nad rozwiązaniem tego <span style="font-weight: bold; color: #c60b0b;">problemu</span>. Obejscie problemu jest <span style="font-weight: bold; color: #c60b0b;">wyłączenie</span> i <span style="font-weight: bold; color: #0911e3;">włączenie</span> aplikacji po stworzeniu bazy danych. Wtedy aplikacja dash działa poprawnie
+            i mamy dostep do danych w panelu.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Podsumowanie bazy danych</h2>
         <p>
             Skrypt <code>TworzenieDB.py</code> automatyzuje proces tworzenia i wypełniania bazy danych SQLite danymi z pliku CSV.
             Umożliwia to szybkie i efektywne przetwarzanie danych oraz ich przechowywanie w ustrukturyzowanej formie, gotowej do dalszej analizy lub wizualizacji.
         </p>
     </div>
 
+
+    <div class="section">
+        <h2>Wizualizacja Danych</h2>
+        <p>
+            W zakładce "Wizualizacja" użytkownik ma dostęp do interaktywnych i statycznych wykresów, prezentujących różne aspekty danych o nagrodach filmowych.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Dynamiczny Wykres Zwycięstw Aktorskich</h3>
+        <p>
+            Pierwszy wykres, zaimplementowany w aplikacji Dash, prezentuje liczbę zwycięstw w kategoriach aktorskich pierwszoplanowych (męskich i żeńskich).
+            Użytkownik ma możliwość interaktywnej analizy danych poprzez przesuwanie wskaźnika, co umożliwia dynamiczne filtrowanie i eksplorację danych.
+            Szczególnie interesujący jest panel umożliwiający zmianę zakresu liczby otrzymanych Oscarów, co pozwala na identyfikację aktorów z największą liczbą nagród w tych kategoriach.
+            Dodatkowo, wykres ten umożliwia [dodaj informację o szczegółach, jakie dane są pokazywane, np. lata, imiona i nazwiska, itp.].
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Statystyczny Wykres Nominacji i Oscarów</h3>
+        <p>
+            Drugi wykres, statyczny, stworzony przez autora aplikacji, przedstawia liczbę nominacji i zdobytych Oscarów przez aktorów w kategoriach pierwszoplanowych.
+            W celu poprawy czytelności, na wykresie nałożono punkty: zielone reprezentują Oscary, a czarne – nominacje.
+            Ta wizualizacja umożliwia łatwe zidentyfikowanie okresów aktywności zawodowej aktorów oraz momentów otrzymywania nominacji i nagród.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Statystyczny Wykres Oscarów dla Filmów</h3>
+        <p>
+            Kolejny wykres, również statyczny, przedstawia liczbę Oscarów zdobytych przez filmy z największą liczbą nagród.
+            [Dodaj informacje o ilości przedstawionych filmów, oraz o tym jak one zostały wybrane].
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Mapa Świata Oscarów Filmów Obcojęzycznych</h3>
+        <p>
+            Czwarty wykres to interaktywna mapa świata, prezentująca liczbę Oscarów przyznanych filmom obcojęzycznym z różnych krajów.
+            Każdy kraj jest oznaczony kolorem odpowiadającym barwom narodowym, a po najechaniu kursorem wyświetlana jest dokładna liczba Oscarów.
+            Mapa oferuje wysoką szczegółowość, pozwalając na dokładne przyjrzenie się globalnej dystrybucji nagród, z zaznaczonymi ulicami i innymi detalami.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Wykres Oscarów dla Osób i Studiów</h3>
+        <p>
+            Ostatni wykres przedstawia osoby i studia filmowe z największą liczbą zdobytych Oscarów.
+            Użytkownik ma możliwość filtrowania danych według wybranych kategorii, co pozwala na dostosowanie wizualizacji do indywidualnych potrzeb.
+            W przypadku wyboru kilku kategorii, ich nazwy są wyświetlane w tytule pod wykresem, co ułatwia interpretację danych.
+        </p>
+    </div>
 
 
 

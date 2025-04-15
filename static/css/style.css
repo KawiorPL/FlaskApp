@@ -204,3 +204,11 @@ input[type="text"] {
 .section a:hover {
     text-decoration: underline;
 }
+
+#stats  {
+    display: none; /* Ukryj div na początku */
+}
+
+#test {
+    display: none; /* Ukryj div na początku */
+}

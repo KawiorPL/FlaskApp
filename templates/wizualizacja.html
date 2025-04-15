@@ -11,7 +11,44 @@
     <br><hr>
 
     <div>
+
+
         {% if dash_url %}
+
+        <div class="section" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <h2>Charakterystyka poniższej Wizualizacji</h2>
+            <p>
+              Ta dynamiczna wizualizacja przedstawia aktorów i aktorki, którzy otrzymali Oscary za role pierwszoplanowe. Użytkownik ma możliwość interaktywnego eksplorowania danych poprzez:
+            </p>
+            <ul>
+              <li>
+                <strong>Suwak (Slider):</strong> Umożliwia filtrowanie danych na podstawie minimalnej liczby Oscarów. Przesuwając suwak, użytkownik może zawęzić listę wyświetlanych aktorów do tych, którzy otrzymali co najmniej wybraną liczbę statuetek.
+              </li>
+              <li>
+                <strong>Wykres Słupkowy (Bar Chart):</strong> Wizualnie prezentuje liczbę Oscarów zdobytych przez każdego aktora/aktorkę. Wysokość słupka odpowiada liczbie nagród, a kolor słupka identyfikuje aktora.
+              </li>
+              <li>
+                <strong>Tabela Danych (Data Table):</strong> Wyświetla szczegółowe dane w formie tabelarycznej, w tym imię i nazwisko aktora oraz liczbę otrzymanych Oscarów. Tabela jest dynamicznie aktualizowana w zależności od ustawień suwaka.
+              </li>
+              <li>
+                <strong>RadioItems:</strong> Umożliwia wybór danych wyświetlanych na osi Y wykresu słupkowego.
+              </li>
+              <li>
+                <strong>Pobieranie i Eksport:</strong> Użytkownik ma możliwość pobrania aktualnie wyświetlanego wykresu w formacie PNG, co pozwala na zapisanie statycznej wersji danych. Dodatkowo, po nałożeniu filtrów za pomocą suwaka, można wyeksportować przefiltrowany wykres, umożliwiając analizę i udostępnianie specyficznych podzbiorów danych.
+              </li>
+            </ul>
+            <p>
+              Dzięki tym elementom, użytkownik może łatwo zidentyfikować aktorów z największą liczbą Oscarów, porównać ich osiągnięcia i analizować dane w interaktywny sposób.
+            </p>
+            <p>
+              <span style="font-style: italic;">Dodatkowe informacje:</span>
+              <strong>Wizualizacja jest interaktywna i dynamicznie aktualizuje dane na podstawie działań użytkownika.</strong>
+            </p>
+          </div>
+      <br>
+
+
+
         <iframe src="{{ dash_url }}" style="width:100%; height:1200px; border:0;"></iframe>
     {% else %}
         <p>Aplikacja wizualizacji danych jest niedostępna.</p>
@@ -31,22 +68,28 @@
 
     <br><hr>
 
-    <p>Drugi wykres, który został opracowany, prezentuje liczbę nominacji oraz zdobytych Oscarów przez aktorów w kategoriach pierwszoplanowych.
-        W celu zwiększenia czytelności danych, na wykresie nałożono punkty: zielone reprezentują zdobyte Oscary, a czarne – nominacje.
-         Ta wizualizacja umożliwia odbiorcy łatwe zidentyfikowanie lat aktywności zawodowej danego aktora oraz momentów otrzymywania nominacji i nagród. Dodatkowo,
-         wykres pozwala na wizualne porównanie relacji między liczbą nominacji a faktycznymi zwycięstwami.
-
-        Analiza ta prowadzi do kilku istotnych wniosków. Po pierwsze, wyraźnie widać, że zdobycie Oscara jest znaczącym osiągnięciem, a wielokrotne nagradzanie w tej
-        kategorii jest rzadkością. Po drugie, obserwujemy, że niektórzy aktorzy byli regularnie nominowani, lecz nie zawsze zdobywali statuetkę. To ilustruje wysoki poziom
-        konkurencji w środowisku aktorskim oraz trudność w zdobyciu uznania Akademii Filmowej. Analiza ta dostarcza cennych informacji na temat karier wybitnych aktorów w historii
-        kina, ukazując ich drogę do sukcesu i uznania.
-
-
-    </p>
 
 
     {% if image_exists %}
-        <div id="chart-container">
+
+
+
+    <div class="section" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <p>
+          Drugi wykres, który został opracowany i prezentuje liczbę nominacji oraz zdobytych Oscarów przez aktorów w kategoriach pierwszoplanowych.
+          W celu zwiększenia czytelności danych, na wykresie nałożono punkty: <span style="color: rgb(5, 251, 5);">zielone</span> reprezentują zdobyte Oscary, a <span style="color: black;">czarne</span> – nominacje.
+          Ta wizualizacja umożliwia odbiorcy łatwe zidentyfikowanie lat aktywności zawodowej danego aktora oraz momentów otrzymywania nominacji i nagród. Dodatkowo,
+          wykres pozwala na wizualne porównanie relacji między liczbą nominacji a faktycznymi zwycięstwami.
+        </p>
+        <p>
+          Analiza ta prowadzi do kilku istotnych wniosków. Po pierwsze, wyraźnie widać, że zdobycie Oscara jest <strong>znaczącym osiągnięciem</strong>, a wielokrotne nagradzanie w tej
+          kategorii jest rzadkością. Po drugie, obserwujemy, że niektórzy aktorzy byli regularnie nominowani, lecz nie zawsze zdobywali statuetkę. To ilustruje wysoki poziom
+          konkurencji w środowisku aktorskim oraz trudność w zdobyciu uznania Akademii Filmowej. Analiza ta dostarcza cennych informacji na temat karier wybitnych aktorów w historii
+          kina, ukazując ich drogę do sukcesu i uznania.
+        </p>
+      </div>
+
+      <div id="chart-container" style="display: flex; justify-content: center;">
         <img src="\static\charts\analizaAktorow.png" alt="Wykres">
     </div>
 
@@ -59,27 +102,29 @@
 
 
 
-    <div>
-        <h2>Cos wymysle </h2>
-
-    </div>
-
-
-    <p>Wykres 5 przedstawia liczbę Oscarów zdobytych przez filmy, które otrzymały ich najwięcej.
-        Jak widać, większość filmów z tej elitarnej grupy zdobyła Oscara tylko raz w danym roku.
-        Wyjątkiem są „Titanic”, „West Side Story” , które dwukrotnie otrzymały nagrody. To może świadczyć
-        o tym, że stworzenie wybitnej produkcji filmowej, która zdobywa liczne Oscary, jest niezwykle trudne.
-
-        Warto również zauważyć, że remake filmu „West Side Story” z 2021 roku zdobył tylko jednego
-        Oscara, podczas gdy oryginalna wersja z 1961 roku otrzymała aż dziesięć nagród. To pokazuje,
-         jak trudno jest dorównać sukcesowi kultowych produkcji
-
-    </p>
-
-
+            <br><hr>
 
     {% if image_exists %}
-    <div id="chart-container">
+    <div class="section" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <p>
+          Poniższy wykres przedstawia liczbę Oscarów zdobytych przez filmy, które zdominowały ceremonie rozdania nagród, otrzymując ich najwięcej.
+          Jak widać, większość filmów z tej elitarnej grupy zdobyła Oscara tylko raz w danym roku, co podkreśla wyjątkowość każdego z tych osiągnięć.
+          Wyjątkiem są „Titanic” i „West Side Story”, które dwukrotnie zostały uhonorowane. Te filmy, będące ikonami kinematografii,
+          pokazują, jak rzadko zdarza się, by jedna produkcja filmowa osiągnęła tak szerokie uznanie Akademii Filmowej.
+          Można śmiało stwierdzić, że stworzenie wybitnej produkcji filmowej, która zdobywa liczne Oscary, jest niezwykle trudne,
+          wymagające połączenia talentu, innowacyjności i doskonałego rzemiosła.
+        </p>
+        <p>
+          Warto również zauważyć, że remake filmu „West Side Story” z 2021 roku, mimo wysokich oczekiwań, zdobył tylko jednego
+          Oscara, podczas gdy oryginalna wersja z 1961 roku otrzymała aż dziesięć nagród. To jaskrawo ilustruje,
+          jak trudno jest dorównać sukcesowi kultowych produkcji, które zapisały się złotymi zgłoskami w historii kina.
+          Ta różnica w odbiorze może wynikać z wielu czynników, w tym zmian w gustach publiczności, ewolucji języka filmowego
+          oraz unikalnego kontekstu kulturowego, w którym powstawały oba filmy. Analiza ta nie tylko dostarcza cennych informacji
+          o samej branży filmowej, ale również pozwala na głębsze zrozumienie dynamiki zmian w kulturze i sztuce.
+        </p>
+      </div>
+
+    <div id="chart-container" style="display: flex; justify-content: center;">
         <img src="\static\charts\filmy_zwyciescy.png" alt="Wykres">
     </div>
 
@@ -92,18 +137,30 @@
 
         <br>
 
-        <p>Wykres 5 przedstawia liczbę Oscarów zdobytych przez filmy, które otrzymały ich najwięcej.
-            Jak widać, większość filmów z tej elitarnej grupy zdobyła Oscara tylko raz w danym roku.
-            Wyjątkiem są „Titanic”, „West Side Story” , które dwukrotnie otrzymały nagrody. To może świadczyć
-            o tym, że stworzenie wybitnej produkcji filmowej, która zdobywa liczne Oscary, jest niezwykle trudne.
 
-            Warto również zauważyć, że remake filmu „West Side Story” z 2021 roku zdobył tylko jednego
-            Oscara, podczas gdy oryginalna wersja z 1961 roku otrzymała aż dziesięć nagród. To pokazuje,
-             jak trudno jest dorównać sukcesowi kultowych produkcji
-
-        </p>
 
         {% if image_exists2 %}
+        <div class="section" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <p>
+              Następny wykres, przedstawiający mapę świata, ilustruje liczbę Oscarów przyznanych w kategoriach
+              <strong>['FOREIGN LANGUAGE FILM', 'INTERNATIONAL FEATURE FILM']</strong>. Wizualizacja ta pozwala na geograficzne
+              rozłożenie sukcesów kinematografii międzynarodowej, ukazując, które kraje zyskały największe uznanie Akademii Filmowej.
+            </p>
+            <p>
+              Z analizy mapy wynika, że dominującymi siłami w tej kategorii są <strong>włoskie</strong> i <strong>francuskie</strong> produkcje,
+              co świadczy o ich bogatej i cenionej tradycji filmowej. Warto również zauważyć, że liczba Oscarów dla <strong>Rosji</strong>
+              obejmuje nagrody przyznane zarówno Federacji Rosyjskiej, jak i byłemu Związkowi Radzieckiemu, co pozwala na
+              śledzenie ewolucji kinematografii tego regionu w kontekście historycznym.
+            </p>
+            <p>
+              Interesującym spostrzeżeniem jest brak wyróżnienia jakiegokolwiek kraju z <strong>kontynentu Australii</strong>,
+              co może wskazywać na specyficzne wyzwania lub bariery, z jakimi mierzy się tamtejsza kinematografia w kontekście
+              międzynarodowych nagród. Dodatkowym atutem tej wizualizacji jest jej interaktywność, umożliwiająca
+              <strong>szczegółowe zbadanie mapy świata</strong>. Dzięki wysokiej rozdzielczości i możliwości przybliżania,
+              użytkownik może z łatwością analizować dane dla poszczególnych krajów i regionów, co czyni mapę niezwykle
+              drobiazgową i informacyjną.
+            </p>
+          </div>
     <div id="chart-container">
         <iframe src="{{ htmlPath }}"
                 width="100%"
@@ -124,6 +181,46 @@
 
     <div>
         {% if dash_urls %}
+
+
+
+<div class="section" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+  <p>
+    Ostatni wykres prezentuje liczbę Oscarów zdobytych przez poszczególne osoby. Użytkownik ma możliwość interaktywnego filtrowania danych,
+    wybierając interesujące go kategorie, co powoduje dynamiczną aktualizację wykresu. Ta funkcjonalność pozwala na
+    <strong>spersonalizowaną analizę</strong> osiągnięć w różnych dziedzinach kinematografii.
+  </p>
+  <p>
+    Na szczególną uwagę zasługuje <strong>Walt Disney</strong>, który zdecydowanie dominuje w zestawieniu, zdobywając największą liczbę Oscarów.
+    Jego wizjonerskie podejście do animacji i produkcji filmowej uczyniło go ikoną przemysłu rozrywkowego.
+  </p>
+  <p>
+    Wyróżnienia należą się również <strong>Cedricowi Gibbonsowi</strong>, który jako scenograf i dyrektor artystyczny przyczynił się do stworzenia
+    niezapomnianych wizualnych światów w klasycznych hollywoodzkich produkcjach. Jego wkład w rozwój scenografii filmowej jest nieoceniony.
+  </p>
+  <p>
+    <strong>Alan Menken</strong> to kompozytor, którego muzyka wzbogaciła wiele animowanych filmów Disneya, zdobywając uznanie Akademii Filmowej.
+    Jego melodie i piosenki stały się nieodłączną częścią popkultury.
+  </p>
+  <p>
+    <strong>Alfred Newman</strong>, kompozytor o niezwykłym talencie, stworzył niezapomniane ścieżki dźwiękowe do wielu klasycznych filmów.
+    Jego muzyka nadała emocjonalnej głębi i dramaturgii wielu produkcjom, co zostało docenione licznymi Oscarami.
+  </p>
+  <p>
+    <strong>Atrybuty poniższego Wykresu to:</strong>
+    <ul>
+      <li><strong>Interaktywność:</strong> Umożliwia użytkownikowi wybór kategorii do analizy.</li>
+      <li><strong>Dynamiczna aktualizacja:</strong> Wykres automatycznie dostosowuje się do wybranych filtrów.</li>
+      <li><strong>Wizualizacja danych:</strong> Przedstawia liczbę Oscarów w sposób graficzny, ułatwiający porównanie osiągnięć.</li>
+      <li><strong>Personalizacja:</strong> Pozwala na skupienie się na interesujących użytkownika kategoriach.</li>
+    </ul>
+  </p>
+</div>
+
+
+
+
+
         <iframe src="{{ dash_urls }}" style="width:100%; height:1200px; border:0;"></iframe>
     {% else %}
         <p>Aplikacja wizualizacji danych jest niedostępna.</p>

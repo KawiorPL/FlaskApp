@@ -52,6 +52,26 @@ function uruchomCheck_Data() {
     socket.emit('uruchom_Check_Data');
 }
 
+
+function uruchom_Stats() {
+    // Pobierz element div o id "nemo"
+    var nemoDiv = document.getElementById("stats");
+
+    // Ustaw styl display na "block", aby element był widoczny
+    nemoDiv.style.display = "block";
+}
+
+
+function uruchom_Test() {
+    // Pobierz element div o id "nemo"
+    var nemoDiv = document.getElementById("test");
+
+    // Ustaw styl display na "block", aby element był widoczny
+    nemoDiv.style.display = "block";
+}
+
+
+
 function uruchomClear_Data() {
     socket.emit('uruchom_czyszczenie_Data');
 }

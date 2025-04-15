@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import requests, json, re, folium, sys, os
 from folium.features import DivIcon
+import sqlite3
+import pandas as pd
+import pytest
+import re
 
 
 
@@ -912,4 +916,56 @@ def mapaswaita(data):
     m.save(CHART_PATH)
     return m
 
+
+def analizuj_dane():
+    """
+    Analizuje DataFrame z danymi o nagrodach filmowych.
+
+    Args:
+        df (pd.DataFrame): DataFrame z kolumnami ['YEAR', 'category', 'aktor', 'film', 'type'].
+    """
+    df = pd.read_csv('CleanData.csv')
+    output = "Analiza Pozyskanych Danych:\n\n"
+
+    # Statystyki
+    output += "Statystyki:\n"
+    output += f"- Liczba ceremonii (lat): {df['YEAR'].nunique()}\n"
+    output += f"- Liczba kategorii: {df['category'].nunique()}\n"
+    output += f"- Liczba aktorów/aktorek: {df['aktor'].nunique()}\n"
+    output += f"- Liczba filmów: {df['film'].nunique()}\n"
+    output += f"- Liczba typów nagród: {df['type'].nunique()}\n\n"
+
+    # Kompletność danych
+    output += "Kompletność Danych:\n"
+    output += "Brakujące dane:\n"
+    output += f"{df.isnull().sum().to_string()}\n\n"
+    # Poprawione obliczanie procentu brakujących danych
+    total_cells = df.size
+    missing_values = df.isnull().sum().sum()
+    percent_missing = (missing_values / total_cells) * 100
+    output += f"Procent brakujących danych: {percent_missing:.2f}%\n\n"
+    output += f"- Liczba duplikatów: {df.duplicated().sum()}\n\n"
+
+    # Analiza unikalnych wartości
+    output += "Analiza unikalnych wartości:\n"
+    output += "Rozkład lat:\n"
+    output += f"{df['YEAR'].value_counts().sort_index().to_string()}\n\n"
+    output += "Rozkład kategorii TOP 20:\n"
+    output += f"{df['category'].value_counts()[:20].to_string()}\n\n"
+    output += "Rozkład aktorów TOP 20:\n"
+    output += f"{df['aktor'].value_counts()[:20].to_string()}\n\n"
+    output += "Rozkład filmów TOP 20:\n"
+    output += f"{df['film'].value_counts()[:20].to_string()}\n\n"
+    output += "Rozkład typów nagród:\n"
+    output += f"{df['type'].value_counts().to_string()}\n\n"
+
+    # Analiza opisowa kolumny YEAR
+    output += "Analiza opisowa kolumny YEAR:\n"
+    output += "Statystyki opisowe dla YEAR:\n"
+    output += f"{df['YEAR'].describe().to_string()}\n\n"
+
+
+    return output.split('\n')
+
+# Przykład użycia (załóżmy, że masz DataFrame o nazwie 'dane')
 

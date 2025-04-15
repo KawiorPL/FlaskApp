@@ -120,11 +120,12 @@ prawiefinal = pd.concat([honorary,pozamianie], ignore_index=True)
 
 final = fu.usuwanie_dodatkowych_slow2(prawiefinal)
 
+data_filtered = final[~final['aktor'].isnull()]
+finalClean = data_filtered.dropna(subset=['aktor'])
 
-final = final.dropna(subset=['aktor'])
 
 
-final.to_csv("CleanData.csv", index=False)
+finalClean.to_csv("CleanData.csv", index=False)
 
 print('Czyste dane zapisane do CleanData.csv')
 sys.stdout.flush()
@@ -134,7 +135,7 @@ print('Dane gotowe do Analizy')
 sys.stdout.flush()
 
 # Zapis do pliku JSON w formacie tabeli
-final.to_json('data_table.json', orient='table')
+finalClean.to_json('data_table.json', orient='table')
 
 print('Zapisanie danych do json plik: data_table.json')
 sys.stdout.flush()

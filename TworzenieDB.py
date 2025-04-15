@@ -2,6 +2,7 @@ import csv
 import sqlite3
 import os
 import time
+import numpy as np
 
 from socketio import Client
 
@@ -74,6 +75,8 @@ def populate_database(db_file, csv_file):
             film = row['film'].strip('"') # Usuwamy cudzysłowy z nazwy filmu
             typ = row['type']
 
+            if aktor == np.nan or aktor=='':
+                continue
             # Pobierz lub dodaj kategorię
             cursor.execute("SELECT id_kategorii FROM kategorie WHERE nazwa_kategorii=?", (kategoria,))
             kategoria_result = cursor.fetchone()
