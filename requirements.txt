@@ -1,0 +1,12 @@
+Flask
+Flask-SocketIO
+pandas
+plotly
+dash
+dash_bootstrap_components
+requests
+beautifulsoup4
+folium
+pytest
+python-socketio
+Werkzeug

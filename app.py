@@ -9,25 +9,13 @@ import pandas as pd
 import plotly.express as px
 import sqlite3
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
-
-from dash import Dash, html, dcc, dash_table, callback, Output, Input
 import dash_bootstrap_components as dbc
-import pandas as pd
-import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import textwrap
 import funkcje as fu
-import sqlite3
-import pandas as pd
-import pytest
-import re
-from flask import Flask, render_template
-import io
-import sys
-import contextlib
-import os
-import inspect
+
+
 
 
 # Flask app initialization
