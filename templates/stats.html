@@ -26,11 +26,18 @@
     </div>
 
         <div id="stats">
+         {%  if stats %}
             {% for eleme in stats %}
             <div class="section" style="border: 1px solid black; margin: 10px; padding: 10px;">
                 {{ eleme }}
             </div>
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+        <div class="section">
+            <h4 style="font-size: large; color: red;">Należy przejść do sekcji Skrypt i uruchomić wszystkie zdefiniowane funkcje</h4>
+        </div>
+
+        {% endif %}
     </div>
 
 
