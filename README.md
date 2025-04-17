@@ -25,11 +25,15 @@ Poniższe kroki opisują, jak zainstalować i uruchomić aplikację na Twoim lok
     Otwórz terminal lub wiersz poleceń i przejdź do folderu, w którym chcesz zainstalować aplikację. Następnie wykonaj polecenie:
 
     ```bash
-    git clone [https://github.com/KawiorPL/FlaskApp.git](https://github.com/KawiorPL/FlaskApp.git)
+    git clone  https://github.com/KawiorPL/FlaskApp.git
+     ```
+    nastepnie
+    ```bash
     cd FlaskApp
-    ```
+     ```
+   
 
-2.  **Utwórz i aktywuj środowisko wirtualne:**
+3.  **Utwórz i aktywuj środowisko wirtualne:**
 
     Wybierz jedną z poniższych opcji w zależności od preferowanego narzędzia:
 
@@ -59,7 +63,7 @@ Poniższe kroki opisują, jak zainstalować i uruchomić aplikację na Twoim lok
 
     Po aktywacji środowiska nazwa środowiska (`(flask_env)` lub `(venv)`) powinna pojawić się na początku linii poleceń.
 
-3.  **Zainstaluj zależności:**
+4.  **Zainstaluj zależności:**
 
     Po aktywowaniu środowiska przejdź do folderu `FlaskApp` (jeśli jeszcze tam nie jesteś) i zainstaluj wymagane biblioteki z pliku `requirements.txt`:
 
