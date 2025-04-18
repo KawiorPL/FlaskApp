@@ -5,24 +5,23 @@
 
 {% block content %}
 
-<br>
-<hr>
+
+
+<div class="content">
+    <h2 style="text-align: center;">Dokumentacja</h2>
+
 
 <div class="section">
-    <h1>Dokumentacja</h1>
-</div>
-
-<div class="section">
-    <h2>Rozpoczęcie działania Skryptu</h2>
+    <h2>Sekcja Skrypt</h2>
     <p>
         Otwierając aplikację, znajdujemy się na stronie <span class="code">Skrypt</span>. Rozpoczynamy działanie aplikacji poprzez
         podanie strony internetowej. Nasza aplikacja działa dla strony <a href="https://oscar.warpechow.ski/">https://oscar.warpechow.ski/</a>.
-        Klikamy przycisk <span class="important">Uruchom</span>. Po uruchomieniu, w oknie <span class="code">Wyjście skryptu</span> będziemy mieli informacje o postępach skryptu.
+        Klikamy przycisk <span class="important">Uruchom Pobierz</span>. Po uruchomieniu, w oknie <span class="code">Wyjście skryptu</span> będziemy mieli informacje o postępach skryptu.
     </p>
 </div>
 
 <div class="section">
-    <h3>Działanie Skryptu - Pobieranie Lat</h3>
+    <h3>Działanie Skryptu - <strong>ZbieranieDanych.py</strong></h3>
     <p>
         Skrypt ma za zadanie zebranie wszystkich lat ze strony głównej. Uruchamiana jest funkcja <span class="code">sonda</span>, która na podstawie biblioteki <span class="code">request</span> pobiera całą stronę. Zapisuje w folderze <span class="code">pliki</span> plik tekstowy <span class="code">linki</span>. Po zakończeniu działania tej funkcji i sprawdzeniu, czy plik został poprawnie zapisany,
         jeżeli nie, użytkownik jest powiadamiany, że plik nie istnieje i nie można przetworzyć linków.
@@ -30,30 +29,46 @@
 </div>
 
 <div class="section">
-    <h3>Tworzenie DataFrame i Listy Lat</h3>
+    <h4>Tworzenie DataFrame i Listy Lat</h4>
     <p>
-        Jeżeli plik jest poprawnie zapisany, to na podstawie tych danych jest tworzony DataFrame z latami i linkami. Funkcja <span class="code">DataFrameYearLink</span> tworzy plik <span class="code">"years_and_links.csv"</span> i na podstawie tego jest ukazany ‘Rzut z DataFrame’. Użytkownik w <span class="code">Wyjście Skryptu</span> ma szansę zobaczyć, jak ten plik wygląda. Na podstawie tych danych tworzona jest lista lat. Ma to za zadanie stworzyć listę, jakie lata trzeba pobrać.
+        Jeżeli plik jest poprawnie zapisany, to na podstawie tych danych jest tworzony DataFrame
+         z latami i linkami. Funkcja <span class="code">DataFrameYearLink</span> tworzy plik <span class="code">"years_and_links.csv"</span> i na podstawie tego jest ukazany
+          Rzut z DataFrame. Użytkownik w <span class="code">Wyjście Skryptu</span> ma szansę zobaczyć, jak ten plik wygląda.
+           Na podstawie tych danych tworzona jest lista lat, aby w dalszej części algorytm wiedział
+           jakie strony trzeba pobrać dla jakich lat. </p>
+</div>
+
+<div class="section">
+    <h4>Eliminacja Duplikatów i Zabezpieczenie Danych</h4>
+    <p>
+        Dodatkowo algorytm sprawdza, jakie pliki zostały już zapisane w folderze
+         <span class="code">pliki</span>.
+         Ma to na celu stworzenie listy brakujących lat.
+         Celem tego jest eliminacja duplikacji i zabezpieczenie przed utratą danych.
+         Skrypt informuje użytkownika, jakie lata do tej pory zostały przetworzone i jaka jest lista lat do pobrania.
     </p>
 </div>
 
 <div class="section">
-    <h3>Eliminacja Duplikatów i Zabezpieczenie Danych</h3>
+    <h4>Pętla Pobierania Danych i Weryfikacje</h4>
     <p>
-        Dodatkowo jest stworzony argument, który sprawdza, jakie pliki zostały już zapisane w folderze <span class="code">pliki</span>. Ma to na celu stworzenie listy brakujących lat. Celem tego jest eliminacja duplikacji i zabezpieczenie przed utratą danych. Skrypt informuje użytkownika, jakie lata do tej pory zostały przetworzone i jaka jest lista lat do pobrania.
-    </p>
-</div>
-
-<div class="section">
-    <h3>Pętla Pobierania Danych i Weryfikacje</h3>
-    <p>
-        Następnym etapem jest pętla, która ma za zadanie pobrać wszystkie dane. W pętli występują zabezpieczenia i weryfikacje. Czyli jeżeli dostaniemy bana lub blokadę, wtedy czas kolejnego zapytania się nam wydłuża. Jeżeli pobraliśmy dane, to musimy zweryfikować, czy dane, które pobieramy, są poprawne. Dodatkowo mam wgląd w te dane, aby móc sprawdzić, jak działa nasz plik.
+        Następnym etapem jest pętla, która ma za zadanie pobrać wszystkie dane.
+         W pętli występują zabezpieczenia i weryfikacje. Czyli jeżeli dostaniemy bana
+          lub blokadę, wtedy czas kolejnego zapytania się nam wydłuża.
+          Jeżeli pobraliśmy dane, to musimy zweryfikować, czy dane, które pobieramy,
+           są poprawne. Dodatkowo mamy wgląd w te dane, aby móc sprawdzić, jak działa
+            nasz skrypt.
     </p>
 </div>
 
 <div class="section">
     <h3>Obsługa Błędów i Zakończenie</h3>
     <p>
-        Błędne dane, które zostały pobrane, zapisywane są w folderze <span class="code">bley/bledne{rok}.txt</span>. Użytkownik może sprawdzić i zweryfikować, jaki był powód błędu. Jeżeli pełna lista jest pobrana, to wtedy skrypt informuje nas i kończy działanie.
+        Błędne dane, które zostały pobrane, zapisywane są w folderze
+        <span class="code">bledy/bledne{rok}.txt</span>. Użytkownik może sprawdzić
+        i zweryfikować, jaki był powód błędu i odzrzucenie danego pliku.
+        Jeżeli pełna lista lat jest pobrana, to wtedy skrypt informuje nas i
+        kończy działanie.
     </p>
 </div>
 
@@ -68,16 +83,18 @@
     <p>
         Jeżeli okaże się, że dane są błędne, tworzony jest plik <span class="code">remove.txt</span>, w którym zapisywane są
         nazwy plików zawierających nieprawidłowe dane. Celem tego jest umożliwienie ich usunięcia i ponownego
-        uruchomienia sekcji <span class="code">Zbieraj dane</span>. Wówczas skrypt ponownie pobierze dane dla danego roku.
+        uruchomienia sekcji <span class="code" style="font-size:large; color: #0911e3;">Uruchom Pobierz</span>.
+        Wówczas skrypt ponownie pobierze dane dla danego roku, który trafił do foldeur bledy.
     </p>
 </div>
 
 
 
 <div class="section">
-    <h3>Uruchomienie Skryptu Czyszczenie Danych</h3>
+    <h3>Uruchomienie Skryptu Transformacja danych - <strong>CzyszczenieDanych.py</strong></h3>
+
     <p>
-        Ostatnim elementem w zakładce Skrypt jest uruchomienie skryptu Czyszczenie Danych.
+        Ostatnim elementem w zakładce Skrypt jest uruchomienie skryptu <span class="code">Transformacja danych</span>.
         Skrypt, na podstawie zebranych danych z pliku <span class="code">years_and_links.csv</span>, pobiera listę lat, dla których dane zostały pobrane.
         Następnie tworzona jest pętla, która iteruje po tych latach, określając, które pliki wymagają przetworzenia.
         Dane z każdego roku są pobierane z plików w formacie <span class="code">dane&lt;rok&gt;.txt</span>, znajdujących się w folderze "pliki".
@@ -123,7 +140,8 @@
     W kolumnie "film" zachowywane są oryginalne wartości.
     Jeśli na przykład <span style="font-weight: bold; color: #007bff;">Walt Disney</span> otrzymał nagrodę specjalną, np. za "<span style="font-style: italic; color: #d9534f;">Myszkę Miki</span>",
     cały opis znajduje się w kolumnie "film", ponieważ na stronie źródłowej nie podano tytułu filmu. Chciałem zachować pełne informacje, za co dana osoba otrzymała wyróżnienie.
-    Na końcu oba DataFrame są łączone i tworzony jest plik <span class="code">CleanData.csv</span>, który staje się głównym źródłem danych do wizualizacji i bazą danych SQLite.
+    Na końcu oba DataFrame są łączone i tworzony jest plik <span class="code">CleanData.csv</span>, który staje się głównym źródłem danych do wizualizacji i
+    źródłem dla bazy danych SQLite.
     Dodatkowo, dane te są zapisywane w formacie JSON, który jest ustrukturyzowanym formatem tekstowym, idealnym do wymiany danych między aplikacjami.
     Format JSON pozwala na reprezentację danych w postaci par klucz-wartość oraz list, co ułatwia ich odczyt i przetwarzanie.
 </div>
@@ -138,7 +156,7 @@
     </p>
 </div>
     <div class="section">
-        <h3>Cel skryptu</h3>
+        <h5>Cel skryptu</h5>
         <p>
             Skrypt <code>TworzenieDB.py</code> służy do tworzenia i wypełniania bazy danych SQLite danymi z pliku CSV.
             Baza danych jest tworzona od zera, a istniejąca baza jest usuwana, jeśli istnieje.
@@ -147,10 +165,10 @@
     </div>
 
     <div class="section">
-        <h3>Funkcje</h3>
+        <h5>Funkcje</h5>
         <ul>
             <li>
-                <h3><code>create_database(db_file)</code></h3>
+                <h5><code>create_database(db_file)</code></h5>
                 <p>
                     Funkcja ta tworzy bazę danych SQLite o nazwie <code>db_file</code>.
                     Jeśli baza danych o tej nazwie już istnieje, jest usuwana.
@@ -159,7 +177,7 @@
                 </p>
             </li>
             <li>
-                <h3><code>populate_database(db_file, csv_file)</code></h3>
+                <h5><code>populate_database(db_file, csv_file)</code></h5>
                 <p>
                     Funkcja ta wczytuje dane z pliku CSV <code>csv_file</code> i wypełnia nimi utworzoną bazę danych.
                     Dane z pliku CSV są przetwarzane wiersz po wierszu.
@@ -169,7 +187,7 @@
                 </p>
             </li>
             <li>
-                <h3><code>notify_db_created()</code></h3>
+                <h5><code>notify_db_created()</code></h5>
                 <p>
                     Funkcja ta łączy się z serwerem SocketIO na adresie <code>http://localhost:5000</code> i wysyła powiadomienie o nazwie <code>db_created</code>.
                     Powiadomienie to informuje serwer o zakończeniu procesu tworzenia i wypełniania bazy danych.
@@ -179,16 +197,9 @@
         </ul>
     </div>
 
-    <div class="section">
-        <h3>Główna część skryptu</h3>
-        <p>
-            W głównej części skryptu, funkcje <code>create_database</code> i <code>populate_database</code> są wywoływane, aby utworzyć i wypełnić bazę danych.
-            Po zakończeniu procesu, na konsolę wypisywany jest komunikat informujący o utworzeniu i wypełnieniu bazy danych.
-        </p>
-    </div>
 
     <div class="section">
-        <h3>Efekt końcowy: Baza danych DbOksary.db</h3>
+        <h5>Efekt końcowy: Baza danych DbOksary.db</h5>
         <p>
             Finalnym rezultatem działania skryptu jest utworzenie bazy danych <span class="code">DbOksary.db</span>.
             Dzięki wykorzystaniu biblioteki Dash, użytkownik ma możliwość interaktywnego przeglądania danych bezpośrednio w aplikacji.
@@ -200,9 +211,9 @@
             Te metody oferują większą elastyczność i kontrolę nad danymi.
         </p>
         <p>
-            Aktualnie napotykam problem z dynamicznym odświeżaniem danych w aplikacji Dash po utworzeniu bazy danych.
+            Aktualnie napotykam <span style="font-weight: bold; color: #c60b0b;">problem</span> z dynamicznym odświeżaniem danych w aplikacji Dash po utworzeniu bazy danych.
             Aplikacja Flask nie aktualizuje widoku danych w Dash automatycznie.
-            Pracuję nad rozwiązaniem tego <span style="font-weight: bold; color: #c60b0b;">problemu</span>. Obejscie problemu jest <span style="font-weight: bold; color: #c60b0b;">wyłączenie</span> i <span style="font-weight: bold; color: #0911e3;">włączenie</span> aplikacji po stworzeniu bazy danych. Wtedy aplikacja dash działa poprawnie
+            Pracuję nad rozwiązaniem tego <span style="font-weight: bold; color: #c60b0b;">problemu</span>. Obejscie problemu jest <span style="font-weight: bold; color: #c60b0b;">wyłączenie</span> i <span style="font-weight: bold; color: #0911e3;">włączenie</span> aplikacji po stworzeniu bazy danych. Wtedy aplikacja Dash działa poprawnie
             i mamy dostep do danych w panelu.
         </p>
     </div>
@@ -229,7 +240,7 @@
             Pierwszy wykres, zaimplementowany w aplikacji Dash, prezentuje liczbę zwycięstw w kategoriach aktorskich pierwszoplanowych (męskich i żeńskich).
             Użytkownik ma możliwość interaktywnej analizy danych poprzez przesuwanie wskaźnika, co umożliwia dynamiczne filtrowanie i eksplorację danych.
             Szczególnie interesujący jest panel umożliwiający zmianę zakresu liczby otrzymanych Oscarów, co pozwala na identyfikację aktorów z największą liczbą nagród w tych kategoriach.
-            Dodatkowo, wykres ten umożliwia [dodaj informację o szczegółach, jakie dane są pokazywane, np. lata, imiona i nazwiska, itp.].
+
         </p>
     </div>
 
@@ -246,7 +257,7 @@
         <h3>Statystyczny Wykres Oscarów dla Filmów</h3>
         <p>
             Kolejny wykres, również statyczny, przedstawia liczbę Oscarów zdobytych przez filmy z największą liczbą nagród.
-            [Dodaj informacje o ilości przedstawionych filmów, oraz o tym jak one zostały wybrane].
+            Można zauważyć, że jest bardzo ciężko  jednemu tytułowi powtórzyć znakomity wynik na przestrzeni lat, co podkreśla wyjątkowość każdego z tych osiągnięć.
         </p>
     </div>
 
@@ -260,15 +271,30 @@
     </div>
 
     <div class="section">
-        <h3>Wykres Oscarów dla Osób i Studiów</h3>
+        <h3>Wszystkie kategorie i zwycięscy</h3>
         <p>
-            Ostatni wykres przedstawia osoby i studia filmowe z największą liczbą zdobytych Oscarów.
+            Ostatni wykres przedstawia osoby z największą liczbą zdobytych Oscarów.
             Użytkownik ma możliwość filtrowania danych według wybranych kategorii, co pozwala na dostosowanie wizualizacji do indywidualnych potrzeb.
             W przypadku wyboru kilku kategorii, ich nazwy są wyświetlane w tytule pod wykresem, co ułatwia interpretację danych.
         </p>
     </div>
 
-
+    <div class="section">
+        <h2>Statystyki i Analizy</h2>
+        <p>
+            W tej sekcji prezentowana jest analiza statystyczna aktorów i aktorek, którzy otrzymali co najmniej dwa Oscary za role pierwszo- i drugoplanowe.
+            Znajduje się tutaj dynamiczny panel (dashboard), który przedstawia statystyczne dane dotyczące aktywności wspomnianych artystów.
+            Uruchomienie skryptu Statysyka umożliwi zapoznanie się ze statystykami całego zbioru danych.
+        </p>
+    </div>
+    <div class="section">
+        <h5>Uruchom Testy</h5>
+        <p>
+            W tej sekcji przeprowadzanych jest 5 testów, które weryfikują poprawność danych między ramką danych (DataFrame) a bazą danych.
+        </p>
+    </div>
 
 
     {% endblock %}
+
+</div>

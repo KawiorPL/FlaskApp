@@ -6,23 +6,32 @@
 
     <div class="content">
         <div>
-            <h2>Uruchom Zbieraj Dane</h2>
+            <h2 style="text-align: center;">Pobranie Danych</h2>
+            <p class="section" >Zapraszam do uruchomienia poniższych skryptów w sekwencji.
+                Pierwsza grupa skryptów umożliwi pobranie danych ze wskazanej strony internetowej.
+                Następnie, poprzez uruchomienie skryptów weryfikujących,
+                zostanie przeprowadzona kontrola poprawności pobranych danych. Po zakończeniu tej fazy,
+                uruchomienie skryptów z sekcji "Transformacja danych" zainicjuje proces przygotowania
+                danych do ich późniejszego załadowania do bazy danych oraz wizualizacji.
+                Wszelkie szczegóły w sekcji <a href="{{ url_for('dokumentacja_page') }}">Dokumentacja</a>.</p>
+
+
             <label class="col-sm-4 col-form-label" for="urlInput">URL:</label>
             <input id="urlInput" class="form-control form-control-sm" type="text" placeholder="https://oscar.warpechow.ski/" aria-label="https://oscar.warpechow.ski/ example" required>
-            <button id="startButton" onclick="zbierajDane()">Uruchom</button>
+            <button id="startButton" onclick="zbierajDane()">Uruchom Pobierz</button>
         </div>
         <br>
 
         <div>
 
-            <h2>Uruchom Sprawdz Dane</h2>
-            <button onclick="uruchomCheck_Data()">Uruchom</button>
+            <h2>Weryfikacje Danych</h2>
+            <button onclick="uruchomCheck_Data()">Uruchom Weryfikacje</button>
         </div>
 
         <br>
         <div>
-            <h2>Uruchom Czyszczenie Danych</h2>
-            <button onclick="uruchomClear_Data()">Uruchom</button>
+            <h2>Transformacja danych</h2>
+            <button onclick="uruchomClear_Data()">Uruchom Transformacje</button>
         </div>
 
         <div id="output">

@@ -5,11 +5,23 @@
 
 {% block content %}
 
-<br>
-<hr>
-    <h1>Tworzenie bazy danych</h1>
+<div class="content">
+    <h2 style="text-align: center;">Tworzenie bazy danych</h2>
+
     <div>
-        <h2>Uruchom Tworznie bazy danych</h2>
+        <p class="section">
+            Poniższy przycisk zainicjuje proces tworzenia bazy danych.
+            Prosimy pamiętać, że ta operacja zostanie wykonana po pomyślnym zakończeniu wszystkich skryptów w sekcji
+            <strong style="color: blue;">Skrypt</strong>.
+            W przypadku, gdyby panel kontrolny (dashboard) nie odświeżył stanu bazy danych automatycznie,
+            zalecamy ponowne uruchomienie aplikacji. Aktualnie pracujemy nad rozwiązaniem tego incydentu.
+            <br><br>
+            Informujemy, że proces tworzenia bazy danych może potrwać kilkanaście sekund w zależności od ilości przetwarzanych danych.
+            Po jego zakończeniu, w panelu kontrolnym powinna pojawić się informacja
+            o statusie bazy danych.
+            W razie jakichkolwiek problemów lub braku aktualizacji
+            dashboarda po dłuższym czasie, prosimy o kontakt z administratorem systemu lub zespołem wsparcia technicznego.
+        </p>
         <button onclick="uruchomTworzenie_Db()">Uruchom</button>
     </div>
     <div id="output">
@@ -27,3 +39,5 @@
 
 
     {% endblock %}
+
+</div>
