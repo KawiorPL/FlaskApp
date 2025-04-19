@@ -5,19 +5,19 @@
 
 {% block content %}
 
-<br>
-<hr>
-    <h1>Tworzenie Statystki</h1>
-    <div>
-        <h2>Uruchom Statystki</h2>
-        <button onclick="uruchom_Stats()">Uruchom</button>
-    </div>
 
-        <hr>
+<div class="content">
+    <h2 style="text-align: center;">Statystki i Testy</h2>
 
-        <br>
-        <div class="section" >
+    <div class="section" >
+
+
+
         <h2 style="color: #333; font-size: 1.8em; margin-bottom: 10px;">Statystyki Naszych Danych</h2>
+
+        <button onclick="uruchom_Stats()">Uruchom</button>
+        <br>
+        <br>
         <p style="font-size: 1.1em; line-height: 1.6;">
             Tutaj znajdziesz szczegółowe statystyki dotyczące analizowanych danych.
             Przedstawiamy kluczowe informacje, które pomogą Ci zrozumieć trendy i zależności.
@@ -53,9 +53,8 @@
         <h2 style="color: #3366cc; border-bottom: 2px solid #3366cc; padding-bottom: 10px;">Interaktywna Analiza Karier Aktorskich: Oscary za Role Pierwszo- i Drugoplanowe</h2>
 
         <p style="text-align: justify;">
-            Ten interaktywny panel prezentuje szczegółowe statystyki dotyczące aktorów i aktorek, którzy zdobyli co najmniej dwa Oscary za role pierwszo- i drugoplanowe.
-            Wizualizacja ta została zaprojektowana, aby umożliwić dogłębną analizę osiągnięć tych wybitnych artystów,
-            oferując unikalny wgląd w ich kariery filmowe.
+            Ten interaktywny panel prezentuje szczegółowe statystyki dotyczące aktorów i aktorek, którzy zdobyli co najmniej dwa Oscary za role pierwszo- i drugoplanowe. Kategorie te zostały wybrane, gdyż subiektywnie uznaję je za najbardziej prestiżowe w branży filmowej i zasługujące na szczególne wyróżnienie w tej analizie.
+            Wizualizacja ta została zaprojektowana, aby umożliwić dogłębną analizę osiągnięć tych wybitnych artystów, oferując unikalny wgląd w ich kariery filmowe.
         </p>
 
         <h3 style="color: #c00bf2;">Kluczowe Elementy Interaktywne:</h3>
@@ -127,7 +126,7 @@
         {% endif %}
 
 
-        <div>
+        <div class="section" >
             <div>
                 <h2>Uruchom Test</h2>
                 <button onclick="uruchom_Test()">Uruchom</button>
@@ -138,6 +137,7 @@
 
                 <div id="test-results">
                     <div class="status-section">
+
                         <h3>Status:</h3>
 
                         <p id="test-status" class="status">
@@ -154,12 +154,13 @@
                             {{ test_output }}
                         </pre>
                     </div>
+
                 </div>
             </div>
         </div>
 
 
 <br><br>
-
+    </div>
 
     {% endblock %}

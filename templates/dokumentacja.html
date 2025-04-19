@@ -84,7 +84,7 @@
         Jeżeli okaże się, że dane są błędne, tworzony jest plik <span class="code">remove.txt</span>, w którym zapisywane są
         nazwy plików zawierających nieprawidłowe dane. Celem tego jest umożliwienie ich usunięcia i ponownego
         uruchomienia sekcji <span class="code" style="font-size:large; color: #0911e3;">Uruchom Pobierz</span>.
-        Wówczas skrypt ponownie pobierze dane dla danego roku, który trafił do foldeur bledy.
+        Wówczas skrypt ponownie pobierze dane dla danego roku, który trafił do foldeur bledy i został usunęty.
     </p>
 </div>
 
@@ -219,10 +219,30 @@
     </div>
 
     <div class="section">
-        <h3>Podsumowanie bazy danych</h2>
+        <h3>Podsumowanie bazy danych</h3>
         <p>
             Skrypt <code>TworzenieDB.py</code> automatyzuje proces tworzenia i wypełniania bazy danych SQLite danymi z pliku CSV.
             Umożliwia to szybkie i efektywne przetwarzanie danych oraz ich przechowywanie w ustrukturyzowanej formie, gotowej do dalszej analizy lub wizualizacji.
+        </p>
+        <p>
+            Stworzona baza danych charakteryzuje się <strong>znormalizowanym schematem relacyjnym</strong>. Taka struktura została celowo zastosowana z kilku kluczowych powodów:
+        </p>
+        <ul>
+            <li>
+                <strong>Minimalizacja redundancji danych:</strong> Poprzez podział informacji na odrębne, powiązane tabele (takie jak kategorie, aktorzy, typy_nagrod, nagrody), unikamy powtarzania tych samych danych w wielu miejscach. Na przykład, imię i nazwisko aktora przechowywane jest tylko raz w tabeli aktorzy, a w tabeli nagrody odwołujemy się do niego za pomocą unikalnego identyfikatora (id_aktora). Zmniejsza to rozmiar bazy danych i ułatwia aktualizację informacji.
+            </li>
+            <li>
+                <strong>Poprawa integralności danych:</strong> Relacje między tabelami są wymuszane za pomocą kluczy obcych (FOREIGN KEY). Dzięki temu zapewniamy spójność danych i unikamy sytuacji, w których np. nagroda mogłaby zostać przypisana do nieistniejącej kategorii lub aktora. Integralność referencyjna gwarantuje, że powiązania między danymi są zawsze poprawne.
+            </li>
+            <li>
+                <strong>Ułatwienie zarządzania i utrzymania:</strong> Znormalizowana struktura ułatwia modyfikowanie schematu bazy danych, dodawanie nowych typów danych czy aktualizowanie istniejących bez ryzyka wprowadzania niespójności w wielu miejscach. Każda tabela reprezentuje konkretną encję, co czyni model bardziej przejrzystym i łatwiejszym do zrozumienia.
+            </li>
+            <li>
+                <strong>Optymalizacja pod kątem operacji transakcyjnych (OLTP):</strong> Schemat relacyjny jest dobrze przystosowany do obsługi operacji transakcyjnych, takich jak wstawianie nowych rekordów (np. przyznanie nowej nagrody), wyszukiwanie konkretnych informacji (np. dane aktora o danym ID) czy aktualizowanie istniejących danych. Szybki dostęp do konkretnych rekordów jest kluczowy w systemach operacyjnych.
+            </li>
+        </ul>
+        <p>
+            Podsumowując, zastosowanie znormalizowanego schematu relacyjnego zapewnia efektywne przechowywanie danych, ich spójność oraz ułatwia zarządzanie bazą danych w długoterminowej perspektywie.
         </p>
     </div>
 
@@ -290,7 +310,7 @@
     <div class="section">
         <h5>Uruchom Testy</h5>
         <p>
-            W tej sekcji przeprowadzanych jest 5 testów, które weryfikują poprawność danych między ramką danych (DataFrame) a bazą danych.
+            Również w tej sekcji przeprowadzanych jest 5 testów, które weryfikują poprawność danych między plikiem <span class="code">CleanData.csv</span> a <span class="code">bazą danych</span>.
         </p>
     </div>
 
