@@ -173,7 +173,17 @@ TEST_FILE = 'test_data_consistency.py'
 
 @app.route('/stats')
 def stats_page():
-    stats = fu.analizuj_dane()
+    stats = None
+    try:
+        # Sprawdź, czy plik CleanData.csv istnieje przed próbą analizy
+        if os.path.exists('CleanData.csv'):
+            stats = fu.analizuj_dane()
+        else:
+            stats = "Brak Pliku"
+    except FileNotFoundError as e:
+        stats = f"Błąd odczytu pliku: {e}"
+    except Exception as e:
+        stats = f"Wystąpił błąd podczas analizy danych: {e}"
 
     try:
         # Uruchom Pytest

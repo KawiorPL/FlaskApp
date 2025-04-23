@@ -15,6 +15,15 @@
 
         <h2 style="color: #333; font-size: 1.8em; margin-bottom: 10px;">Statystyki Naszych Danych</h2>
 
+        {%  if stats == "Brak Pliku" %}
+        <div class="alert alert-danger" role="alert">
+            <h1 class="alert-heading">Uwaga!</h1>
+            <p>Ukończ sekcję Skrypt przed przejściem dalej.</p>
+        </div>
+
+        {% else %}
+
+
         <button onclick="uruchom_Stats()">Uruchom</button>
         <br>
         <br>
@@ -162,5 +171,7 @@
 
 <br><br>
     </div>
+    {% endif %}
+
 
     {% endblock %}
