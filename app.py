@@ -303,7 +303,7 @@ if db_exists_on_start:
         return filtered_data.to_dict('records')
 else:
     dash_app = Dash(__name__, server=app, url_base_pathname='/baza_danych/')
-    dash_app.layout = html.Div("Baza danych nie została jeszcze utworzona.")
+    dash_app.layout = html.Div("Wystąpił błąd. Proszę zrestartować aplikację.")
 
 
 CleanData ='CleanData.csv'

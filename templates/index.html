@@ -16,33 +16,29 @@
                 Wszelkie szczegóły w sekcji <a href="{{ url_for('dokumentacja_page') }}">Dokumentacja</a>.</p>
 
                 <div class="section">
-                    <p class="note">Uwaga: Jeżeli po kliknięciu wyjście skryptu się nie odświeży, proszę odświeżyć stronę.</p>
-                </div>
+                    <p class="alert alert-danger" role="alert" style="text-align: center;">Uwaga: Jeżeli po kliknięciu wyjście skryptu się nie odświeży, proszę odświeżyć stronę i ponownie uruchomić skrypt</p>
 
-                <div class="section">
-                    <h2 class="section-title">Kroki do Aplikacji</h2>
+                    <h3 class="section-title">Sekwencja Uruchomienia Aplikacji</h3>
+                    <br>
                     <ol>
+                        <h5 class="section-title">Skrypt</h5>
                         <li class="instruction">Uruchom: Pobierz</li>
                         <li class="instruction">Uruchom: Weryfikacja</li>
                         <li class="instruction">Uruchom: Transformacja</li>
+                        <hr>
+                        <h5 class="section-title">Sekcja Baza Danych</h5>
+                        <li class="instruction">Kliknij: Uruchom</li>
+                        <hr>
+                        <h5 class="section-title">Wizualizacja</h5>
+
+                        <li class="instruction">Uruchom - stworzenie statycznych wykresów</li>
+                        <li class="instruction">Wykresy dynamiczne w Dash zostaną utworzone automatycznie po wizualizacji bazy danych.</li>
+                        <hr>
+                        <h5 class="section-title">Statystyki i Testy</h5>
+                        <li class="instruction">Statystyki i testy będą działać, gdy plik <span style="font-family: monospace;">CleanData.csv</span> zostanie utworzony.</li>
+
                     </ol>
-                </div>
 
-                <div class="section">
-                    <h2 class="section-title">Sekcja Baza Danych</h2>
-                    <p class="instruction">Kliknij: Uruchom</p>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Wizualizacja</h2>
-                    <p class="instruction">Uruchom tworzenie wykresu</p>
-                    <p class="instruction">Uruchom - stworzenie statycznych wykresów</p>
-                    <p class="instruction">Wykresy dynamiczne w Dash zostaną utworzone automatycznie po wizualizacji bazy danych.</p>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Statystyki i Testy</h2>
-                    <p class="instruction">Statystyki i testy będą działać, gdy plik <span style="font-family: monospace;">CleanData.csv</span> zostanie utworzony.</p>
                 </div>
 
 
