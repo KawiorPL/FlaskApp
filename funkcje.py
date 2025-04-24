@@ -13,10 +13,13 @@ import pytest
 import re
 
 
-
+# Główny adres URL, z którego będą pobierane dane.
 main = "https://oscar.warpechow.ski/"
+# Nazwę folderu, w którym zostaną zapisane dane
 folder='pliki'
 
+
+# Pobiera dane ze wskazanego adresu URL, zapisuje je do pliku tekstowego.
 def Sonda(main,folder):
 
     respone = requests.get(main)
@@ -28,7 +31,7 @@ def Sonda(main,folder):
     return 1
 
 
-
+#Tworzenie dataframe z Linkami i latami
 def DatFrameYearLink(html_file_path):
     #otwieraniue pliku z danymi.
     try:
@@ -56,6 +59,11 @@ def DatFrameYearLink(html_file_path):
         print(f"Wystąpil bład: {e}")
         return None
 
+
+
+
+
+
 def znajdz_roznice(lista1, lista2):
     """
     Znajduje elementy z listy1, które nie występują w liście2.
@@ -74,7 +82,20 @@ def znajdz_roznice(lista1, lista2):
     return lista3
 
 
+
+
 def extract_winner(html_file_path, year):
+    """
+    Ekstrahuje informacje o zwycięzcach z pliku HTML zawierającego dane z ceremonii Oscarów.
+
+    Args:
+        html_file_path (str): Ścieżka do pliku HTML do przetworzenia.
+        year (int): Rok ceremonii Oscarów, który zostanie dodany do danych.
+
+    Returns:
+        pd.DataFrame: DataFrame zawierający informacje o zwycięzcach (rok, kategoria, aktor, film, typ).
+                       Zwraca pusty DataFrame w przypadku braku zwycięzców.
+    """
 
     with open(html_file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
@@ -82,26 +103,29 @@ def extract_winner(html_file_path, year):
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
-    other=[]
-    cat=[]
+    other=[] # Lista do przechowywania zwycięzców w kategoriach specjalnych.
+    cat=[]  # Lista do przechowywania nazw kategorii specjalnych.
 
+     # Lista kategorii nagród specjalnych, które wymagają innego sposobu parsowania.
     listaHo=['HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD']
-    winners = []
+    winners = []  # Główna lista do przechowywania informacji o wszystkich zwycięzcach.
 
+     # Znajdź wszystkie sekcje kategorii na stronie.
     for category_section in soup.find_all('div', class_='category-section'):
         category = category_section.find('h2').text.strip()
 
+            # Jeśli kategoria znajduje się na liście nagród specjalnych.
         if category in listaHo:
             for nominee_element in category_section.find_all('div', class_='winner'):
                 nominee_paragraph = nominee_element.find('p')
 
-
+                # Jeśli paragraf został znaleziony.
                 if nominee_paragraph:
                     nominee = nominee_paragraph.text.strip()
                     other.append(nominee)
                     cat.append(category)
 
-
+              # Przetwarzaj listy 'other' i 'cat', aby wyodrębnić aktora i film (jeśli istnieją).
             for y,category in zip(other,cat):
 
                 try:
@@ -145,7 +169,7 @@ def extract_winner(html_file_path, year):
                         aktor = winner
                         film = np.nan
                     winners.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'Winner'})
-
+    # Utwórz DataFrame z zebranych informacji o zwycięzcach
     df = pd.DataFrame(winners)
     return df
 
@@ -158,12 +182,17 @@ def extract_nominee(html_file_path, year):
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
-    listnominee=[]
-    ACTOR=[]
-    other=[]
-    cat=[]
+    listnominee = []  # Główna lista do przechowywania informacji o wszystkich nominowanych.
+    ACTOR = []       # Lista do przechowywania nominowanych w kategorii 'ACTOR'.
+    other = []       # Lista do przechowywania nominowanych w innych kategoriach.
+    cat = []         # Lista do przechowywania nazw kategorii dla nominowanych w 'other'
+
+    # Znajdź wszystkie sekcje kategorii na stronie.
     for category_section in soup.find_all('div', class_='category-section'):
         category = category_section.find('h2').text.strip()
+
+
+        # Znajdź wszystkie elementy div z klasą 'nominee' w tej sekcji.
 
         for nominee_element in category_section.find_all('div', class_='nominee'):
             nominee_paragraph = nominee_element.find('p')
@@ -171,23 +200,26 @@ def extract_nominee(html_file_path, year):
 
             if nominee_paragraph:
                 nominee = nominee_paragraph.text.strip()
+                # Jeśli kategoria to 'ACTOR', dodaj nominowanego do listy 'ACTOR'.
                 if category =='ACTOR':
                     ACTOR.append(nominee)
                 else:
+                    # W przeciwnym razie, dodaj nominowanego do listy 'other' i nazwę kategorii do listy 'cat'.
                     other.append(nominee)
                     cat.append(category)
 
-
+    # Zwraca elementy, które są w 'ACTOR', a nie w 'other'
     lista3 = znajdz_roznice(ACTOR, other)
 
-
+    # Dodaj elementy znalezione w 'lista3' do listy 'other'.
     for i in lista3:
         other.append(i)
 
+    # Dla każdego elementu dodanego z 'lista3', dodaj kategorię 'ACTOR' do listy 'cat'.
     for i in range(len(lista3)):
         cat.append('ACTOR')
 
-
+# Przetwarzaj listy 'other' i 'cat', aby wyodrębnić aktora i film (jeśli istnieją).
     for y,category in zip(other,cat):
 
         try:
@@ -208,6 +240,7 @@ def extract_nominee(html_file_path, year):
                     aktor = y
                     film = np.nan
 
+        # Dodaj informacje o nominowanym do głównej listy 'listnominee'.
         listnominee.append({'YEAR': year, 'category': category, 'aktor': aktor, 'film': film, 'type': 'nominee'})
 
     df = pd.DataFrame(listnominee)
@@ -219,6 +252,17 @@ def extract_nominee(html_file_path, year):
 
 
 def weryfikuj_i_rozdziel_osoby(data):
+    """
+    Weryfikuje kolumnę 'aktor' w DataFrame, rozdziela osoby wymienione po przecinku lub 'and',
+    tworząc nowe wiersze dla każdej osoby. Usuwa również wiersze zawierające określone nieosobowe wartości.
+
+    Args:
+        data (pd.DataFrame): DataFrame zawierający kolumny 'YEAR', 'category', 'aktor', 'film', 'type'.
+
+    Returns:
+        pd.DataFrame: Nowy DataFrame, w którym każda osoba jest w osobnym wierszu,
+                       a wiersze z nieosobowymi wartościami zostały usunięte.
+    """
 
     new=pd.DataFrame()
 
@@ -228,11 +272,13 @@ def weryfikuj_i_rozdziel_osoby(data):
         film=i['film']
         ztype=i['type']
         try:
+             # Sprawdzenie, czy w kolumnie 'aktor' występuje przecinek (sugerujący wiele osób).
             if ',' in i['aktor']:
                 aktor = i['aktor'].split(',')
                 for a in aktor:
                     tempo=pd.DataFrame({'YEAR': [YEAR],'category': [category],'aktor': [a.strip()],'film': [film],'type': [ztype]})
                     new= pd.concat([new,tempo], ignore_index=True)
+            # Sprawdzenie, czy w kolumnie 'aktor' występuje ' and ' (sugerujące wiele osób).
             elif ' and ' in i['aktor']:
                 aktor = i['aktor'].split(' and ')
                 for a in aktor:
@@ -244,16 +290,18 @@ def weryfikuj_i_rozdziel_osoby(data):
 
         except TypeError:
             print(f'Error {i["aktor"]}')
-
+    # Lista wartości, które mają zostać usunięte z kolumny 'aktor' (np. nazwy firm, tytuły).
     remove = ['Metro-Goldwyn-Mayer', 'Warner Bros.','Producer', 'Producers', 'Sound Director', 'Music', 'Jr.']
 
-
+ # Stworzenie maski logicznej wskazującej wiersze, w których wartość kolumny 'aktor' znajduje się na liście 'remove'.
     maska = new['aktor'].isin(remove)
+     # Filtrowanie DataFrame 'new' i zachowanie tylko tych wierszy, które nie spełniają maski (czyli nie zawierają wartości z 'remove').
     df_oczyszczony = new[~maska]
 
     return df_oczyszczony
 
 
+# Funkcja pozostawiona do mozliwego przyszłego wykorzystania obecnie weryfikuj_i_rozdziel_osoby spelnia te funkcje.
 def czyszczenie_przecinek(data):
 
     new=pd.DataFrame()
@@ -280,8 +328,19 @@ def czyszczenie_przecinek(data):
 
 
 
-
+#Funckja relizuje zadania jakie weryfikuj_i_rozdziel_osoby jednak byla potrzebna do ponownego podzialu.
 def czyszczenie_and(data):
+    """
+    Weryfikuje kolumnę 'aktor' w DataFrame, rozdziela osoby wymienione  'and',
+    tworząc nowe wiersze dla każdej osoby.
+
+    Args:
+        data (pd.DataFrame): DataFrame zawierający kolumny 'YEAR', 'category', 'aktor', 'film', 'type'.
+
+    Returns:
+        pd.DataFrame: Nowy DataFrame, w którym każda osoba jest w osobnym wierszu,
+                       a wiersze z nieosobowymi wartościami zostały usunięte.
+    """
 
     new=pd.DataFrame()
 
@@ -359,6 +418,17 @@ def usuwanie_dodatkowych_slow(data, kolumna='aktor'):
 
 
 def czyszczenie_at(data):
+    """
+    Weryfikuje kolumnę 'aktor' w DataFrame, rozdziela osoby wymienione  '&',
+    tworząc nowe wiersze dla każdej osoby.
+
+    Args:
+        data (pd.DataFrame): DataFrame zawierający kolumny 'YEAR', 'category', 'aktor', 'film', 'type'.
+
+    Returns:
+        pd.DataFrame: Nowy DataFrame, w którym każda osoba jest w osobnym wierszu,
+                       a wiersze z nieosobowymi wartościami zostały usunięte.
+    """
 
     new=pd.DataFrame()
 
@@ -440,18 +510,39 @@ def znajdz_prawie_podobne(lista, prog_podobienstwa=0.9):
 
 
 def suguesia_zamiany(dane,data):
+    """
+    Analizuje listę par ciągów znaków i na podstawie różnych kryteriów
+    sugeruje zamiany, zwracając DataFrame z proponowanymi zamianami
+    oraz listę słowników reprezentujących te zamiany.
+
+    Args:
+        dane (list): Lista par ciągów znaków (list zawierająca dwie str).
+        data (DataFrame): DataFrame zawierający dane, używany do weryfikacji
+                          i wyciągania informacji o aktorach. Oczekuje się,
+                          że DataFrame zawiera kolumny 'aktor' i 'YEAR' oraz 'category'.
+
+    Returns:
+        tuple: Krotka zawierająca:
+            - Datazamiana (DataFrame): DataFrame z kolumnami 'old' i 'new',
+                                       zawierający oryginalne i sugerowane ciągi znaków.
+            - dozamiany_lista (list): Lista słowników, gdzie każdy słownik
+                                       ma klucze 'old' i 'new' reprezentujące
+                                       sugerowaną zamianę.
+    """
     final=[]
     for i in dane:
         one = i[0].split(" ")
         two = i[1].split(" ")
 
+        # Sprawdzenie warunków długości ciągów znaków
         if len(one) <4 and len(two)<4 or len(one)==1 and len(two)==1:
             try:
-
+                # Przypadek, gdy liczba słów w ciągach jest różna
                 if len(one) != len(two):
+                    # Sprawdzenie, czy pierwsze i ostatnie słowa są takie same
                     if one[0] == two[0] and one[-1] == two[-1]:
 
-
+                        # Pobranie statystyk dotyczących liczby i zakresu lat dla aktorów
                         num1=data.loc[data['aktor']==i[0]]['YEAR'].count()
                         num2 = data.loc[data['aktor']==i[1]]['YEAR'].count()
                         num1max = data.loc[data['aktor']==i[0]]['YEAR'].max()
@@ -462,7 +553,7 @@ def suguesia_zamiany(dane,data):
                         num2min=data.loc[data['aktor']==i[1]]['YEAR'].min()
                         num1mean = data.loc[data['aktor']==i[0]]['YEAR'].mean()
 
-
+                         # Sugerowanie zamiany na podstawie liczby i zakresu lat
                         if num1 > num2:
                             if num1max > num2mean and num2mean > num1min:
                                 final.append([i,[f"{one[0]} {one[-1]}"]])
@@ -472,20 +563,22 @@ def suguesia_zamiany(dane,data):
                                 final.append([i,[f"{one[0]} {one[-1]}"]])
 
                 else:
+                     # Przypadek, gdy liczba słów w ciągach jest taka sama
                     if one[1] == two[1]:
+                         # Sprawdzenie długości pierwszego słowa i ostatniej litery drugiego słowa
                         if len(one[0]) < len(two[0]) and two[0][-1] =='y':
 
-
+                            # Pobranie najczęstszej kategorii dla obu aktorów
                             num1=data.loc[data['aktor']==i[0]]['category'].value_counts().reset_index()['category'].iloc[0]
                             num2=data.loc[data['aktor']==i[1]]['category'].value_counts().reset_index()['category'].iloc[0]
 
                             num1New=num1.split()[0]
                             num2New=num2.split()[0]
-
+                             # Sugerowanie zamiany, jeśli pierwsze słowa najczęstszych kategorii są podobne
                             if num1New.lower() == num2New.lower():
                                 final.append([i,[f"{two[0]} {one[1]}"]])
 
-
+                        # Sprawdzenie, czy pierwsze słowo drugiego ciągu zaczyna się tak samo jak pierwsze słowo pierwszego ciągu
                         elif len(one[0]) < len(two[0]):
                             num=len(one[0])
                             for l in range(len(one[0])):
@@ -504,26 +597,29 @@ def suguesia_zamiany(dane,data):
             print(f"Trudne do indetyfikacji, zostanie pominęte: {i}")
 
         try:
+             # Sprawdzenie, czy długości całych ciągów są identyczne
             if len(i[0]) == len(i[1]):
 
                 num=len(i[0])
+                 # Sprawdzenie, czy wszystkie znaki (ignorując wielkość liter) są takie same
                 for l in range(len(i[0])):
                     if i[0][l].lower() == i[1][l].lower():
                         num-=1
                     if num == 0:
                         final.append([i,[i[0].title()]])
 
-
+              # Ponowne sprawdzenie, czy długości całych ciągów są identyczne
             if len(i[0]) == len(i[1]):
 
                 num=len(i[0])
+                 # Iteracja po znakach w ciągach
                 for l in range(len(i[0])):
                     if i[0][l].lower() == i[1][l].lower():
                         num-=1
 
 
                     else:
-
+                        # Sprawdzenie, czy na danej pozycji występuje '-'
                         if '-' == i[0][l]:
                             final.append([i,[i[0]]])
                         elif '-' == i[1][l]:
@@ -549,6 +645,19 @@ def suguesia_zamiany(dane,data):
 
 
 def zamiana(data,lista):
+    """
+    Iteruje po wierszach DataFrame zawierającego sugerowane zamiany
+    i wykonuje te zamiany w kolumnie 'aktor' innego DataFrame.
+
+    Args:
+        data (DataFrame): DataFrame, w którym ma zostać przeprowadzona zamiana
+                          w kolumnie 'aktor'.
+        lista (DataFrame): DataFrame z kolumnami 'old' i 'new', zawierający
+                           informacje o zamianach do wykonania.
+
+    Returns:
+        DataFrame: DataFrame z zaktualizowaną kolumną 'aktor' po przeprowadzeniu zamian.
+    """
     for index, y in lista.iterrows():
         print(f"zamiana {y['old']} na {y['new']}")
 
@@ -561,6 +670,19 @@ def zamiana(data,lista):
 
 
 def usuwanie_dodatkowych_slow2(data, kolumna='aktor'):
+    """
+    Przetwarza DataFrame, usuwając określone dodatkowe słowa z podanej kolumny
+    tekstowej ('aktor' domyślnie) i tworząc nowy DataFrame z wyczyszczonymi danymi.
+
+    Args:
+        data (DataFrame): DataFrame do przetworzenia.
+        kolumna (str, optional): Nazwa kolumny tekstowej do oczyszczenia.
+                                  Domyślnie 'aktor'.
+
+    Returns:
+        DataFrame: Nowy DataFrame zawierający dane z usuniętymi dodatkowymi słowami
+                   w określonej kolumnie.
+    """
 
     new = pd.DataFrame()
     words = ['Special Audible Effects by ','Special Visual Effects by ', 'head of department ',' for the animation direction of Who Framed Roger Rabbit.']
@@ -593,18 +715,33 @@ def usuwanie_dodatkowych_slow2(data, kolumna='aktor'):
 
 
 def special_award(df):
+    """
+    Przetwarza DataFrame w celu wyodrębnienia informacji o osobach nagrodzonych
+    specjalnymi nagrodami, normalizując ich imiona i nazwiska.
 
+    Args:
+        df (DataFrame): DataFrame zawierający dane o nagrodach, z kolumnami
+                        takimi jak 'category', 'aktor', 'film'.
+
+    Returns:
+        DataFrame: Nowy DataFrame zawierający unikalne wiersze po przetworzeniu
+                   kolumny 'aktor' dla specjalnych nagród.
+    """
 
 
     lista2 = []
     listaHo=['HONORARY AWARD', 'SPECIAL AWARD', 'SPECIAL FOREIGN LANGUAGE FILM AWARD', 'AWARD OF COMMENDATION', 'IRVING G. THALBERG MEMORIAL AWARD']
 
+    # Wybierz unikalnych aktorów z kategorii innych niż specjalne
     listakto=df.loc[~df['category'].isin(listaHo)]['aktor'].unique()
 
+     # Jeśli brakuje tytułu filmu, przypisz nazwę aktora
     warunek= df['film'].isna()
+
 
     df.loc[warunek, 'film'] = df.loc[warunek, 'aktor']
 
+    # Utwórz listę aktorów składających się z dwóch słów (zakładając, że to imię i nazwisko)
     for i in listakto:
         d=str(i).split()
         if len(d) !=2:
@@ -621,6 +758,7 @@ def special_award(df):
 
 
     def extract_between_to_comma(text):
+        """Wyciąga tekst pomiędzy 'To ' a pierwszą napotkaną ','."""
         if "To " in text and "," in text:
             part1 = text.split("To ", 1)[1]  # Dzielimy po pierwszym "To " i bierzemy drugą część
             part2 = part1.split(",", 1)[0]   # Dzielimy po pierwszym "," i bierzemy pierwszą część
@@ -629,6 +767,7 @@ def special_award(df):
             return text
 
     def remove_producer(text):
+        """Usuwa frazę ', Producer' z tekstu."""
         if ', Producer' in text:
             text=text.replace(', Producer',"")
         return text
@@ -644,7 +783,7 @@ def special_award(df):
     for znak in znaki:
         df['aktor'] = df['aktor'].str.split(znak, n=1, expand=True)[0]
 
-
+    # Zastosuj funkcje do dalszego oczyszczenia kolumny 'aktor'
     df['aktor'] = df['aktor'].apply(extract_between_to_comma)
     df['aktor'] = df['aktor'].apply(remove_producer)
 
@@ -798,16 +937,39 @@ def winnersfilm(df):
 
 
 def mapaswaita(data):
+    """
+    Generuje mapę świata z zaznaczonymi krajami, które zdobyły nagrody
+    w kategoriach 'FOREIGN LANGUAGE FILM' i 'INTERNATIONAL FEATURE FILM',
+    wraz z liczbą zdobytych nagród dla każdego kraju.
+
+    Args:
+        data (DataFrame): DataFrame zawierający dane o nagrodach, z kolumnami
+                        'category', 'aktor', 'film', 'type'.
+
+    Returns:
+        folium.Map: Obiekt mapy Folium z zaznaczonymi krajami i liczbą nagród.
+    """
+    # 1. Filtrowanie i grupowanie danych:
+    #    - Wybiera wiersze z kategoriami 'FOREIGN LANGUAGE FILM' i 'INTERNATIONAL FEATURE FILM'
+    #      i typem 'Winner'.
+    #    - Grupuje po 'aktor' (zakładamy, że 'aktor' reprezentuje kraj) i liczy wystąpienia 'film' (liczbę nagród).
+
     thelist = data.loc[(data['category'].isin(['FOREIGN LANGUAGE FILM','INTERNATIONAL FEATURE FILM']) & (data['type']=='Winner'))].groupby('aktor')['film'].count().sort_values()
 
+    # 2. Mapowanie nazw krajów:
+    #    - Definiuje słownik do mapowania starych/nieaktualnych nazw krajów na aktualne.
     country_list={'Bosnia':'Bosnia and Herzegovina',
                 'Federal Republic of Germany':'Germany',
                 'Czechoslovakia':'Czech Republic',
                 'Union of Soviet Socialist Republics':'Russia',
                 'The Netherlands':'Netherlands'}
 
+    #    - Aktualizuje nazwy krajów w indeksie serii 'thelist'.
     updated_thelist = thelist.rename(country_list)
 
+    # 3. Tworzenie słownika z liczbą nagród dla każdego kraju:
+    #    - Tworzy słownik 'con', gdzie kluczem jest nazwa kraju, a wartością
+    #      liczba zdobytych nagród (suma nagród dla danego kraju).
     con={}
     for i in updated_thelist.index:
         con[i]=int(updated_thelist[i].sum())
@@ -816,30 +978,36 @@ def mapaswaita(data):
     numbers = list(con.values())
 
 
+    # 4. Pobieranie danych GeoJSON o granicach krajów:
+    #    - Pobiera dane GeoJSON z granicami krajów z publicznie dostępnego źródła.
 
-    # dynamically get the world-country boundaries
     res = requests.get("https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/world-countries.json")
     res.raise_for_status()
     df = pd.DataFrame(json.loads(res.content.decode()))
+    #    - Wyodrębnia identyfikatory i nazwy krajów z danych GeoJSON.
     df = df.assign(
         id=df["features"].apply(pd.Series)["id"],
         name=df["features"].apply(pd.Series)["properties"].apply(pd.Series)["name"]
     )
 
-    # build a dataframe of country colours scraped from Wikipedia
+    # 5. Pobieranie informacji o kolorach krajów z Wikipedii:
+    #    - Pobiera kod HTML strony Wikipedii zawierającej informacje o kolorach narodowych.
     resp = requests.get("https://en.wikipedia.org/wiki/National_colours")
     resp.raise_for_status()
     soup = BeautifulSoup(resp.content.decode(), "html.parser")
     colours = []
+    #    - Iteruje po tabelach HTML na stronie i wyodrębnia nazwy krajów i kolory.
 
     for t in soup.find_all("table", class_="wikitable"):
         cols = t.find_all("th")
+        # Sprawdza, czy to właściwa tabela (zawiera kolumny "Country" i "Primary").
         ok = (len(cols) > 5 and cols[0].string.strip() == "Country" and cols[4].string.strip() == "Primary")
         if ok:
-            for tr in t.find_all("tr"):
-                td = tr.find_all("td")
+            for tr in t.find_all("tr"): # Iteruje po wierszach tabeli.
+                td = tr.find_all("td") # Iteruje po komórkach wiersza.
                 if len(td) > 5:
                     try:
+                        # Pobiera nazwę kraju, uwzględniając różne struktury HTML.
                         country_name_element = td[0].find("a")
                         if country_name_element and country_name_element.string:
                             country_name = country_name_element.string.strip()
@@ -849,7 +1017,7 @@ def mapaswaita(data):
                                 country_name = country_name_element.string.strip()
                             else:
                                 continue # Pomiń wiersz, jeśli nie można znaleźć nazwy kraju
-
+                         # Pobiera kolory kraju.
                         sp = td[4].find_all("span")
                         if sp:
                             c1 = re.sub(r"background-color:([\w,#,0-9]*).*", r"\1", sp[0]["style"])
@@ -863,7 +1031,9 @@ def mapaswaita(data):
                         continue
     dfc = pd.DataFrame(colours).set_index("country")
 
-    # style the overlays with the countries' own colors
+    # 6. Definiowanie funkcji stylizującej dla GeoJSON:
+    #    - Definiuje funkcję 'style_fn', która na podstawie nazwy kraju
+    #      pobiera kolory z DataFrame 'dfc' i zwraca słownik stylów dla GeoJSON
     def style_fn(feature):
         try:
             cc = dfc.loc[feature["properties"]["name"]]
@@ -872,6 +1042,7 @@ def mapaswaita(data):
         except KeyError:
             return {'fillColor': 'gray', 'color': 'black'}
 
+    # 7. Definiowanie funkcji do obliczania centroidu
     def get_country_centroid(feature):
         """Calculates a simple centroid for a GeoJSON feature."""
         geometry_type = feature['geometry']['type']
@@ -888,10 +1059,14 @@ def mapaswaita(data):
             return [centroid_lat, centroid_lon]
         return None
 
-    # create the base map
+    # 8. Tworzenie mapy Folium:
+    #    - Tworzy obiekt mapy Folium, ustawiając początkowy punkt i poziom zoom.
     m = folium.Map(location=[50, 0], zoom_start=1, control_scale=True)
 
-    # overlay desired countries over the folium map and add labels
+    # 9. Dodawanie warstw GeoJSON i etykiet do mapy:
+    #    - Iteruje po liście krajów i ich liczbie nagród.
+    #    - Dla każdego kraju pobiera dane GeoJSON i dodaje je jako warstwę do mapy.
+    #    - Dodaje etykiety z liczbą nagród dla każdego kraju
     for i, country_name_from_list in enumerate(countries):
         try:
             country_data = df[df["name"] == country_name_from_list].iloc[0]
@@ -912,6 +1087,8 @@ def mapaswaita(data):
         except KeyError as e:
             print(f"Błąd klucza podczas stylizowania: {e} dla kraju: {country_name_from_list}")
 
+    # 10. Zapisywanie mapy do pliku HTML:
+    #     - Zapisuje mapę do pliku HTML.
     CHART_PATH = os.path.join('static', 'charts', 'country.html')
     m.save(CHART_PATH)
     return m

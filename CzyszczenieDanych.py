@@ -73,7 +73,7 @@ df_bez_listaHo = Finaldf[maska_bez_listaHo].copy()
 
 
 
-
+#Uruchamianie funkcji z pliku fu to czyszczenia danych
 newdata = fu.weryfikuj_i_rozdziel_osoby(df_bez_listaHo)
 
 newdata1 = fu.czyszczenie_and(newdata)
@@ -86,17 +86,26 @@ fu.usun_nawiasy_w_miejscu(newdata3, kolumna='aktor')
 
 fu.usun_wszystkie_biale_znaki(newdata3, kolumna='aktor')
 
+
+#Tworzenie unikalnej listy aktorow
 mylist=list(set(newdata3['aktor'].to_list()))
 
 
+# Informacja o rozpoczęciu procesu Szukanie Podobnych.
 print("Szukanie Podobnych ")
+
+# Wymuszenie natychmiastowego wypisania bufora standardowego wyjścia.
 sys.stdout.flush()
+
+
 dane=fu.znajdz_prawie_podobne(mylist)
 sys.stdout.flush()
 
-
+# Informacja o wygenerowaniu sugestii do zmiany.
 print("Sugestie do zmiany ")
 sys.stdout.flush()
+
+# Wywołanie funkcji 'suguesia_zamiany' z modułu 'fu'
 Datazamiana, dozamiany_lista = fu.suguesia_zamiany(dane,newdata3)
 sys.stdout.flush()
 
@@ -104,29 +113,38 @@ sys.stdout.flush()
 
 
 print("Potwierdz czy akcetpujesz zmiany.")
+
+# Wyświetlenie proponowanych zmian w DataFrame 'Datazamiana'.
 print(Datazamiana)
 sys.stdout.flush()
 
-
+# Wywołanie funkcji 'zamiana'
 pozamianie=fu.zamiana(newdata3,Datazamiana)
 
 
-
+# Wywołanie funkcji 'special_award'
 honorary= fu.special_award(df_z_listaHo)
 
 
-
+# Połączenie (konkatenacja) DataFrame 'honorary' (nagrody specjalne) i 'pozamianie' (dane po zamianach)
 prawiefinal = pd.concat([honorary,pozamianie], ignore_index=True)
 
+# Wywołanie funkcji 'usuwanie_dodatkowych_slow2'
 final = fu.usuwanie_dodatkowych_slow2(prawiefinal)
 
+
+
 data_filtered = final[~final['aktor'].isnull()]
+
+# Usunięcie wierszy, w których kolumna 'aktor' jest pusta (NaN).
+
 finalClean = data_filtered.dropna(subset=['aktor'])
 
 
-
+# Zapisanie wyczyszczonych danych z DataFrame 'finalClean' do pliku CSV
 finalClean.to_csv("CleanData.csv", index=False)
 
+# Informacja o pomyślnym zapisaniu czystych danych do pliku CSV.
 print('Czyste dane zapisane do CleanData.csv')
 sys.stdout.flush()
 
